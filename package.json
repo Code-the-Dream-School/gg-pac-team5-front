@@ -24,5 +24,10 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "msw": "^2.3.4",
     "vite": "^5.1.4"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
