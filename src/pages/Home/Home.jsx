@@ -1,9 +1,10 @@
 import { Carousel } from "./Carousel/Carousel";
+import { NavBar } from "./NavBar/NavBar";
 
 const Home = () => {
 	return (
 		<>
-			<div>NavBar</div>
+			<NavBar />
 			<div>Greeter_Customer</div>
 			<Carousel />
 			<div>Divider</div>

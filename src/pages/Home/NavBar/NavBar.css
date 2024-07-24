@@ -1,0 +1,13 @@
+a {
+	text-decoration: none;
+	color: darkslategray;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.home-page-wrapper {
+	display: flex;
+	justify-content: space-between;
+}
