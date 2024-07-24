@@ -74,9 +74,21 @@ Similar to how you should never push up to the main branch as to keep the main b
 
 Someone will review your code and either approve the code and merge it, or they will leave comments on your Pull Request asking for some things to be changed before the Pull Request gets approved. 
 
-**If You Are the One Reviewing the Pull Request**
+**How to Review and Approve a Pull Request**
 
-Just as the person who made the pull request was clear and polite about their changes they wish to be made to the main branch, you will respond clearly and politely to their code. The best code is made when we're all a team. Suggest the changes that you think should be made, but do it kindly. Here is a great example of a convention you should follow when leaving comments on a Pull Request called [Conventional Comments](https://conventionalcomments.org/). 
+Just as the person who made the pull request was clear and polite about their changes they wish to be made to the main branch, you will respond clearly and politely to their code. The best code is made when we're all a team. 
+
+Go to the "Pull Requests" tab and click on the specific one that you intend to review. 
+
+Right below the name of the Pull Request, in the middle of the screen, there should be a tab that says "Files changed" with a number of the files changed next to it. Click this.
+
+Here, you can leave review comments by clicking on the big green button in the top-right of the screen labeled "Review changes". Click this.
+
+Next, suggest the changes that you think should be made, but do it kindly. Here is a great example of a convention you should follow when leaving comments on a Pull Request called [Conventional Comments](https://conventionalcomments.org/). 
+
+Once the code is up to standard and you think it should be merged into main, you can go ahead and approve the Pull Request.
+
+After this, you can scroll down and merge the Pull Request by clicking another big green button that says: "Create a merge commit". You should click the small dropdown on this button, which should reveal a couple more options. You should choose the "Squash and merge" option. The code will then be merged!
 
 ## Finally
 
