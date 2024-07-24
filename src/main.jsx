@@ -7,7 +7,7 @@ import ErrorPage from './ErrorPage'
 
 const router = createBrowserRouter([
   {
-    path: '/pages',
+    path: '/pages/:pageName',
     element: <Pages />,
     errorElement: <ErrorPage />
   }
