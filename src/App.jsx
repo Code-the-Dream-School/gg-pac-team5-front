@@ -1,31 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { getAllData } from './util/index';
+import React, { useState, useEffect } from "react";
+import { getAllData } from "./util/index";
+import { Outlet } from "react-router-dom";
+import { Home } from "./pages/Home/Home";
 
-const URL = 'http://localhost:8000/api/v1/';
+const URL = "http://localhost:8000/api/v1/";
 
 function App() {
-  
-  const [message, setMessage] = useState(''); 
+	const [message, setMessage] = useState("");
 
-  useEffect(() => {
+	useEffect(() => {
+		(async () => {
+			const myData = await getAllData(URL);
+			setMessage(myData.data);
+		})();
 
-    (async () => {
-      const myData = await getAllData(URL)
-      setMessage(myData.data);
-    })();
-      
-    return () => {
-      console.log('unmounting');
-    }
+		return () => {
+			console.log("unmounting");
+		};
+	}, []);
 
-  }, []);
-
-  return (
-    <>
-      <h1>{message}</h1>
-    </>
-  );
-
+	return (
+		<>
+			<Outlet />
+		</>
+	);
 }
 
-export default App
+export default App;
