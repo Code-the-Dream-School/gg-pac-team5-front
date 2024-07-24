@@ -1,8 +1,9 @@
+import { CSSProperties } from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 
 const NavBar = () => {
-	const activeStyles = {
+	const activeStyles: CSSProperties = {
 		fontWeight: "bold",
 		textDecoration: "underline",
 		color: "#161616",
@@ -13,19 +14,19 @@ const NavBar = () => {
 			<NavLink
 				to="."
 				end
-				style={({ isActive }) => (isActive ? activeStyles : null)}
+				style={({ isActive }) => (isActive ? activeStyles : undefined)}
 			>
 				Home
 			</NavLink>
 			<NavLink
 				to="main"
-				style={({ isActive }) => (isActive ? activeStyles : null)}
+				style={({ isActive }) => (isActive ? activeStyles : undefined)}
 			>
 				Main
 			</NavLink>
 			<NavLink
 				to="auth"
-				style={({ isActive }) => (isActive ? activeStyles : null)}
+				style={({ isActive }) => (isActive ? activeStyles : undefined)}
 			>
 				Login
 			</NavLink>

@@ -1,7 +1,7 @@
 import { useRouteError, Link, useNavigate } from "react-router-dom";
 
 const Error = () => {
-	const error = useRouteError();
+	const error = useRouteError() as { statusText?: string; message?: string };
 	const navigate = useNavigate();
 
 	return (
