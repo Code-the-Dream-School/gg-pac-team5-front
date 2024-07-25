@@ -5,8 +5,7 @@ import App from "./App.jsx";
 import { Home } from "./pages/Home";
 import { Auth_Layout } from "./pages/Auth/Auth_Layout";
 import { Error } from "./pages/Error/Error";
-import Pages from "./routes/Pages";
-import ErrorPage from "./ErrorPage";
+import Pages from "./pages/Pages/Pages.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -28,7 +27,7 @@ const router = createBrowserRouter([
   {
     path: "/pages/:pageName",
     element: <Pages />,
-    errorElement: <ErrorPage />,
+    errorElement: <Error />,
   },
 ]);
 
