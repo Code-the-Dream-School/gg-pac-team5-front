@@ -22,12 +22,11 @@ const router = createBrowserRouter([
         path: "auth",
         element: <Auth_Layout />,
       },
+      {
+        path: "pages/:pageName",
+        element: <Pages />,
+      },
     ],
-  },
-  {
-    path: "/pages/:pageName",
-    element: <Pages />,
-    errorElement: <Error />,
   },
 ]);
 
