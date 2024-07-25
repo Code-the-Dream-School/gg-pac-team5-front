@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
 import { NavLink } from "react-router-dom";
-import "./NavBar.css";
+import "../../../assets/layouts/NavBar.css";
 
 const NavBar = () => {
 	const activeStyles: CSSProperties = {

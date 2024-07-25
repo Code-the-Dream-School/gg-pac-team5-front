@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllData } from "./util/index";
 import { Outlet } from "react-router-dom";
-import { Home } from "./pages/Home/Home";
+import { Home } from "./pages/Home";
 
 const URL = "http://localhost:8000/api/v1/";
 

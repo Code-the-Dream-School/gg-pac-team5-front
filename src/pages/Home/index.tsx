@@ -1,5 +1,5 @@
 import { Carousel } from "./Carousel/Carousel";
-import { NavBar } from "./NavBar/NavBar";
+import { NavBar } from "../../Layouts/Header/NavBar";
 
 const Home = () => {
 	return (
