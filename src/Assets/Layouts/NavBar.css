@@ -8,7 +8,7 @@ a:hover {
 }
 
 .nav-wrapper {
+	border: red 2px dotted;
 	display: flex;
 	justify-content: space-between;
-	border: red 2px dotted;
 }
