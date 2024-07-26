@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getAllData } from "./util/index";
 import { Outlet } from "react-router-dom";
-import { Home } from "./pages/Home";
+import { NavBar } from "./Layouts/Header/NavBar/NavBar";
+import { Footer } from "./Layouts/Footer/Footer";
+import "./App.css";
 
 const URL = "http://localhost:8000/api/v1/";
 
@@ -20,9 +22,13 @@ function App() {
 	}, []);
 
 	return (
-		<>
-			<Outlet />
-		</>
+		<div className="main-wrapper">
+			<NavBar />
+			<div className="content-wrapper">
+				<Outlet />
+			</div>
+			<Footer />
+		</div>
 	);
 }
 

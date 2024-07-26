@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
 import { NavLink } from "react-router-dom";
-import "../../../assets/layouts/NavBar.css";
+import "../../../Assets/Layouts/NavBar.css";
 
 const NavBar = () => {
 	const activeStyles: CSSProperties = {
@@ -10,7 +10,7 @@ const NavBar = () => {
 	};
 
 	return (
-		<nav className="home-page-wrapper">
+		<nav className="nav-wrapper">
 			<NavLink
 				to="."
 				end
