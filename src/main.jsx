@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { Home } from "./pages/Home";
 import { Auth_Layout } from "./pages/Auth/Auth_Layout";
 import { Error } from "./pages/Error/Error";
+import Pages from "./pages/Pages/Pages.jsx";
 import "./index.css";
 
 async function enableMocking() {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "auth",
         element: <Auth_Layout />,
+      },
+      {
+        path: "pages/:pageName",
+        element: <Pages />,
       },
     ],
   },
