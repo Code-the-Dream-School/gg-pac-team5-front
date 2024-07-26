@@ -66,7 +66,7 @@ Answer all of these questions and then make your pull request.
 
 Once you're ready for your code to be reviewed, take your Pull Request out of draft by scrolling down to the bottom of the Pull Request and clicking the button: "ready for review"
 
-Next, assign someone to this Pull Request or else no one will may be notified when your Pull Request is made. You can do this by going to the right side of your screen (on desktop) and, under the "Assignees" tab, click the small settings icon. From there, a list of all of the people who have access to these repos will appear and you will choose someone who you want to review and approve your code.
+Next, assign someone to this Pull Request or else no one may be notified when your Pull Request is made. You can do this by going to the right side of your screen (on desktop) and, under the "Assignees" tab, click the small settings icon. From there, a list of all of the people who have access to these repos will appear and you will choose someone who you want to review and approve your code. Assign a fellow collegue of your choice who knows the code that you're working on, and assign a mentor as well. Mentors will oversee overall code quality, but will not be able to review every PR. We will be following a student-first strategy here, and if you feel that the content of the PR that you're reviewing is beyond your scope, reach out to a mentor for assistance!
 
 10: **WAIT for someone else to approve your code**
 
