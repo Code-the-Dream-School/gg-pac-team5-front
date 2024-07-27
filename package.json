@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.13.0",
     "@fontsource/roboto": "^5.0.13",
     "@motionone/utils": "^10.18.0",
+    "@mswjs/data": "^0.16.1",
     "@mui/icons-material": "^5.16.5",
     "@mui/material": "^5.16.5",
     "axios": "^1.6.7",
