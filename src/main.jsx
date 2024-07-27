@@ -9,7 +9,7 @@ import Pages from "./pages/Pages/Pages.jsx";
 import "./index.css";
 
 async function enableMocking() {
-  if (process.env.NODE_ENV !== "development") {
+  if (import.meta.env.PROD || !import.meta.env.VITE_REACT_MSW) {
     return;
   }
 
