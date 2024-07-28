@@ -3,6 +3,10 @@ import { getAllData } from "./util/index";
 import { Outlet } from "react-router-dom";
 import { Home } from "./pages/Home";
 
+/**
+ * The URL that points to an api endpoint
+ * @type {string}
+ */
 const URL = "http://localhost:8000/api/v1/";
 
 function App() {
