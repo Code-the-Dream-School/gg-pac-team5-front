@@ -9,6 +9,9 @@ import Pages from "./pages/Pages/Pages.jsx";
 import "./index.css";
 import Services from './Pages/Services/Services.jsx'
 
+/** @import { Router } from "react-router-dom" */
+
+/** @typedef { Router } */
 const router = createBrowserRouter([
   {
     path: "/",
