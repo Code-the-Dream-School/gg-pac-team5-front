@@ -8,6 +8,9 @@ import { Error } from "./pages/Error/Error";
 import Pages from "./pages/Pages/Pages.jsx";
 import "./index.css";
 
+/** @import { Router } from "react-router-dom" */
+
+/** @typedef { Router } */
 const router = createBrowserRouter([
   {
     path: "/",
