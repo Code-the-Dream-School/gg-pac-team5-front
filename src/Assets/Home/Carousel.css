@@ -1,0 +1,11 @@
+.carousel-wrapper {
+	display: flex;
+	gap: 5rem;
+	overflow: scroll;
+}
+
+.carousel-item {
+	border: 2px dotted red;
+	min-height: 25vw;
+	min-width: 25vw;
+}

@@ -10,7 +10,7 @@ const NavBar = () => {
 	};
 
 	return (
-		<nav className="home-page-wrapper">
+		<nav className="nav-wrapper">
 			<NavLink
 				to="."
 				end
