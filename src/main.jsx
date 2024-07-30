@@ -6,6 +6,7 @@ import { Home, loader as homeLoader } from "./Pages/Home/Home";
 import { Auth_Layout } from "./Pages/Auth/Auth_Layout";
 import { Error } from "./Pages/Error/Error";
 import "./index.css";
+import Services from "./Pages/Services/Services.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -21,6 +22,14 @@ const router = createBrowserRouter([
 			{
 				path: "auth",
 				element: <Auth_Layout />,
+			},
+			{
+				path: "pages/:pageName",
+				element: <Pages />,
+			},
+			{
+				path: "services",
+				element: <Services />,
 			},
 		],
 	},

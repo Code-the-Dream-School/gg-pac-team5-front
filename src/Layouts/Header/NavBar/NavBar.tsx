@@ -19,7 +19,7 @@ const NavBar = () => {
         Home
       </NavLink>
       <NavLink
-        to="main"
+        to="services"
         style={({ isActive }) => (isActive ? activeStyles : undefined)}
       >
         Services
