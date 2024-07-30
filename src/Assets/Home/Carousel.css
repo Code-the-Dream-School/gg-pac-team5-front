@@ -1,6 +1,7 @@
 .carousel-wrapper {
 	overflow: scroll;
-	min-height: 30vw;
+	/* TODO: REMOVE THIS WHEN IMPLEMENTING LAYOUTS */
+	min-height: 50vw;
 }
 .carousel-container {
 	position: absolute;
