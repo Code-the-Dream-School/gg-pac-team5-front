@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Paper } from "@mui/material";
 import { Link } from "react-router-dom";
 import { FC, useState } from "react";
 
