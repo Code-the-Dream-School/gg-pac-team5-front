@@ -8,6 +8,7 @@ import { Error } from "./pages/Error/Error";
 import Pages from "./pages/Pages/Pages.jsx";
 import "./index.css";
 import Services from "./Pages/Services/Services.jsx";
+import Services from "./Pages/Services/Services.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -18,17 +19,21 @@ const router = createBrowserRouter([
 			{
 				element: <Home />,
 				index: true,
+				loader: homeLoader,
 			},
 			{
 				path: "auth",
 				element: <Auth_Layout />,
 			},
+			{
+				path: "pages/:pageName",
+				element: <Pages />,
+			},
+			{
+				path: "services",
+				element: <Services />,
+			},
 		],
-	},
-	{
-		path: "/pages/:pageName",
-		element: <Pages />,
-		errorElement: <Error />,
 	},
 ]);
 
