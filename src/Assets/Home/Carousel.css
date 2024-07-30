@@ -2,6 +2,7 @@
 	overflow: scroll;
 	/* TODO: REMOVE THIS WHEN IMPLEMENTING LAYOUTS */
 	min-height: 50vw;
+	min-width: max-content;
 }
 .carousel-container {
 	position: absolute;
