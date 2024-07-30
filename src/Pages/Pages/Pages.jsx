@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { NavBar } from "../../Layouts/Header/NavBar";
+import { NavBar } from "../../Layouts/Header/NavBar/NavBar";
 
 export default function Pages() {
   const { pageName } = useParams();
