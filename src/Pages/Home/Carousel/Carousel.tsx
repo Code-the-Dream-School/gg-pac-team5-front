@@ -109,4 +109,4 @@ const Carousel: FC<CarouselProps> = ({ list = [] }) => {
 	);
 };
 export { Carousel };
-``;
+
