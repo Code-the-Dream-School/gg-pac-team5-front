@@ -6,8 +6,19 @@ import { Home, loader as homeLoader } from "./Pages/Home/Home";
 import { Auth_Layout } from "./Pages/Auth/Auth_Layout";
 import { Error } from "./Pages/Error/Error";
 import Pages from "./Pages/Pages/Pages.jsx";
+import Test from "./Pages/Test/Test.jsx";
 import "./index.css";
-import Cards from './Pages/Services/Cards.jsx'
+import Cards from "./Pages/Services/Cards.jsx";
+
+async function enableMocking() {
+  if (import.meta.env.PROD || !import.meta.env.VITE_REACT_MSW) {
+    return;
+  }
+
+  const { worker } = await import("./mocks/browser");
+
+  return worker.start();
+}
 
 const router = createBrowserRouter([
   {
@@ -29,15 +40,21 @@ const router = createBrowserRouter([
         element: <Pages />,
       },
       {
-        path: 'pages',
-        element: <Cards />
-      }
+        path: "pages",
+        element: <Cards />,
+      },
+      {
+        path: "test",
+        element: <Test />,
+      },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+enableMocking().then(() => {
+  ReactDOM.createRoot(document.getElementById("root")).render(
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  );
+});

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:msw": "VITE_REACT_MSW=1 vite dev",
     "build": "vite build",
     "test": "vitest",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -26,6 +27,8 @@
     "react-use-measure": "^2.1.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@mswjs/data": "^0.16.1",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.17.0",
@@ -35,9 +38,15 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "msw": "^2.3.4",
     "typescript": "^5.5.4",
     "vite": "^5.1.7",
     "vite-plugin-svgr": "^4.2.0",
     "vitest": "^2.0.4"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
