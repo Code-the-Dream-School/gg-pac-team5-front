@@ -7,7 +7,7 @@ import { Auth_Layout } from "./Pages/Auth/Auth_Layout";
 import { Error } from "./Pages/Error/Error";
 import Pages from "./Pages/Pages/Pages.jsx";
 import "./index.css";
-import Services from './Pages/Services/Services.jsx'
+import Cards from "./Pages/Services/Cards.jsx";
 
 async function enableMocking() {
   if (import.meta.env.PROD || !import.meta.env.VITE_REACT_MSW) {
@@ -19,10 +19,6 @@ async function enableMocking() {
   return worker.start();
 }
 
-/** @import { Router } from "react-router-dom" */
-
-
-/** @typedef { Router } */
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,9 +39,9 @@ const router = createBrowserRouter([
         element: <Pages />,
       },
       {
-        path: 'pages',
-        element: <Services />
-      }
+        path: "pages",
+        element: <Cards />,
+      },
     ],
   },
 ]);
