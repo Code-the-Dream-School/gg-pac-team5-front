@@ -1,0 +1,5 @@
+.footer-wrapper {
+	border: red 2px dotted;
+	display: flex;
+	justify-content: space-between;
+}

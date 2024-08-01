@@ -7,17 +7,23 @@
     "dev": "vite",
     "dev:msw": "VITE_REACT_MSW=1 vite dev",
     "build": "vite build",
+    "test": "vitest",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
+    "@fontsource/roboto": "^5.0.13",
+    "@motionone/utils": "^10.18.0",
+    "@mui/icons-material": "^5.16.5",
     "@mui/material": "^5.16.5",
     "axios": "^1.6.7",
+    "framer-motion": "^11.3.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.25.1"
+    "react-router-dom": "^6.25.1",
+    "react-use-measure": "^2.1.1"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
@@ -33,10 +39,11 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "msw": "^2.3.4",
     "typescript": "^5.5.4",
-    "vite": "^5.1.4",
-    "vite-plugin-svgr": "^4.2.0"
+    "vite": "^5.1.7",
+    "vite-plugin-svgr": "^4.2.0",
+    "vitest": "^2.0.4"
   },
-  "msw": {
+    "msw": {
     "workerDirectory": [
       "public"
     ]
