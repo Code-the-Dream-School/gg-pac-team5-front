@@ -19,10 +19,10 @@ const NavBar = () => {
         Home
       </NavLink>
       <NavLink
-        to="services"
+        to="pages"
         style={({ isActive }) => (isActive ? activeStyles : undefined)}
       >
-        Services
+        Find Service
       </NavLink>
       <NavLink
         to="auth"

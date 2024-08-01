@@ -6,8 +6,16 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Image1 from '../../Assets/Services/salon-service-1.jpg'
+import { useNavigate } from 'react-router-dom';
+// import { useParams } from "react-router-dom";
 
 const Cards = () => {
+    // const { pageName } = useParams();
+    const navigate = useNavigate();
+
+    const handleServices = () => {
+        navigate('pageName');
+    };
     return (
         <Card sx={{ maxWidth: 345, m: 2, p: 2, border: 1 }} >
             <CardMedia
@@ -24,10 +32,10 @@ const Cards = () => {
                     vel sed culpa iste enim ve libero illum odit....
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button size="small">Learn More</Button>
+            <CardActions >
+                <Button size="small" onClick={handleServices}>Learn More</Button>
             </CardActions>
-        </Card>
+        </Card >
     );
 }
 
