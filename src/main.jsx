@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import { Home, loader as homeLoader } from "./Pages/Home/Home";
 import { Auth_Layout } from "./Pages/Auth/Auth_Layout";
+import Login from "./Pages/Auth/Login";
+import Register from "./Pages/Auth/Register";
 import { Error } from "./Pages/Error/Error";
 import Pages from "./Pages/Pages/Pages.jsx";
 import Test from "./Pages/Test/Test.jsx";
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: "auth",
         element: <Auth_Layout />,
+      },
+      {
+        path: "auth/login",
+        element: <Login />,
+      },
+      {
+        path: "auth/register",
+        element: <Register />,
       },
       {
         path: "pages/:pageName",
