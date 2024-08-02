@@ -9,14 +9,15 @@ import { useNavigate } from 'react-router-dom';
 
 const Services = ({ title, image, details, Newroute }) => {
     const navigate = useNavigate();
+
     const handleServices = () => {
         navigate(Newroute);
     };
     return (
         <div>
-            <Card sx={{ maxWidth: 345, m: 2, p: 2, border: 1 }} >
+            <Card sx={{ m: 1, p: 1, border: 1, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} >
                 <CardMedia
-                    sx={{ height: 140 }}
+                    sx={{ height: 240, border: 1 }}
                     image={image}
                     title={title}
                 />
@@ -24,16 +25,15 @@ const Services = ({ title, image, details, Newroute }) => {
                     <Typography gutterBottom variant="h5" component="div">
                         {title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="h6" color="text.secondary">
                         {details}
                     </Typography>
                 </CardContent>
                 <CardActions >
-                    <Button size="small" onClick={handleServices}>Learn More</Button>
+                    <Button size="large" onClick={handleServices} variant="contained" >Learn More</Button>
                 </CardActions>
             </Card >
         </div>
     );
 }
-
 export default Services;
