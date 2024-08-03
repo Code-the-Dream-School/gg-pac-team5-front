@@ -1,33 +1,9 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-export default function Pages() {
-  const { pageName } = useParams();
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    setIsLoading(true);
+export const Pages = () => {
+  const data = useLoaderData();
 
-    const fetchData = async () => {
-      let response;
-      try {
-        response = await fetch(
-          `http://localhost:8000/api/v1/vendors/name/${pageName}`
-        );
-        const data = response.json();
-        setData(data);
-        setIsLoading(false);
-      } catch (error) {
-        throw new Error(error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  if (isLoading) {
-    return <></>;
-  }
   return (
     <>
       {/* <NavBar /> */}
@@ -42,4 +18,4 @@ export default function Pages() {
       </Link>
     </>
   );
-}
+};

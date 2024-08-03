@@ -5,19 +5,14 @@ import App from "./App.jsx";
 import { Home, loader as homeLoader } from "./Pages/Home/Home";
 import { Auth_Layout } from "./Pages/Auth/Auth_Layout";
 import { Error } from "./Pages/Error/Error";
-import Pages from "./Pages/Pages/Pages.jsx";
+import { Pages } from "./Pages/Pages/Pages.jsx";
 import Test from "./Pages/Test/Test.jsx";
 import "./index.css";
 import Cards from "./Pages/Services/Cards.jsx";
 
-async function enableMocking() {
-  if (import.meta.env.PROD || !import.meta.env.VITE_REACT_MSW) {
-    return;
-  }
-
+if (import.meta.env.DEV && import.meta.env.VITE_REACT_MSW) {
   const { worker } = await import("./mocks/browser");
-
-  return worker.start();
+  await worker.start();
 }
 
 const router = createBrowserRouter([
@@ -38,6 +33,15 @@ const router = createBrowserRouter([
       {
         path: "pages/:pageName",
         element: <Pages />,
+        loader: async ({ params }) => {
+          const res = await fetch(
+            `http://localhost:8000/api/v1/vendors/name/${params.pageName}`
+          );
+          if (res.status === 404) {
+            throw new Response("Not Found", { status: 404 });
+          }
+          return res.json();
+        },
       },
       {
         path: "pages",
@@ -51,10 +55,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-enableMocking().then(() => {
-  ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  );
-});
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
