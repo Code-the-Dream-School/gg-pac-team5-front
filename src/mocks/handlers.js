@@ -1,5 +1,5 @@
 // import { http } from "msw";
-import db from "./models/db";
+import dbHandlers from "./models/db";
 
 export const handlers = [
   // // Intercept the "GET /resource" request.
@@ -8,5 +8,5 @@ export const handlers = [
   //   // with a "Hello world!" text response body.
   //   return new Response("Hello world!");
   // }),
-  ...db.vendor.toHandlers("rest", "http://localhost:8000/api/v1"),
+  ...dbHandlers,
 ];
