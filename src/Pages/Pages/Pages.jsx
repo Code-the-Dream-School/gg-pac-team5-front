@@ -2,19 +2,27 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-export default function Pages(props) {
-  const { vendorId } = { vendorId: "05929396-fea7-4596-9eb1-0faaa2352c59" };
+export default function Pages() {
   const { pageName } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState(null);
   useEffect(() => {
     setIsLoading(true);
-    fetch(`http://localhost:8000/api/v1/vendors/${vendorId}`)
-      .then((response) => response.json())
-      .then((data) => {
+
+    const fetchData = async () => {
+      let response;
+      try {
+        response = await fetch(
+          `http://localhost:8000/api/v1/vendors/name/${pageName}`
+        );
+        const data = response.json();
         setData(data);
         setIsLoading(false);
-      });
+      } catch (error) {
+        throw new Error(error);
+      }
+    };
+    fetchData();
   }, []);
 
   if (isLoading) {
