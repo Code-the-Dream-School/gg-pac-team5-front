@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import React from 'react';
 import Radio from '@mui/material/Radio';
@@ -7,36 +6,11 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
 import Services from './Services';
-
-// import Image1 from '../../Assets/Services/salon-service-1.jpg'
-
 import { FaSearch } from "react-icons/fa";
 import "./Services.css";
 import FetchAPI from './FetchAPI';
 import { useState } from 'react'
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-// const ServicesSample = [
-//     {
-//         title: 'Service 1',
-//         details: 'aaaa aaaaa aaaaaaa aaaaaaa aaaaa aaaaaaaaaa aaaa aa aaaaa aa',
-//         image: Image1,
-//         Newroute: '/pages/Service_1'
-//     },
-//     {
-//         title: 'Service 2',
-//         details: 'bbbb bbbb bbbbb bbbbb bbbb bbbbb ',
-//         image: Image1,
-//         Newroute: '/pages/Service_2'
-//     },
-//     {
-//         title: 'Service 3',
-//         details: 'cccc ccccc cccc cc ccccc cc ccc ccc ccc cccccc ccc',
-//         image: Image1,
-//         Newroute: '/pages/Service_3'
-//     }
-// ]
-
 
 const onSearchClick = () => alert('Finding Vendors');
 
