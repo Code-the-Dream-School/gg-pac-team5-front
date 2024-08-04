@@ -1,12 +1,15 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
+import React from 'react';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-// import FormLabel from '@mui/material/FormLabel';
+import Button from '@mui/material/Button';
 import Services from './Services';
+
 // import Image1 from '../../Assets/Services/salon-service-1.jpg'
+
 import { FaSearch } from "react-icons/fa";
 import "./Services.css";
 import FetchAPI from './FetchAPI';
@@ -34,13 +37,14 @@ import Button from '@mui/material/Button';
 //     }
 // ]
 
+
 const onSearchClick = () => alert('Finding Vendors');
 
 const Cards = () => {
     const [servicesSample, setServicesSample] = useState([]);
     return (
         <div>
-            <h1>Give yourself a little pampering </h1><br />
+            <h1>Give yourself a little pampering</h1><br />
             <h3>Relax, sit back... We promise your best look!!</h3><br />
 
             <h1>Explore our beauty services...</h1><br />
@@ -59,8 +63,6 @@ const Cards = () => {
                 <FaSearch id="search-icon" />
                 <input
                     placeholder="Type to search..."
-                // value={input}
-                // onChange={(e) => handleChange(e.target.value)}
                 />
                 <Button variant="contained" size="medium" onClick={onSearchClick} >
                     Search
@@ -82,7 +84,8 @@ const Cards = () => {
             <Button component={Link} to="/" variant="contained" color="primary" className="button wide tall luxury">
                 Return to home page
             </Button>
+
         </div>
     );
-}
+};
 export default Cards;

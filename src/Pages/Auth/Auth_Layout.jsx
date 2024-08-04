@@ -1,13 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Auth_Layout = () => {
-	return (
-		<>
-			<Link to="..">&#8592; Go back</Link>
-			<button>Login</button>
-			<button>Register</button>
-		</>
-	);
+  const navigate = useNavigate();
+  return (
+    <>
+      <Link to="..">&#8592; Go back</Link>
+      <button onClick={() => navigate("login")}>Login</button>
+      <button onClick={() => navigate("register")}>Register</button>
+    </>
+  );
 };
 
 export { Auth_Layout };
