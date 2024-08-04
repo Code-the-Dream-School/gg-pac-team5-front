@@ -12,29 +12,32 @@ const Services = ({ cards = [] }) => {
 
     const navigate = useNavigate();
 
+
+    const handleServices = () => {
+        navigate(Newroute);
+    };
     return (
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 2 }}>
-            {cards.map((card, index) => (
-                <Card key={index} sx={{ width: 'calc(40% - 16px)', m: 1, p: 2, border: 1 }}>
-                    <CardMedia
-                        sx={{ height: 140 }}
-                        image={card.image}
-                        title={card.title}
-                    />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {card.title}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            {card.details}
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Button size="small" onClick={() => navigate(card.Newroute)}>Learn More</Button>
-                    </CardActions>
-                </Card>
-            ))}
-        </Box>
+        <div>
+            <Card sx={{ m: 1, p: 1, border: 1, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} >
+                <CardMedia
+                    sx={{ height: 240, border: 1 }}
+                    image={image}
+                    title={title}
+                />
+                <CardContent >
+                    <Typography gutterBottom variant="h5" component="div">
+                        {title}
+                    </Typography>
+                    <Typography variant="h6" color="text.secondary">
+                        {details}
+                    </Typography>
+                </CardContent>
+                <CardActions >
+                    <Button size="large" onClick={handleServices} variant="contained" >Learn More</Button>
+                </CardActions>
+            </Card >
+        </div>
     );
-};
+}
+
 export default Services;
