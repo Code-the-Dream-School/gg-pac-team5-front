@@ -5,14 +5,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
 
-const Services = ({ cards = [] }) => {
+const Services = ({ title, image, details, Newroute }) => {
 
     const navigate = useNavigate();
-
-
     const handleServices = () => {
         navigate(Newroute);
     };
@@ -39,5 +36,4 @@ const Services = ({ cards = [] }) => {
         </div>
     );
 }
-
 export default Services;
