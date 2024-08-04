@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import { Home, loader as homeLoader } from "./Pages/Home/Home";
 import { Auth_Layout } from "./Pages/Auth/Auth_Layout";
 import { Error } from "./Pages/Error/Error";
-import { Pages } from "./Pages/Pages/Pages.jsx";
+import { Pages, loader as pagesLoader } from "./Pages/Pages/Pages.jsx";
 import Test from "./Pages/Test/Test.jsx";
 import "./index.css";
 import Cards from "./Pages/Services/Cards.jsx";
@@ -33,15 +33,7 @@ const router = createBrowserRouter([
       {
         path: "pages/:pageName",
         element: <Pages />,
-        loader: async ({ params }) => {
-          const res = await fetch(
-            `http://localhost:8000/api/v1/vendors/name/${params.pageName}`
-          );
-          if (res.status === 404) {
-            throw new Response("Not Found", { status: 404 });
-          }
-          return res.json();
-        },
+        loader: pagesLoader,
       },
       {
         path: "pages",
