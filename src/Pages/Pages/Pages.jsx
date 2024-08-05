@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Avatar, Button, Card, CardMedia, Typography } from "@mui/material"
 
 export const loader = async ({ params }) => {
   const res = await fetch(
@@ -12,14 +13,18 @@ export const loader = async ({ params }) => {
 }
 
 export const Pages = () => {
-  const data = useLoaderData();
+  const page = useLoaderData();
 
   return (
     <>
-      {/* <NavBar /> */}
-      <div>
-        <h1>{data.name}</h1>
-      </div>
+      <Card>
+        <CardMedia image={page.backgroundImage}>
+          <Avatar alt={page.name} src={page.profileImage} />
+        </CardMedia>
+        <Typography gutterBottom variant="h4" component="div">{page.name}</Typography>
+        <Typography gutterBottom variant="h6" component="div">{page.summary}</Typography>
+        <Button variant="contained">Make an appointment</Button>
+      </Card>
       <br />
       <Link to="/pages">
         <button type="submit" className="button wide tall luxury">
