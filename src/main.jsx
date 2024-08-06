@@ -21,7 +21,7 @@ if (import.meta.env.DEV && import.meta.env.VITE_REACT_MSW) {
 	await worker.start();
 }
 
-const routes = [
+const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <App />,
@@ -59,19 +59,10 @@ const routes = [
 			},
 		],
 	},
-];
-
-const composeRouters = () => [
-	createBrowserRouter(routes),
-	createMemoryRouter(routes),
-];
-
-const [router, testingRouter] = composeRouters();
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<RouterProvider router={router} />
 	</React.StrictMode>
 );
-
-export { testingRouter };

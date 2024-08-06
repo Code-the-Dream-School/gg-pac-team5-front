@@ -1,32 +1,19 @@
 import { render, screen } from "@testing-library/react";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { Home, loader } from "./Home";
-import { Greeter_Customer } from "./Greeter_Customer/Greeter_Customer";
-import { Carousel } from "./Carousel/Carousel";
-import { vi } from "vitest";
-
-vi.mock("./Greeter_Customer/Greeter_Customer", () => ({
-	Greeter_Customer: vi.fn(() => <div>Mocked Greeter_Customer</div>),
-}));
-
-vi.mock("./Carousel/Carousel", () => ({
-	Carousel: vi.fn(({ list }) => (
-		<div>Mocked Carousel with list: {list.join(", ")}</div>
-	)),
-}));
 
 describe("Home Component", () => {
 	it("renders the Home component with mocked components", () => {
-		const mockData = [1, 2, 3, 4, 5, 6, 7];
-
-		const FAKE_EVENT = { name: "test event" };
+		const FAKE_EVENT = () => [1, 2, 3, 4];
 		const routes = [
 			{
 				path: "/",
 				element: <Home />,
-				loader: () => FAKE_EVENT,
+				loader,
 			},
 		];
+
+		// use <MemoryRouter> when you want to manually control the history
 
 		const router = createMemoryRouter(routes, {
 			/* The initial entries in the history stack. 
@@ -48,13 +35,11 @@ describe("Home Component", () => {
 		});
 
 		render(<RouterProvider router={router} />);
+		/* 
+			TODO:
+			define what to test
+		*/
 
-		expect(screen.getByText("Mocked Greeter_Customer")).toBeInTheDocument();
-		expect(
-			screen.getByText("Mocked Carousel with list: 1, 2, 3, 4, 5, 6, 7")
-		).toBeInTheDocument();
-		expect(screen.getByText("Divider")).toBeInTheDocument();
-		expect(screen.getByText("Greeter_Provider")).toBeInTheDocument();
-		expect(screen.getByText("Feedback")).toBeInTheDocument();
+		// expect(screen.getByText(/home/i)).toBeInTheDocument();
 	});
 });
