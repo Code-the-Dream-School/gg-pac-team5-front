@@ -9,7 +9,7 @@ import {
 	RouterProvider,
 	createMemoryRouter,
 } from "react-router-dom";
-// import { routes } from "../main";
+import { routes } from "../routes/routes";
 
 const renderWithRouter = (ui, { route = "/" } = {}) => {
 	window.history.pushState({}, "Test page", route);
@@ -20,13 +20,16 @@ const renderWithRouter = (ui, { route = "/" } = {}) => {
 	};
 };
 
-// const renderFullRouter = () => {
-// 	const router = createMemoryRouter(routes);
-// 	return {
-// 		user: userEvent.setup(),
-// 		...render(<RouterProvider router={router} />),
-// 	};
-// };
+const renderFullRouter = (
+	r = routes,
+	params = { initialEntries: ["/"], initialIndex: 0 }
+) => {
+	const router = createMemoryRouter(routes);
+	return {
+		user: userEvent.setup(),
+		...render(<RouterProvider router={router} />),
+	};
+};
 
 export { renderWithRouter };
-// export { renderFullRouter };
+export { renderFullRouter };
