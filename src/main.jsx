@@ -1,10 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-	createBrowserRouter,
-	createMemoryRouter,
-	RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import { Home, loader as homeLoader } from "./Pages/Home/Home";
 import { Auth_Layout } from "./Pages/Auth/Auth_Layout";
@@ -21,7 +17,7 @@ if (import.meta.env.DEV && import.meta.env.VITE_REACT_MSW) {
 	await worker.start();
 }
 
-const router = createBrowserRouter([
+const routes = [
 	{
 		path: "/",
 		element: <App />,
@@ -32,6 +28,19 @@ const router = createBrowserRouter([
 				index: true,
 				loader: homeLoader,
 			},
+			/*
+			it should be this:
+
+			{
+				path: "auth",
+				element: <Auth_Layout />,
+				children: [
+					{ path: "login", element: <Login /> },
+					{ path: "register", element: <Register /> },
+				],
+			},
+
+			*/
 			{
 				path: "auth",
 				element: <Auth_Layout />,
@@ -59,10 +68,14 @@ const router = createBrowserRouter([
 			},
 		],
 	},
-]);
+];
+
+const router = createBrowserRouter(routes);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<RouterProvider router={router} />
 	</React.StrictMode>
 );
+
+export { routes };

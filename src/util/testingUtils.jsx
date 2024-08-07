@@ -4,7 +4,12 @@
 
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { BrowserRouter } from "react-router-dom";
+import {
+	BrowserRouter,
+	RouterProvider,
+	createMemoryRouter,
+} from "react-router-dom";
+// import { routes } from "../main";
 
 const renderWithRouter = (ui, { route = "/" } = {}) => {
 	window.history.pushState({}, "Test page", route);
@@ -15,4 +20,13 @@ const renderWithRouter = (ui, { route = "/" } = {}) => {
 	};
 };
 
+// const renderFullRouter = () => {
+// 	const router = createMemoryRouter(routes);
+// 	return {
+// 		user: userEvent.setup(),
+// 		...render(<RouterProvider router={router} />),
+// 	};
+// };
+
 export { renderWithRouter };
+// export { renderFullRouter };
