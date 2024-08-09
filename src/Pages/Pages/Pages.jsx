@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Avatar, Button, Card, CardMedia, Typography } from "@mui/material"
+import { Avatar, Button, Card, CardMedia, Typography, Tabs, Tab } from "@mui/material";
 
 export const loader = async ({ params }) => {
   const res = await fetch(
@@ -24,6 +24,15 @@ export const Pages = () => {
         <Typography gutterBottom variant="h4" component="div">{page.name}</Typography>
         <Typography gutterBottom variant="h6" component="div">{page.summary}</Typography>
         <Button variant="contained">Make an appointment</Button>
+      </Card>
+      <Card>
+        <Tabs>
+          <Tab label="Description">
+          </Tab>
+          <Tab label="Services">
+          </Tab>
+        </Tabs>
+        <Typography gutterBottom variant="body1" component="div">{page.description}</Typography>
       </Card>
       <br />
       <Link to="/pages">
