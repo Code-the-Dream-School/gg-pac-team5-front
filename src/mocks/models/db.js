@@ -14,7 +14,7 @@ const db = factory({
     profileImage: () => faker.image.urlLoremFlickr({ category: 'business' }),
     backgroundImage: () => faker.image.url(),
     summary: faker.company.catchPhrase,
-    description: () => faker.lorem.sentence({ min: 3, max: 5 })
+    description: () => faker.lorem.sentences()
   },
 });
 
