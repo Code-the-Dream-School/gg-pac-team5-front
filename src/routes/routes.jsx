@@ -19,30 +19,13 @@ const routes = [
 				index: true,
 				loader: homeLoader,
 			},
-			/*
-			it should be this:
-
 			{
 				path: "auth",
 				element: <Auth_Layout />,
 				children: [
-					{ path: "login", element: <Login /> },
+					{ index: true, element: <Login /> },
 					{ path: "register", element: <Register /> },
 				],
-			},
-
-			*/
-			{
-				path: "auth",
-				element: <Auth_Layout />,
-			},
-			{
-				path: "auth/login",
-				element: <Login />,
-			},
-			{
-				path: "auth/register",
-				element: <Register />,
 			},
 			{
 				path: "pages/:pageName",

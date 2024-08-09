@@ -21,10 +21,10 @@ const renderWithRouter = (ui, { route = "/" } = {}) => {
 };
 
 const renderFullRouter = (
-	r = routes,
-	params = { initialEntries: ["/"], initialIndex: 0 }
+	params = { initialEntries: ["/"], initialIndex: 0 },
+	r = routes
 ) => {
-	const router = createMemoryRouter(routes);
+	const router = createMemoryRouter(r, params);
 	return {
 		user: userEvent.setup(),
 		...render(<RouterProvider router={router} />),

@@ -5,7 +5,7 @@ import { useLoaderData } from "react-router-dom";
 type Card = number;
 type List = Card[];
 
-const loader = (): List => {
+const loader = async (): Promise<List> => {
 	// API call to get data to display for carousel
 	return [1, 2, 3, 4, 5, 6, 7];
 };

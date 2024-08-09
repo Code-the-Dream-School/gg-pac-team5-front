@@ -1,8 +1,7 @@
 import { screen, waitFor, render } from "@testing-library/react";
-import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { NavBar } from "./NavBar";
-import { renderWithRouter } from "../../../util/testingUtils";
-import { routes } from "../../../routes/routes";
+import { renderWithRouter, renderFullRouter } from "../../../util/testingUtils";
+
 global.ResizeObserver = vi.fn().mockImplementation(() => ({
 	observe: vi.fn(),
 	unobserve: vi.fn(),
@@ -35,27 +34,25 @@ test("NavBar rendering and navigating", async () => {
 });
 
 test("navigates to the correct routes and loads the correct page", async () => {
-	// const { user } = renderFullRouter();
-	const router = createMemoryRouter(routes, {
-		initialEntries: ["/"],
-		initialIndex: 0,
-	});
+	const { user } = renderFullRouter();
 
-	render(<RouterProvider router={router} />);
+	await waitFor(() => screen.getByText(/say hi to your/i));
 
-	await waitFor(() => screen.debug());
-	// // Initial render - should show Home Page
-	// expect(screen.getByText(/Home Page/i)).toBeInTheDocument();
+	// Initial render - should show Home Page
+	expect(screen.getByText(/say hi to your/i)).toBeInTheDocument();
 
-	// // Click on "Find Service" link and check the page content
-	// await user.click(screen.getByText(/Find Service/i));
-	// expect(screen.getByText(/Cards/i)).toBeInTheDocument();
+	// Click on "Find Service" link and check the page content
+	await user.click(screen.getByText(/Find Service/i));
+	expect(
+		screen.getByText(/Relax, sit back... We promise your best look!!/i)
+	).toBeInTheDocument();
 
-	// // Click on "Login" link and check the page content
-	// await user.click(screen.getByText(/Login/i));
-	// expect(screen.getByText(/Login Page/i)).toBeInTheDocument();
+	// Click on "Login" link and check the page content
+	await user.click(screen.getByText(/Login/i));
+	screen.debug();
+	expect(screen.getByText(/Sign in/i)).toBeInTheDocument();
 
-	// // Click on "Home" link and check the page content
+	// Click on "Home" link and check the page content
 	// await user.click(screen.getByText(/Home/i));
-	// expect(screen.getByText(/Home Page/i)).toBeInTheDocument();
+	// expect(screen.getByText(/say hi to your/i)).toBeInTheDocument();
 });
