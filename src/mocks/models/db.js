@@ -11,6 +11,10 @@ const db = factory({
   vendor: {
     id: primaryKey(faker.string.uuid),
     name: faker.company.name,
+    profileImage: () => faker.image.urlLoremFlickr({ category: 'business' }),
+    backgroundImage: () => faker.image.url(),
+    summary: faker.company.catchPhrase,
+    description: () => faker.lorem.sentences()
   },
 });
 
