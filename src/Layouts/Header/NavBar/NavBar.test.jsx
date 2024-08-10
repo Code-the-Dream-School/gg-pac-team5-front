@@ -1,6 +1,9 @@
 import { screen, waitFor, render } from "@testing-library/react";
 import { NavBar } from "./NavBar";
-import { renderWithRouter, renderFullRouter } from "../../../util/testingUtils";
+import {
+	renderWithRouter,
+	renderMemoryRouter,
+} from "../../../util/testingUtils";
 
 global.ResizeObserver = vi.fn().mockImplementation(() => ({
 	observe: vi.fn(),
@@ -34,7 +37,7 @@ test("NavBar rendering and navigating", async () => {
 });
 
 test("navigates to the correct routes and loads the correct page", async () => {
-	const { user } = renderFullRouter();
+	const { user } = renderMemoryRouter();
 
 	await waitFor(() => screen.getByText(/say hi to your/i));
 
@@ -49,10 +52,9 @@ test("navigates to the correct routes and loads the correct page", async () => {
 
 	// Click on "Login" link and check the page content
 	await user.click(screen.getByText(/Login/i));
-	screen.debug();
-	expect(screen.getByText(/Sign in/i)).toBeInTheDocument();
+	expect(screen.getByText(/Remember me/i)).toBeInTheDocument();
 
 	// Click on "Home" link and check the page content
-	// await user.click(screen.getByText(/Home/i));
-	// expect(screen.getByText(/say hi to your/i)).toBeInTheDocument();
+	await user.click(screen.getByText(/Home/i));
+	expect(screen.getByText(/say hi to your/i)).toBeInTheDocument();
 });
