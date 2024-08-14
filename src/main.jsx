@@ -6,7 +6,6 @@ import App from "./App";
 import Error from "./Error"; 
 import Home, { homeLoader } from "./Pages/Home"; 
 import Auth_Layout from "./Pages/Auth_Layout";
-import Pages from "./Pages/Pages"; 
 import Profile from "./Pages/Pages/Profile"; 
 
 const router = createBrowserRouter([
