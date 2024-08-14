@@ -30,6 +30,13 @@ const NavBar = () => {
 			>
 				Login
 			</NavLink>
+
+			<NavLink 
+				to="profile"
+				style={({ isActive }) => (isActive ? activeStyles : undefined)}
+			>
+				Profile
+			</NavLink>
 		</nav>
 	);
 };

@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { getAllData } from "./util/index";
+import React from 'react';
+// import { useState, useEffect } from "react";
+// import { getAllData } from "./util/index";
 import { Outlet } from "react-router-dom";
 import { NavBar } from "./Layouts/Header/NavBar/NavBar";
 import { Footer } from "./Layouts/Footer/Footer";
 import "./App.css";
+// import Profile from "./Pages/Pages/Profile.jsx";
 
 // const URL = "http://localhost:8000/api/v1/";
 

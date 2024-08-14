@@ -7,6 +7,7 @@ import { Auth_Layout } from "./Pages/Auth/Auth_Layout";
 import { Error } from "./Pages/Error/Error";
 import Pages from "./Pages/Pages/Pages.jsx";
 import "./index.css";
+import Profile from "./Pages/Pages/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "pages/:pageName",
         element: <Pages />,
+      },
+      {
+        path: "Profile",
+        element: <Profile />,
       },
     ],
   },
