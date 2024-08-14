@@ -5,3 +5,8 @@
 	font-family: "Roboto";
 	overflow-x: hidden;
 }
+
+:root {
+	--header-height: 10vh;
+	--footer-height: 10vh;
+}

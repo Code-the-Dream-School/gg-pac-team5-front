@@ -13,7 +13,7 @@ interface CarouselProps {
 }
 
 const Carousel: FC<CarouselProps> = ({ list = [] }) => {
-	const FAST_DURATION = 5;
+	const FAST_DURATION = 25;
 	const SLOW_DURATION = 75;
 
 	const [duration, setDuration] = useState(FAST_DURATION);
