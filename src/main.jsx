@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App.jsx";
-import { Home, loader as homeLoader } from "./Pages/Home/Home";
-import { Auth_Layout } from "./Pages/Auth/Auth_Layout";
-import { Error } from "./Pages/Error/Error";
-import Pages from "./Pages/Pages/Pages.jsx";
 import "./index.css";
-import Profile from "./Pages/Pages/Profile.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./App"; 
+import Error from "./Error"; 
+import Home, { homeLoader } from "./Pages/Home"; 
+import Auth_Layout from "./Pages/Auth_Layout";
+import Pages from "./Pages/Pages"; 
+import Profile from "./Pages/Pages/Profile"; 
 
 const router = createBrowserRouter([
   {
@@ -29,14 +29,20 @@ const router = createBrowserRouter([
         element: <Pages />,
       },
       {
-        path: "Profile",
+        path: "profile",
         element: <Profile />,
       },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+if (import.meta.env.DEV && import.meta.env.VITE_REACT_MSW) {
+  const { worker } = await import("./mocks/browser");
+  await worker.start();
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
