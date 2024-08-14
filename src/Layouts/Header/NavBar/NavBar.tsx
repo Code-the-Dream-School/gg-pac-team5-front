@@ -1,8 +1,12 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "../../../Assets/Layouts/NavBar.css";
+import { Button } from "@mui/material";
+import UserContext from "../../../hooks/UserContext";
+
 
 const NavBar = () => {
+	const { user, logout } = useContext(UserContext)
 	const activeStyles: CSSProperties = {
 		fontWeight: "bold",
 		textDecoration: "underline",
@@ -24,12 +28,23 @@ const NavBar = () => {
 			>
 				Find Service
 			</NavLink>
-			<NavLink
-				to="auth"
-				style={({ isActive }) => (isActive ? activeStyles : undefined)}
-			>
-				Login
-			</NavLink>
+			{user ? (<>
+				<Button
+					type="submit"
+					variant="contained"
+					onClick={logout}
+					sx={{ mt: 3, mb: 2 }}
+				>
+					Logout
+				</Button></>) :
+				<NavLink
+					to="auth"
+					style={({ isActive }) => (isActive ? activeStyles : undefined)}
+				>
+					Login
+				</NavLink>
+			}
+
 		</nav>
 	);
 };
