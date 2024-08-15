@@ -1,0 +1,37 @@
+.profile {
+    background: rgb(8, 104, 104);
+    padding: 5em;
+    max-height: 2em;
+}
+
+.profile h1, h2 {
+    text-align: left;
+    color: whitesmoke;
+}
+
+.profile img {
+    border-radius: 50%;
+    border: 1px solid black;
+    max-width: 25%;
+}
+
+.profile h3, h4 {
+    color: black;
+    text-align: left;
+    font-size: x-large;
+}
+
+.profile button {
+    background: rgb(8, 104, 104);
+    color: white;
+    font-size: large;
+    padding: 1.5em;
+    border-radius: 1.5em;
+}
+
+.profile button:hover {
+    background: rgb(17, 170, 170);
+    color: white;
+    padding: 1em;
+    border-radius: 0.75em;
+}
