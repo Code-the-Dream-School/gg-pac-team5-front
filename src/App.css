@@ -1,7 +1,6 @@
 .main-wrapper {
 	border: brown 2px dotted;
 	display: flex;
-	gap: 2rem; /* small distance between header content and footer containers*/
 	flex-direction: column;
 	min-height: 100vh;
 }
@@ -9,4 +8,12 @@
 .content-wrapper {
 	border: brown 2px dotted;
 	flex: 1; /* middle section will take all space it can pushing footer to the very bottom */
+}
+
+.nav-wrapper {
+	height: var(--header-height);
+}
+
+.footer-wrapper {
+	height: var(--footer-height);
 }

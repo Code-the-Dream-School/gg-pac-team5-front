@@ -1,0 +1,40 @@
+.parallax-wrapper {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	border: 2px dotted blue;
+	overflow: hidden;
+}
+
+.parallax {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-position: bottom;
+	background-size: cover;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.parallax.title {
+	display: grid;
+	place-items: start center;
+	z-index: 20;
+}
+
+.parallax.left {
+	background-image: url("./media/left.png");
+	z-index: 5;
+}
+
+.parallax.right {
+	background-image: url("./media/right.png");
+	z-index: 10;
+}
+
+.parallax.middle {
+	background-image: url("./media/middle.png");
+	z-index: 15;
+}

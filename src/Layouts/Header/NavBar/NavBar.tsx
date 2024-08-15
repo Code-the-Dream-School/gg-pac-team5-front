@@ -29,6 +29,12 @@ const NavBar = () => {
 				Find Service
 			</NavLink>
 			{user ? (<>
+        <NavLink 
+				to="profile"
+				style={({ isActive }) => (isActive ? activeStyles : undefined)}
+			>
+				Profile
+			</NavLink>
 				<Button
 					type="submit"
 					variant="contained"
@@ -44,7 +50,6 @@ const NavBar = () => {
 					Login
 				</NavLink>
 			}
-
 		</nav>
 	);
 };
