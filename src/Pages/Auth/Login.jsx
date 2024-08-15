@@ -13,6 +13,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
+import UserContext from '../../hooks/UserContext';
+import { useContext } from 'react';
 
 function Copyright(props) {
 	return (
@@ -37,10 +39,11 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Login() {
+	const { login } = useContext(UserContext);
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
-		console.log({
+		login({
 			email: data.get("email"),
 			password: data.get("password"),
 		});
