@@ -3,6 +3,7 @@ import { Greeter_Customer } from "./Greeter_Customer/Greeter_Customer";
 import { useLoaderData } from "react-router-dom";
 import "../../Assets/Home/Home.css";
 import { Parallax } from "./Divider/Parallax";
+import { Feedback } from "./Feedback/Feedback";
 
 type Card = number;
 type List = Card[];
@@ -28,7 +29,7 @@ const Home = () => {
 				<div>Greeter_Provider</div>
 			</section>
 			<section className="view four">
-				<div>Feedback</div>
+				<Feedback />
 			</section>
 		</main>
 	);
