@@ -1,37 +1,58 @@
 {
-  "name": "front-end-template",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "test": "vitest",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.13.0",
-    "@emotion/styled": "^11.13.0",
-    "@mui/material": "^5.16.5",
-    "axios": "^1.6.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.25.1"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.56",
-    "@types/react-dom": "^18.2.19",
-    "@typescript-eslint/eslint-plugin": "^7.17.0",
-    "@typescript-eslint/parser": "^7.17.0",
-    "@vitejs/plugin-react": "^4.2.1",
-    "eslint": "^8.56.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
-    "typescript": "^5.5.4",
-    "vite": "^5.1.4",
-    "vite-plugin-svgr": "^4.2.0",
-    "vitest": "^2.0.4"
-  }
+
+	"name": "front-end-template",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"dev:msw": "VITE_REACT_MSW=1 vite dev",
+		"build": "vite build",
+		"test": "vitest",
+		"test:watch": "vitest --watch",
+		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@emotion/react": "^11.13.0",
+		"@emotion/styled": "^11.13.0",
+		"@fontsource/roboto": "^5.0.13",
+		"@motionone/utils": "^10.18.0",
+		"@mui/icons-material": "^5.16.5",
+		"@mui/material": "^5.16.5",
+		"@testing-library/user-event": "^14.5.2",
+		"axios": "^1.6.7",
+		"framer-motion": "^11.3.19",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-icons": "^5.2.1",
+		"react-router-dom": "^6.25.1",
+		"react-use-measure": "^2.1.1"
+	},
+	"devDependencies": {
+		"@faker-js/faker": "^8.4.1",
+		"@mswjs/data": "^0.16.1",
+		"@testing-library/jest-dom": "^6.4.8",
+		"@testing-library/react": "^16.0.0",
+		"@types/react": "^18.2.56",
+		"@types/react-dom": "^18.2.19",
+		"@typescript-eslint/eslint-plugin": "^7.17.0",
+		"@typescript-eslint/parser": "^7.17.0",
+		"@vitejs/plugin-react": "^4.2.1",
+		"eslint": "^8.56.0",
+		"eslint-plugin-react": "^7.33.2",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-react-refresh": "^0.4.5",
+		"jsdom": "^24.1.1",
+		"msw": "^2.3.4",
+		"typescript": "^5.5.4",
+		"vite": "^5.1.7",
+		"vite-plugin-svgr": "^4.2.0",
+		"vitest": "^2.0.4"
+	},
+	"msw": {
+		"workerDirectory": [
+			"public"
+		]
+	}
 }

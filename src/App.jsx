@@ -7,22 +7,7 @@ import { Footer } from "./Layouts/Footer/Footer";
 import "./App.css";
 // import Profile from "./Pages/Pages/Profile.jsx";
 
-// const URL = "http://localhost:8000/api/v1/";
-
 function App() {
-	// const [message, setMessage] = useState("");
-
-	// useEffect(() => {
-	// 	(async () => {
-	// 		const myData = await getAllData(URL);
-	// 		setMessage(myData.data);
-	// 	})();
-
-	// 	return () => {
-	// 		console.log("unmounting");
-	// 	};
-	// }, []);
-
 	return (
 		<div className="main-wrapper">
 			<NavBar />

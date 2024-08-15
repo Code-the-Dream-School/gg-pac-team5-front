@@ -1,11 +1,46 @@
 .carousel-wrapper {
-	display: flex;
-	gap: 5rem;
 	overflow: scroll;
+	flex: 1;
+	min-width: max-content;
+}
+.carousel-container {
+	position: absolute;
+	display: flex;
+	gap: 1rem;
+	overflow: hidden;
 }
 
-.carousel-item {
+.card-wrapper {
 	border: 2px dotted red;
+	position: relative;
 	min-height: 25vw;
 	min-width: 25vw;
+}
+
+.card-overlay-wrapper {
+	position: absolute;
+	overflow: hidden;
+	inset: 0;
+	z-index: 10;
+	height: 100%;
+	width: 100%;
+	background: grey;
+}
+
+.card-overlay-container {
+	position: absolute;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card-button {
+	padding: 0.5rem;
+	border-radius: 5px;
+	font-size: smaller;
+	background-color: white;
 }
