@@ -36,14 +36,14 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function Login() {
+export default function Login({ onLogin }) {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
-		console.log({
-			email: data.get("email"),
-			password: data.get("password"),
-		});
+		const email= data.get("email");
+		const password= data.get("password");
+
+		onLogin(email,password);
 	};
 
 	return (

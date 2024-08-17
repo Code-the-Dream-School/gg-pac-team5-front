@@ -2,7 +2,11 @@ import { CSSProperties } from "react";
 import { NavLink } from "react-router-dom";
 import "../../../Assets/Layouts/NavBar.css";
 
-const NavBar = () => {
+interface NavBarProps {
+	isAuthenticated: boolean;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ isAuthenticated }) => {
 	const activeStyles: CSSProperties = {
 		fontWeight: "bold",
 		textDecoration: "underline",
@@ -30,13 +34,14 @@ const NavBar = () => {
 			>
 				Login
 			</NavLink>
-
-			<NavLink 
+			{isAuthenticated && (
+				<NavLink 
 				to="profile"
 				style={({ isActive }) => (isActive ? activeStyles : undefined)}
 			>
 				Profile
 			</NavLink>
+			)}
 		</nav>
 	);
 };
