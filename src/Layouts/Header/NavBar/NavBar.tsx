@@ -4,9 +4,9 @@ import "../../../Assets/Layouts/NavBar.css";
 import { Button } from "@mui/material";
 import UserContext from "../../../hooks/UserContext";
 
-
 const NavBar = () => {
 	const { user, logout } = useContext(UserContext)
+
 	const activeStyles: CSSProperties = {
 		fontWeight: "bold",
 		textDecoration: "underline",
@@ -28,6 +28,7 @@ const NavBar = () => {
 			>
 				Find Service
 			</NavLink>
+
 			{user ? (<>
         <NavLink 
 				to="profile"
@@ -35,6 +36,7 @@ const NavBar = () => {
 			>
 				Profile
 			</NavLink>
+
 				<Button
 					type="submit"
 					variant="contained"
@@ -50,6 +52,7 @@ const NavBar = () => {
 					Login
 				</NavLink>
 			}
+
 		</nav>
 	);
 };
