@@ -1,8 +1,8 @@
 import { factory, primaryKey } from "@mswjs/data";
 import { faker } from "@faker-js/faker";
 import { http, HttpResponse } from "msw";
+import { MOCK_API } from "../config";
 
-const baseUrl = "http://localhost:8000/api/v1";
 const handlers = [];
 
 faker.seed(0);
@@ -19,11 +19,11 @@ const db = factory({
 });
 
 // Add auto-generated CRUD api for /vendors
-handlers.push(...db.vendor.toHandlers("rest", baseUrl));
+handlers.push(...db.vendor.toHandlers("rest", MOCK_API));
 
 // Intercept http request
 handlers.push(
-  http.get(`${baseUrl}/vendors/name/:name`, ({ params }) => {
+  http.get(`${MOCK_API}/vendors/name/:name`, ({ params }) => {
     const { name } = params;
     const response = db.vendor.findFirst({
       where: {
