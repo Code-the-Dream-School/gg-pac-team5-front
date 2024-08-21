@@ -1,7 +1,7 @@
 import { factory, primaryKey } from "@mswjs/data";
 import { faker } from "@faker-js/faker";
 import { http, HttpResponse } from "msw";
-import { MOCK_API } from "../config";
+import { MOCK_API } from "../../config";
 
 const handlers = [];
 
