@@ -10,3 +10,7 @@
 	--header-height: 10vh;
 	--footer-height: 10vh;
 }
+
+html {
+	position: relative; /*this added to remove useScroll warning*/
+}

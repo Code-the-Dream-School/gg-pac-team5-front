@@ -18,7 +18,7 @@ const Parallax = () => {
 	const titleY = useTransform(scrollYProgress, [0, 0.8], ["0", "140%"]);
 	const rightY = useTransform(scrollYProgress, [0, 1], ["0", "110%"]);
 	const middleY = useTransform(scrollYProgress, [0, 1], ["0", "120%"]);
-	const leftY = useTransform(scrollYProgress, [0, 1], ["0", "100%"]);
+	const leftY = useTransform(scrollYProgress, [0, 1], ["0", "130%"]);
 
 	return (
 		<div ref={ref} className="parallax-wrapper">

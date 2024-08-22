@@ -9,17 +9,16 @@ type Card = number;
 type List = Card[];
 
 interface CarouselProps {
-	list: List;
+	resolvedPromise?: List;
 }
 
-const Carousel: FC<CarouselProps> = ({ list = [] }) => {
+const Carousel: FC<CarouselProps> = ({ resolvedPromise }) => {
 	const FAST_DURATION = 25;
 	const SLOW_DURATION = 175;
-
 	const [duration, setDuration] = useState(FAST_DURATION);
 
 	let [ref, { width }] = useMeasure();
-
+	const list = resolvedPromise;
 	// [useMotionValue] where you need to animate properties dynamically
 	// based on user interactions or other factors.
 
@@ -94,15 +93,15 @@ const Carousel: FC<CarouselProps> = ({ list = [] }) => {
 					setDuration(FAST_DURATION);
 				}}
 			>
-				{list.length === 0 ? (
-					<> nothing to display </>
-				) : (
+				{Array.isArray(list) && list.length !== 0 ? (
 					// the whole component will be rerendered
 					// when the first item of the second list will hit
 					// _the position_ of the first item of the first list on the screen to ensure infinite scrolling
 					[...list, ...list].map((item, idx) => {
 						return <Card key={`${item}-${idx}`} content={item} />;
 					})
+				) : (
+					<> nothing to display </>
 				)}
 			</motion.div>
 		</section>
