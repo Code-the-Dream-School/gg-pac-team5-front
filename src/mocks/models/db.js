@@ -78,6 +78,44 @@ for (let i = 0; i < 10; i++) {
   })
 }
 
+// Intercept sampleapis.com and replace with own mock data
+handlers.push(
+  http.get(`https://api.sampleapis.com/cartoons/cartoons2D`, async () => {
+    let data;
+    try {
+      const response = await fetch(`${MOCK_API}/services`,);
+      if (response.ok) {
+        data = await response.json();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+
+    const compatibleData = await Promise.all(data.map(async (service) => (
+      {
+        id: service.id,
+        title: service.name,
+        creator: await (
+          async () => {
+            let data;
+            try {
+              const response = await fetch(`${MOCK_API}/vendors/${service.vendorId}`)
+              if (response.ok) {
+                data = await response.json();
+                return await data.name;
+              }
+            } catch (error) {
+              console.error(error);
+            }
+          }
+        )(),
+        image: service.image
+      }
+    )))
+    return HttpResponse.json(compatibleData);
+  })
+)
+
 console.log(db.vendor.getAll());
 console.log(db.service.getAll());
 
