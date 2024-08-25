@@ -16,7 +16,11 @@ const SuspendedWrapperWithPromise = <T,>({
 		<Suspense fallback={<CircularProgress />}>
 			<Await
 				resolve={promise}
-				errorElement={<ErrorElementSmall message={"Error loading component"} />}
+				errorElement={
+					<ErrorElementSmall
+						message={`Error in promise for component: ${children.type.name}`}
+					/>
+				}
 			>
 				{(resolvedPromise) => (
 					<>{cloneElement(children, { resolvedPromise })}</>

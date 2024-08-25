@@ -1,4 +1,4 @@
-import { Review_Card } from "../../../Layouts/Review_Card/Review_Card";
+import { Review_Card } from "./Review_Card";
 const Feedback = () => {
 	return (
 		<>

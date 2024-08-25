@@ -28,7 +28,7 @@ const Home = () => {
 
 	return (
 		<main className="home-wrapper">
-			<Container variant="dashed">
+			<Container variant="dashed" sx={{ height: "90vh" }}>
 				<Greeter_Customer />
 				<SuspendedWrapperWithPromise promise={provSummary}>
 					<Carousel />

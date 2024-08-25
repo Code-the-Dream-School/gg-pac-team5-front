@@ -5,8 +5,8 @@ type ErrorElementSmallProps = {
 	message: string;
 };
 
-const ErrorElementSmall: FC<ErrorElementSmallProps> = ({ message }) => (
-	<Alert severity="error">{message}</Alert>
-);
+const ErrorElementSmall: FC<ErrorElementSmallProps> = ({ message }) => {
+	return <Alert severity="error">{message}</Alert>;
+};
 
 export { ErrorElementSmall };
