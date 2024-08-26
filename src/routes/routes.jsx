@@ -8,6 +8,7 @@ import { Pages, loader as pagesLoader } from "../Pages/Pages/Pages.jsx";
 import Test from "../Pages/Test/Test.jsx";
 import Cards from "../Pages/Services/Cards.jsx";
 import Profile from "../Pages/Pages/Profile.jsx";
+import { Booking } from "../Pages/Pages/Booking"
 
 const routes = [
 	{
@@ -32,6 +33,12 @@ const routes = [
 				path: "pages/:pageName",
 				element: <Pages />,
 				loader: pagesLoader,
+				children: [
+					{
+						path: "book",
+						element: <Booking />
+					}
+				]
 			},
 			{
 				path: "profile",

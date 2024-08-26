@@ -24,6 +24,12 @@ const db = factory({
     image: () => faker.image.urlLoremFlickr({ category: 'food' }),
     description: () => faker.commerce.productDescription(),
     price: faker.commerce.price
+  },
+  appointment: {
+    id: primaryKey(faker.string.uuid),
+    serviceId: String, // Simulate foreign key from service model
+    userId: null, // Implement user model
+    startTime: Date
   }
 });
 

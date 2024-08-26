@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Avatar, Button, Card, CardMedia, Typography, Tabs, Tab } from "@mui/material";
 import { API, MOCK_API } from "../../config"
@@ -30,16 +30,19 @@ export const Pages = () => {
 
   return (
     <>
+      <Outlet></Outlet>
       <Card>
         <CardMedia image={import.meta.env.VITE_REACT_MSW ? page.backgroundImage : "http://not-yet-implemented.invalid/backgroundImage.png"}>
           <Avatar alt={page.name} src={import.meta.env.VITE_REACT_MSW ? page.profileImage : "http://not-yet-implemented.invalid/profileImage.png"} />
         </CardMedia>
         <Typography gutterBottom variant="h4" component="div">{page.name}</Typography>
         <Typography gutterBottom variant="h6" component="div">{import.meta.env.VITE_REACT_MSW ? page.summary : "SUMMARY NOT YET IMPLEMENTED"}</Typography>
-        <Button variant="contained">Make an appointment</Button>
+        <Link to="book">
+          <Button variant="contained">Make an appointment</Button>
+        </Link>
       </Card>
       <Card>
-        <Tabs>
+        <Tabs value={0}>
           <Tab label="Description">
           </Tab>
           <Tab label="Services">
