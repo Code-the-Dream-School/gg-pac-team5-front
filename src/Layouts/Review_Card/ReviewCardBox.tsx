@@ -1,13 +1,11 @@
-import { Height } from "@mui/icons-material";
 import { Box, styled } from "@mui/material";
 
 const ReviewCardBox = styled(Box)(({ theme }) => ({
 	display: "grid",
 	width: "30rem", // Default width
-	height: "15rem",
+	minHeight: "fit-content",
 	margin: "auto",
 	gridTemplateColumns: "repeat(9, 1fr)",
-	gridTemplateRows: "repeat(12, 1fr)",
 	[theme.breakpoints.down("sm")]: {
 		// TODO: define height for responsive design
 		width: "100vw", // For mobile

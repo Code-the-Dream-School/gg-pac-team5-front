@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { motion, useMotionValue, animate } from "framer-motion";
-import { Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { Card } from "./Card";
 import "../../../Assets/Home/Carousel.css";
 import useMeasure from "react-use-measure";
@@ -80,30 +80,32 @@ const Carousel: FC<CarouselProps> = ({ resolvedPromise }) => {
 				SAY HI TO YOUR BEAUTY SPECIALIST
 			</Typography>
 			{/* ref={ref} - to measure the element  */}
-			<motion.div
-				className="carousel-container"
-				style={{ x: xTranslation }}
-				ref={ref}
-				onHoverStart={() => {
-					setMustFinish(true);
-					setDuration(SLOW_DURATION);
-				}}
-				onHoverEnd={() => {
-					setMustFinish(true);
-					setDuration(FAST_DURATION);
-				}}
-			>
-				{Array.isArray(list) && list.length !== 0 ? (
-					// the whole component will be rerendered
-					// when the first item of the second list will hit
-					// _the position_ of the first item of the first list on the screen to ensure infinite scrolling
-					[...list, ...list].map((item, idx) => {
-						return <Card key={`${item}-${idx}`} content={item} />;
-					})
-				) : (
-					<> nothing to display </>
-				)}
-			</motion.div>
+			<Container sx={{ minHeight: "fit-content" }}>
+				<motion.div
+					className="carousel-container"
+					style={{ x: xTranslation }}
+					ref={ref}
+					onHoverStart={() => {
+						setMustFinish(true);
+						setDuration(SLOW_DURATION);
+					}}
+					onHoverEnd={() => {
+						setMustFinish(true);
+						setDuration(FAST_DURATION);
+					}}
+				>
+					{Array.isArray(list) && list.length !== 0 ? (
+						// the whole component will be rerendered
+						// when the first item of the second list will hit
+						// _the position_ of the first item of the first list on the screen to ensure infinite scrolling
+						[...list, ...list].map((item, idx) => {
+							return <Card key={`${item}-${idx}`} content={item} />;
+						})
+					) : (
+						<> nothing to display </>
+					)}
+				</motion.div>
+			</Container>
 		</section>
 	);
 };

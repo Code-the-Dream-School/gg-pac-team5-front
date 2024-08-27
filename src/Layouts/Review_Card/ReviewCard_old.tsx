@@ -28,7 +28,6 @@ const Review_Card: FC<Review_Card> = ({
 				position: "relative",
 			}}
 		>
-			{" "}
 			<Box
 				sx={{
 					position: "absolute",

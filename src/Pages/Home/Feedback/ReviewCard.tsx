@@ -1,9 +1,23 @@
 import { Avatar, Box, Paper, Rating, Typography } from "@mui/material";
-import { ReviewCardBox } from "../../../Layouts/Review_Card/Review_Card_Box";
+import { ReviewCardBox } from "../../../Layouts/Review_Card/ReviewCardBox";
 
-const Review_Card = () => {
+// 35 characters per line estimately
+const calcBoxHeight = (string) => {
+	const maximumNumberOfChars = 170;
+	const charsPerLine = 35;
+	return string.length < maximumNumberOfChars
+		? "repeat(12, 1fr)"
+		: `repeat(${Math.ceil(string.length / charsPerLine) + 7}, 1fr)`;
+};
+
+const ReviewCard = ({ message }) => {
 	return (
-		<ReviewCardBox>
+		<ReviewCardBox
+			sx={{
+				gridTemplateRows: calcBoxHeight(message),
+				minHeight: "fit-content",
+			}}
+		>
 			{/* 
 
     AVATAR
@@ -36,6 +50,7 @@ const Review_Card = () => {
 					gridColumn: "2 / -2",
 					gridRow: "2 / -2",
 					backgroundColor: "rgba(255,255,255,.1)",
+					minHeight: "10rem",
 				}}
 				elevation={6}
 			></Paper>
@@ -63,7 +78,7 @@ const Review_Card = () => {
 					paddingRight: "1rem",
 				}}
 			>
-				05/10/'99'
+				05/10/'99
 			</Box>
 			{/* 
 
@@ -82,11 +97,12 @@ const Review_Card = () => {
 					padding: "1rem",
 					marginRight: "1rem",
 					flex: 1,
+					minHeight: "fit-content",
 				}}
 				variant="outlined"
 			>
-				<Typography variant="body1" sx={{ textAlign: "center" }}>
-					This container can only fit limited amount of text.
+				<Typography variant="body2" sx={{ textAlign: "center" }}>
+					{message}
 				</Typography>
 			</Paper>
 			{/* 
@@ -109,4 +125,4 @@ const Review_Card = () => {
 	);
 };
 
-export { Review_Card };
+export { ReviewCard };

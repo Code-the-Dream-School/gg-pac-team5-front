@@ -15,34 +15,40 @@ import { orange, red, purple } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 const mainTheme = createTheme({
+	customVariables: {
+		appBarMinHeight: 10,
+	},
+	palette: {
+		primary: {
+			main: orange[100],
+		},
+	},
 	components: {
-		MuiBox: {
+		MuiAppBar: {
 			variants: [
 				{
-					props: { variant: "review" },
-					style: {
-						display: "grid",
-						width: "30vw", // Default width
-						// Apply responsive widths using breakpoints
-						[`@media (max-width:600px)`]: {
-							width: "100vw", // For mobile
-						},
-						[`@media (min-width:1200px)`]: {
-							width: "20vw", // For extra large screens
-						},
-						border: "2px dashed black",
-					},
+					props: { variant: "mainNavBar" },
+					style: ({ theme }) => ({
+						height: `${theme.customVariables.appBarMinHeight}vh`,
+					}),
 				},
 			],
 		},
 		MuiContainer: {
+			defaultProps: {
+				disableGutters: true,
+			},
 			variants: [
 				{
-					props: { variant: "dashed" },
+					props: { variant: "containerNavbarTrimmed" },
+					style: ({ theme }) => ({
+						height: `${100 - theme.customVariables.appBarMinHeight}vh`,
+					}),
+				},
+				{
+					props: { variant: "container60vh" },
 					style: {
-						border: `2px dashed ${orange[500]}`,
-						background: orange[100],
-						margin: 0,
+						height: "60vh",
 					},
 				},
 			],

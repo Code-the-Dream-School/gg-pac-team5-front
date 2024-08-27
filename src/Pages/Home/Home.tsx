@@ -1,5 +1,5 @@
 import { defer, useLoaderData } from "react-router-dom";
-import { Container } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { Carousel } from "./Carousel/Carousel";
 import { Greeter_Customer } from "./Greeter_Customer/Greeter_Customer";
 import "../../Assets/Home/Home.css";
@@ -28,11 +28,31 @@ const Home = () => {
 
 	return (
 		<main className="home-wrapper">
-			<Container variant="dashed" sx={{ height: "90vh" }}>
-				<Greeter_Customer />
-				<SuspendedWrapperWithPromise promise={provSummary}>
-					<Carousel />
-				</SuspendedWrapperWithPromise>
+			<Container variant="containerNavbarTrimmed">
+				<Grid
+					container
+					className="outlined"
+					sx={{
+						padding: 0,
+						width: "100vw",
+						maxWidth: "100vw",
+						justifyContent: "space-between",
+						flexFlow: "column",
+					}}
+				>
+					<Grid>
+						<Greeter_Customer />
+					</Grid>
+					<Grid
+						sx={{
+							minHeight: "fit-content",
+						}}
+					>
+						<SuspendedWrapperWithPromise promise={provSummary}>
+							<Carousel />
+						</SuspendedWrapperWithPromise>
+					</Grid>
+				</Grid>
 			</Container>
 			<section className="view two">
 				<Parallax />
