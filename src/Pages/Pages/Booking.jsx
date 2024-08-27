@@ -6,7 +6,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { DateTimePicker } from '@mui/x-date-pickers';
 import { useNavigate } from 'react-router-dom';
+import Autocomplete from '@mui/material/Autocomplete';
+import "./Booking.css";
 
 export function Booking() {
     const [open, setOpen] = React.useState(true);
@@ -38,27 +41,24 @@ export function Booking() {
                     },
                 }}
             >
-                <DialogTitle>Subscribe</DialogTitle>
+                <DialogTitle>Book</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        To subscribe to this website, please enter your email address here. We
-                        will send updates occasionally.
+                        To make an appointment...
                     </DialogContentText>
-                    <TextField
-                        autoFocus
-                        required
-                        margin="dense"
-                        id="name"
-                        name="email"
-                        label="Email Address"
-                        type="email"
-                        fullWidth
-                        variant="standard"
+                    <Autocomplete
+                        disablePortal
+                        options={[{ label: "test", id: 0 }]}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Services" />}
+                    />
+                    <DateTimePicker
+                        label="Appointment Time"
                     />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button type="submit">Subscribe</Button>
+                    <Button type="submit">Book</Button>
                 </DialogActions>
             </Dialog>
         </React.Fragment>
