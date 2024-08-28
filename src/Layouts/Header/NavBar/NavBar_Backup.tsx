@@ -1,8 +1,6 @@
-import { CSSProperties, useState, useContext } from "react";
+import { CSSProperties, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../../../Assets/Layouts/NavBar.css";
-import { Button } from "@mui/material";
-import UserContext from "../../../hooks/UserContext";
 
 import { LogoComponent } from "../../../Reusable_Components/LogoComponent";
 import AppBar from "@mui/material/AppBar";
@@ -17,8 +15,6 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
 const NavBar = () => {
-	const { user, logout } = useContext(UserContext);
-	const users = true;
 	const activeStyles: CSSProperties = {
 		fontWeight: "bold",
 		textDecoration: "underline",
@@ -34,8 +30,13 @@ const NavBar = () => {
 			displayedName: "Find Service",
 			linksTo: "pages",
 		},
+		{
+			displayedName: "Login",
+			linksTo: "auth",
+		},
 	];
 	const [anchorElNav, setAnchorElNav] = useState(null);
+	const [anchorElUser, setAnchorElUser] = useState(null);
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -124,30 +125,19 @@ const NavBar = () => {
 							display: { xs: "flex", md: "flex" },
 						}}
 					>
-						{user ? (
-							<>
-								<Avatar
-									alt="User"
-									src="https://i.etsystatic.com/16421349/r/il/f21def/3144130361/il_fullxfull.3144130361_2i6w.jpg"
-									sx={{ width: 56, height: 56 }}
-								/>
-								<Button
-									type="submit"
-									variant="contained"
-									onClick={logout}
-									sx={{ mt: 3, mb: 2 }}
-								>
-									Logout
-								</Button>
-							</>
-						) : (
-							<NavLink
-								to="auth"
-								style={({ isActive }) => (isActive ? activeStyles : undefined)}
-							>
-								Login
-							</NavLink>
-						)}
+						{/* TODO:
+							change alt to real user data  */}
+						<NavLink
+							to="profile"
+							end
+							style={({ isActive }) => (isActive ? activeStyles : undefined)}
+						>
+							<Avatar
+								alt="User"
+								src="https://i.etsystatic.com/16421349/r/il/f21def/3144130361/il_fullxfull.3144130361_2i6w.jpg"
+								sx={{ width: 56, height: 56 }}
+							/>
+						</NavLink>
 					</Box>
 				</Toolbar>
 			</Container>

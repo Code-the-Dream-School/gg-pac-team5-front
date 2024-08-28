@@ -17,7 +17,7 @@ import { GlobalStyles } from "@mui/material";
 
 const mainTheme = createTheme({
 	customVariables: {
-		appBarMinHeight: 15,
+		appBarMinHeight: 10,
 	},
 	palette: {
 		primary: {
