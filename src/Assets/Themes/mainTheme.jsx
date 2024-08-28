@@ -11,7 +11,7 @@
   const theme = createTheme(deepmerge(options1, options2));
 */
 
-import { orange, red, purple } from "@mui/material/colors";
+import { orange, brown, purple } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 import { GlobalStyles } from "@mui/material";
 
@@ -23,7 +23,9 @@ const mainTheme = createTheme({
 		primary: {
 			main: orange[100],
 			darker: orange[200],
-			defaultText: "black",
+			defaultText: brown["A700"],
+			highlightedText: brown[900],
+			activeNavLink: brown[900],
 		},
 		secondary: {
 			main: orange[200],
@@ -40,6 +42,17 @@ const mainTheme = createTheme({
 					}),
 				},
 			],
+		},
+		MuiLink: {
+			styleOverrides: {
+				root: {
+					"&.active": {
+						fontWeight: "bold",
+						textDecoration: "underline",
+						color: "primary.activeNavLink",
+					},
+				},
+			},
 		},
 		MuiContainer: {
 			styleOverrides: {

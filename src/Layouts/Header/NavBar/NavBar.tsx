@@ -15,15 +15,15 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { useTheme } from "@mui/material/styles";
 
 const NavBar = () => {
 	const { user, logout } = useContext(UserContext);
 	const users = true;
-	const activeStyles: CSSProperties = {
-		fontWeight: "bold",
-		textDecoration: "underline",
-		color: "#161616",
-	};
+
+	const theme = useTheme();
+	const activeStyles: CSSProperties =
+		theme.components?.MuiLink?.styleOverrides?.root["&.active"] || {};
 
 	const pages = [
 		{
@@ -101,20 +101,23 @@ const NavBar = () => {
 					<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
 						{pages.map(({ displayedName, linksTo }) => {
 							return (
-								<Typography
-									textAlign="center"
+								<Button
 									key={`${displayedName} ${linksTo}`}
+									onClick={handleCloseNavMenu}
+									sx={{
+										my: 2,
+										color: "primary.defaultText",
+										display: "block",
+									}}
+									component={NavLink}
+									to={linksTo}
+									end
+									style={({ isActive }) =>
+										isActive ? activeStyles : undefined
+									}
 								>
-									<NavLink
-										to={linksTo}
-										end
-										style={({ isActive }) =>
-											isActive ? activeStyles : undefined
-										}
-									>
-										{displayedName}
-									</NavLink>
-								</Typography>
+									{displayedName}
+								</Button>
 							);
 						})}
 					</Box>
