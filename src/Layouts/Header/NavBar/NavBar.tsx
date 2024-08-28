@@ -1,6 +1,8 @@
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "../../../Assets/Layouts/NavBar.css";
+import { Button } from "@mui/material";
+import UserContext from "../../../hooks/UserContext";
 
 import { LogoComponent } from "../../../Reusable_Components/LogoComponent";
 import AppBar from "@mui/material/AppBar";
@@ -15,6 +17,8 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
 const NavBar = () => {
+	const { user, logout } = useContext(UserContext)
+
 	const activeStyles: CSSProperties = {
 		fontWeight: "bold",
 		textDecoration: "underline",
@@ -138,6 +142,29 @@ const NavBar = () => {
 								sx={{ width: 56, height: 56 }}
 							/>
 						</NavLink>
+      {user ? (<>
+        <NavLink 
+				to="profile"
+				style={({ isActive }) => (isActive ? activeStyles : undefined)}
+			>
+				Profile
+			</NavLink>
+
+				<Button
+					type="submit"
+					variant="contained"
+					onClick={logout}
+					sx={{ mt: 3, mb: 2 }}
+				>
+					Logout
+				</Button></>) :
+				<NavLink
+					to="auth"
+					style={({ isActive }) => (isActive ? activeStyles : undefined)}
+				>
+					Login
+				</NavLink>
+			}
 					</Box>
 				</Toolbar>
 			</Container>
