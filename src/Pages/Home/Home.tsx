@@ -2,7 +2,6 @@ import { defer, useLoaderData } from "react-router-dom";
 import { Container, Grid } from "@mui/material";
 import { Carousel } from "./Carousel/Carousel";
 import { Greeter_Customer } from "./Greeter_Customer/Greeter_Customer";
-import "../../Assets/Home/Home.css";
 import { Parallax } from "./Divider/Parallax";
 import { Feedback } from "./Feedback/Feedback";
 import { SuspendedWrapperWithPromise } from "../../Reusable_Components/SuspendedWrapperWithPromise";
@@ -27,15 +26,13 @@ const Home = () => {
 	const { provSummary } = data;
 
 	return (
-		<Container sx={{ overflowY: "hidden" }}>
+		<>
 			<Container variant="containerNavbarTrimmed">
 				<Grid
 					container
 					className="outlined"
 					sx={{
 						padding: 0,
-						width: "100vw",
-						maxWidth: "100vw",
 						justifyContent: "space-between",
 						flexFlow: "column",
 					}}
@@ -71,7 +68,7 @@ const Home = () => {
 			>
 				<Feedback />
 			</Container>
-		</Container>
+		</>
 	);
 };
 

@@ -42,6 +42,15 @@ const mainTheme = createTheme({
 			],
 		},
 		MuiContainer: {
+			styleOverrides: {
+				root: {
+					margin: 0,
+					padding: 0,
+					width: "100%",
+					maxWidth: "100%",
+					overflowX: "hidden",
+				},
+			},
 			defaultProps: {
 				disableGutters: true,
 			},
@@ -72,6 +81,9 @@ const globalStyles = (
 			},
 			"a:hover": {
 				color: mainTheme.palette.primary.defaultText,
+			},
+			"*": {
+				overflowX: "hidden !important",
 			},
 		}}
 	/>
