@@ -3,10 +3,30 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "Roboto";
-	overflow-x: hidden;
 }
 
 :root {
-	--header-height: 10vh;
 	--footer-height: 10vh;
+}
+
+html {
+	position: relative; /*this added to remove useScroll warning*/
+}
+
+.outlined {
+	border: 2px dashed black;
+}
+.outlined.red {
+	border-color: red;
+}
+.outlined.orange {
+	border-color: orange;
+}
+
+.outlined.purple {
+	border-color: purple;
+}
+
+.outlined.blue {
+	border-color: blue;
 }
