@@ -106,8 +106,8 @@ const NavBar = () => {
 									onClick={handleCloseNavMenu}
 									sx={{
 										my: 2,
-										color: "primary.defaultText",
 										display: "block",
+										color: "text.primary",
 									}}
 									component={NavLink}
 									to={linksTo}

@@ -28,30 +28,12 @@ const Home = () => {
 	return (
 		<>
 			<Container variant="containerNavbarTrimmed">
-				<Grid
-					container
-					className="outlined"
-					sx={{
-						padding: 0,
-						justifyContent: "space-between",
-						flexFlow: "column",
-					}}
-				>
-					<Grid>
-						<Greeter_Customer />
-					</Grid>
-					<Grid
-						sx={{
-							minHeight: "fit-content",
-						}}
-					>
-						<SuspendedWrapperWithPromise promise={provSummary}>
-							<Carousel />
-						</SuspendedWrapperWithPromise>
-					</Grid>
-				</Grid>
+				<Greeter_Customer />
 			</Container>
 			<Container variant="fullScreen">
+				<SuspendedWrapperWithPromise promise={provSummary}>
+					<Carousel />
+				</SuspendedWrapperWithPromise>
 				<Parallax />
 			</Container>
 			<Container variant="fullScreen" className="outlined red">

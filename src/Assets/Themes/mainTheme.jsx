@@ -23,16 +23,24 @@ const mainTheme = createTheme({
 		primary: {
 			main: orange[100],
 			darker: orange[200],
-			defaultText: brown["A700"],
+		},
+		secondary: {
+			main: brown["A700"],
+		},
+		text: {
+			primary: brown["A700"],
 			highlightedText: brown[900],
 			activeNavLink: brown[900],
 		},
-		secondary: {
-			main: orange[200],
-			defaultText: "black",
-		},
 	},
 	components: {
+		MuiTypography: {
+			styleOverrides: {
+				root: ({ theme }) => ({
+					color: theme.palette.text.highlightedText,
+				}),
+			},
+		},
 		MuiAppBar: {
 			variants: [
 				{
@@ -49,7 +57,7 @@ const mainTheme = createTheme({
 					"&.active": {
 						fontWeight: "bold",
 						textDecoration: "underline",
-						color: "primary.activeNavLink",
+						color: "text.activeNavLink",
 					},
 				},
 			},
@@ -90,10 +98,10 @@ const globalStyles = (
 		styles={{
 			a: {
 				textDecoration: "none",
-				color: mainTheme.palette.primary.defaultText,
+				color: mainTheme.palette.text.primary,
 			},
 			"a:hover": {
-				color: mainTheme.palette.primary.defaultText,
+				color: mainTheme.palette.text.primary,
 			},
 			"*": {
 				overflowX: "hidden !important",
