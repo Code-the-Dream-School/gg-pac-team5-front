@@ -9,7 +9,7 @@ const ReviewCardBox = styled(Box)(({ theme }) => ({
 	[theme.breakpoints.down("sm")]: {
 		// TODO: define height for responsive design
 		width: "100vw", // For mobile
-		height: "25vh",
+		height: "auto",
 	},
 	[theme.breakpoints.up("xl")]: {
 		// width: "30vw", // For extra large screens

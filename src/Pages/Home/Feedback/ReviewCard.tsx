@@ -5,9 +5,13 @@ import { ReviewCardBox } from "../../../Layouts/Review_Card/ReviewCardBox";
 const calcBoxHeight = (string) => {
 	const maximumNumberOfChars = 170;
 	const charsPerLine = 35;
+	const baseGridRows = 12; // Minimum grid rows to display
+
 	return string.length < maximumNumberOfChars
-		? "repeat(12, 1fr)"
-		: `repeat(${Math.ceil(string.length / charsPerLine) + 7}, 1fr)`;
+		? `repeat(${baseGridRows}, minmax(min-content, auto))`
+		: `repeat(${
+				Math.ceil(string.length / charsPerLine) + baseGridRows
+		  }, minmax(min-content, auto))`;
 };
 
 const ReviewCard = ({ message }) => {
@@ -34,9 +38,10 @@ const ReviewCard = ({ message }) => {
 			>
 				<Avatar
 					variant="circular"
+					src="https://i.etsystatic.com/16421349/r/il/f21def/3144130361/il_fullxfull.3144130361_2i6w.jpg"
 					sx={{
-						width: { xs: "25vw", md: "8rem", lg: "8rem" },
-						height: { xs: "25vw", md: "8rem", lg: "8rem" },
+						width: { xs: "6rem", md: "9rem", lg: "9rem" },
+						height: { xs: "6rem", md: "9rem", lg: "9rem" },
 					}}
 				/>
 			</Box>
@@ -97,7 +102,8 @@ const ReviewCard = ({ message }) => {
 					padding: "1rem",
 					marginRight: "1rem",
 					flex: 1,
-					minHeight: "fit-content",
+					height: "auto",
+					overflow: "visible",
 				}}
 				variant="outlined"
 			>

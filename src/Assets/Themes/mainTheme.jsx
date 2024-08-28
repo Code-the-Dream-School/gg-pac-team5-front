@@ -13,14 +13,21 @@
 
 import { orange, red, purple } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
+import { GlobalStyles } from "@mui/material";
 
 const mainTheme = createTheme({
 	customVariables: {
-		appBarMinHeight: 10,
+		appBarMinHeight: 15,
 	},
 	palette: {
 		primary: {
 			main: orange[100],
+			darker: orange[200],
+			defaultText: "black",
+		},
+		secondary: {
+			main: orange[200],
+			defaultText: "black",
 		},
 	},
 	components: {
@@ -46,9 +53,9 @@ const mainTheme = createTheme({
 					}),
 				},
 				{
-					props: { variant: "container60vh" },
+					props: { variant: "fullScreen" },
 					style: {
-						height: "60vh",
+						height: "100vh",
 					},
 				},
 			],
@@ -56,4 +63,18 @@ const mainTheme = createTheme({
 	},
 });
 
-export { mainTheme };
+const globalStyles = (
+	<GlobalStyles
+		styles={{
+			a: {
+				textDecoration: "none",
+				color: mainTheme.palette.primary.defaultText,
+			},
+			"a:hover": {
+				color: mainTheme.palette.primary.defaultText,
+			},
+		}}
+	/>
+);
+
+export { mainTheme, globalStyles };

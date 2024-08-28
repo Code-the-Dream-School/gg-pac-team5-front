@@ -27,7 +27,7 @@ const Home = () => {
 	const { provSummary } = data;
 
 	return (
-		<main className="home-wrapper">
+		<Container sx={{ overflowY: "hidden" }}>
 			<Container variant="containerNavbarTrimmed">
 				<Grid
 					container
@@ -54,16 +54,24 @@ const Home = () => {
 					</Grid>
 				</Grid>
 			</Container>
-			<section className="view two">
+			<Container variant="fullScreen">
 				<Parallax />
-			</section>
-			<section className="view three">
+			</Container>
+			<Container variant="fullScreen" className="outlined red">
 				<div>Greeter_Provider</div>
-			</section>
-			<section className="view four">
+			</Container>
+			<Container
+				className="outlined purple"
+				sx={{
+					display: "flex",
+					flexDirection: "column",
+					gap: "1rem",
+					height: "auto",
+				}}
+			>
 				<Feedback />
-			</section>
-		</main>
+			</Container>
+		</Container>
 	);
 };
 

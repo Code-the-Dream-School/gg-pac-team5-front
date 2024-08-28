@@ -1,16 +1,1 @@
-.view.one {
-	height: calc(100vh - var(--header-height));
-	background-color: blanchedalmond;
-}
-.view.two {
-	height: 100vh;
-	background-color: burlywood;
-}
-.view.three {
-	height: 100vh;
-	background-color: antiquewhite;
-}
-.view.four {
-	height: calc(100vh - var(--footer-height));
-	background-color: beige;
-}
+
