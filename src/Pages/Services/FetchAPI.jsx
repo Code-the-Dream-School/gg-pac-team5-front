@@ -2,22 +2,28 @@ import { useEffect } from 'react';
 
 const FetchAPI = ({ setServicesSample, searchQuery }) => {
 
-    const API_URL = 'https://api.sampleapis.com/cartoons/cartoons2D';
+    // const API_URL = 'https://api.sampleapis.com/cartoons/cartoons2D';
+    const API_URL = "http://localhost:8000/api/v1/vendors"
 
     const getData = async () => {
         try {
             const resp = await fetch(API_URL);
             const json = await resp.json();
 
-            const filteredData = json.filter((item) => {
-                return item.title.toLowerCase().includes(searchQuery.toLowerCase());
+            const filteredData = json.vendors.filter((item) => {
+                return item.name.toLowerCase().includes(searchQuery.toLowerCase());
             });
 
             const formattedData = filteredData.map((item, index) => ({
-                title: item.title || `Service ${index + 1}`,
-                details: item.creator || 'No description available',
+
+                name: item.name || `Service ${index + 1}`,
+                street: item.street,
+                city: item.city || 'No description available',
+                state: item.state,
+                zip: item.zip,
+                country: item.country,
                 image: item.image || 'https://via.placeholder.com/140', // Placeholder image
-                Newroute: `/pages/${item.title}`
+                Newroute: `/pages/${item.name}`
             }));
 
             setServicesSample(formattedData);
