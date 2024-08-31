@@ -12,6 +12,7 @@
 
 .card-wrapper {
 	border: 2px dotted red;
+	background-color: grey;
 	position: relative;
 	min-height: 25vw;
 	min-width: 25vw;

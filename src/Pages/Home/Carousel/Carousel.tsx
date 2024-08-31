@@ -77,7 +77,7 @@ const Carousel: FC<CarouselProps> = ({ resolvedPromise }) => {
 				id="carousel-heading"
 				className="carousel-heading"
 			>
-				SAY HI TO YOUR BEAUTY SPECIALIST
+				SAY HI TO YOUR BEAUTICIANS
 			</Typography>
 			{/* ref={ref} - to measure the element  */}
 			<motion.div

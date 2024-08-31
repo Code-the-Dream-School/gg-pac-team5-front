@@ -5,6 +5,7 @@ import { Greeter_Customer } from "./Greeter_Customer/Greeter_Customer";
 import { Parallax } from "./Divider/Parallax";
 import { Feedback } from "./Feedback/Feedback";
 import { SuspendedWrapperWithPromise } from "../../Reusable_Components/SuspendedWrapperWithPromise";
+import { Greeter_Provider } from "./Greeter_Provider/Greeter_Provider";
 
 type Card = number;
 type List = Card[];
@@ -30,25 +31,44 @@ const Home = () => {
 			<Container variant="containerNavbarTrimmed">
 				<Greeter_Customer />
 			</Container>
-			<Container variant="fullScreen">
-				<SuspendedWrapperWithPromise promise={provSummary}>
-					<Carousel />
-				</SuspendedWrapperWithPromise>
-				<Parallax />
-			</Container>
-			<Container variant="fullScreen" className="outlined red">
-				<div>Greeter_Provider</div>
+			<Container
+				variant="fullScreen"
+				sx={{ display: "flex", flexFlow: "column" }}
+			>
+				<Container sx={{ flexGrow: 1, zIndex: "tooltip" }}>
+					<SuspendedWrapperWithPromise promise={provSummary}>
+						<Carousel />
+					</SuspendedWrapperWithPromise>
+				</Container>
+				<Container sx={{ flexGrow: 3 }}>
+					<Parallax />
+				</Container>
 			</Container>
 			<Container
-				className="outlined purple"
-				sx={{
-					display: "flex",
-					flexDirection: "column",
-					gap: "1rem",
-					height: "auto",
-				}}
+				className="outlined red"
+				sx={{ display: "flex", flexDirection: "column" }}
 			>
-				<Feedback />
+				<Container
+					sx={{
+						display: "flex",
+						minHeight: "50vh",
+						height: "50vh",
+						flexDirection: "column",
+					}}
+				>
+					<Greeter_Provider></Greeter_Provider>
+				</Container>
+				<Container
+					className="outlined purple"
+					sx={{
+						display: "flex",
+						flexDirection: "column",
+						gap: "1rem",
+						height: "auto",
+					}}
+				>
+					<Feedback />
+				</Container>
 			</Container>
 		</>
 	);

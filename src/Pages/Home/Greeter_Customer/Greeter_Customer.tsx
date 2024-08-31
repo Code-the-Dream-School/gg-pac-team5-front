@@ -70,8 +70,10 @@ const Greeter_Customer = () => {
 						gridColumn: "-5 / -2",
 						gridRow: "-4 / -2",
 					}}
+					component={Link}
+					to="pages"
 				>
-					<Link to="pages">EXPLORE</Link>
+					EXPLORE
 				</Button>
 			</Container>
 		</Container>
