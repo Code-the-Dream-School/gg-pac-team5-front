@@ -46,7 +46,7 @@ export function Booking() {
                     <DialogContentText>
                         To make an appointment...
                     </DialogContentText>
-                    <DateTimePicker label="Appointment Time" />
+                    <DateTimePicker label="Time" />
                     <Autocomplete
                         disablePortal
                         options={[{ label: "test", id: 0 }]}
