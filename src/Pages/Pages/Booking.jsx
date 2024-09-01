@@ -46,14 +46,12 @@ export function Booking() {
                     <DialogContentText>
                         To make an appointment...
                     </DialogContentText>
+                    <DateTimePicker label="Appointment Time" />
                     <Autocomplete
                         disablePortal
                         options={[{ label: "test", id: 0 }]}
                         sx={{ width: 300 }}
                         renderInput={(params) => <TextField {...params} label="Services" />}
-                    />
-                    <DateTimePicker
-                        label="Appointment Time"
                     />
                 </DialogContent>
                 <DialogActions>
