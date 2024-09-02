@@ -8,7 +8,13 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { DateTimePicker } from '@mui/x-date-pickers';
 import { useNavigate } from 'react-router-dom';
-import Autocomplete from '@mui/material/Autocomplete';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Checkbox from '@mui/material/Checkbox';
+import Avatar from '@mui/material/Avatar';
 import "./Booking.css";
 
 export function Booking() {
@@ -47,12 +53,7 @@ export function Booking() {
                         To make an appointment...
                     </DialogContentText>
                     <DateTimePicker label="Time" />
-                    <Autocomplete
-                        disablePortal
-                        options={[{ label: "test", id: 0 }]}
-                        sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Services" />}
-                    />
+                    <ServiceList />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
@@ -60,5 +61,54 @@ export function Booking() {
                 </DialogActions>
             </Dialog>
         </React.Fragment>
+    );
+}
+
+function ServiceList() {
+    const [checked, setChecked] = React.useState([1]);
+
+    const handleToggle = (value) => () => {
+        const currentIndex = checked.indexOf(value);
+        const newChecked = [...checked];
+
+        if (currentIndex === -1) {
+            newChecked.push(value);
+        } else {
+            newChecked.splice(currentIndex, 1);
+        }
+
+        setChecked(newChecked);
+    };
+
+    return (
+        <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            {[0, 1, 2, 3].map((value) => {
+                const labelId = `checkbox-list-secondary-label-${value}`;
+                return (
+                    <ListItem
+                        key={value}
+                        secondaryAction={
+                            <Checkbox
+                                edge="end"
+                                onChange={handleToggle(value)}
+                                checked={checked.indexOf(value) !== -1}
+                                inputProps={{ 'aria-labelledby': labelId }}
+                            />
+                        }
+                        disablePadding
+                    >
+                        <ListItemButton>
+                            <ListItemAvatar>
+                                <Avatar
+                                    alt={`Avatar n°${value + 1}`}
+                                    src={`/static/images/avatar/${value + 1}.jpg`}
+                                />
+                            </ListItemAvatar>
+                            <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+                        </ListItemButton>
+                    </ListItem>
+                );
+            })}
+        </List>
     );
 }
