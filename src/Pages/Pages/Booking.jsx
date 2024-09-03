@@ -127,7 +127,7 @@ function ServiceList({ services }) {
                                     src={`/static/images/avatar/$.jpg`}
                                 />
                             </ListItemAvatar>
-                            <ListItemText id={labelId} primary={`${service.name}`} />
+                            <ListItemText id={labelId} primary={`${service.name}`} secondary={`$${service.price}`} />
                         </ListItemButton>
                     </ListItem>
                 );
