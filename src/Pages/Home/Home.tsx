@@ -1,36 +1,77 @@
+import { defer, useLoaderData } from "react-router-dom";
+import { Container, Grid } from "@mui/material";
 import { Carousel } from "./Carousel/Carousel";
 import { Greeter_Customer } from "./Greeter_Customer/Greeter_Customer";
-import { useLoaderData } from "react-router-dom";
 import "../../Assets/Home/Home.css";
 import { Parallax } from "./Divider/Parallax";
+import { Feedback } from "./Feedback/Feedback";
+import { SuspendedWrapperWithPromise } from "../../Reusable_Components/SuspendedWrapperWithPromise";
 
 type Card = number;
 type List = Card[];
 
-const loader = async (): Promise<List> => {
-	// API call to get data to display for carousel
-	return [1, 2, 3, 4, 5, 6, 7];
+const loader = async () => {
+	// Simulated API call to get data to display for the carousel
+	const axiosPromise = new Promise<List>((resolve) => {
+		// throw new Error("ALARM!");
+		setTimeout(() => {
+			resolve([1, 2, 3, 4, 5, 6, 7]);
+		}, 1300);
+	});
+
+	return defer({ provSummary: axiosPromise });
 };
 
 const Home = () => {
-	const provSummary = useLoaderData() as List;
+	const data = useLoaderData() as { provSummary: Promise<List> };
+	const { provSummary } = data;
 
 	return (
-		<main className="home-wrapper">
-			<section className="view one">
-				<Greeter_Customer />
-				<Carousel list={provSummary} />
-			</section>
-			<section className="view two">
+		<Container sx={{ overflowY: "hidden" }}>
+			<Container variant="containerNavbarTrimmed">
+				<Grid
+					container
+					className="outlined"
+					sx={{
+						padding: 0,
+						width: "100vw",
+						maxWidth: "100vw",
+						justifyContent: "space-between",
+						flexFlow: "column",
+					}}
+				>
+					<Grid>
+						<Greeter_Customer />
+					</Grid>
+					<Grid
+						sx={{
+							minHeight: "fit-content",
+						}}
+					>
+						<SuspendedWrapperWithPromise promise={provSummary}>
+							<Carousel />
+						</SuspendedWrapperWithPromise>
+					</Grid>
+				</Grid>
+			</Container>
+			<Container variant="fullScreen">
 				<Parallax />
-			</section>
-			<section className="view three">
+			</Container>
+			<Container variant="fullScreen" className="outlined red">
 				<div>Greeter_Provider</div>
-			</section>
-			<section className="view four">
-				<div>Feedback</div>
-			</section>
-		</main>
+			</Container>
+			<Container
+				className="outlined purple"
+				sx={{
+					display: "flex",
+					flexDirection: "column",
+					gap: "1rem",
+					height: "auto",
+				}}
+			>
+				<Feedback />
+			</Container>
+		</Container>
 	);
 };
 

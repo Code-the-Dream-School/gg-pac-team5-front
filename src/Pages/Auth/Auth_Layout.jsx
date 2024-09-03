@@ -1,4 +1,3 @@
-// Auth_Layout.jsx
 import React from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 import Login from './Login';
@@ -26,6 +25,5 @@ const Auth_Layout = ({ isAuthenticated, setIsAuthenticated }) => {
             )}
         </>
     );
-};
 
 export { Auth_Layout };

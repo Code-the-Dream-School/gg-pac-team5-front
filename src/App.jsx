@@ -4,20 +4,24 @@ import React from 'react';
 import { Outlet } from "react-router-dom";
 import { NavBar } from "./Layouts/Header/NavBar/NavBar";
 import { Footer } from "./Layouts/Footer/Footer";
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import UserProvider from "./hooks/UserProvider"
 import "./App.css";
 
 function App() {
 	return (
-		<UserProvider>
-			<div className="main-wrapper">
-				<NavBar />
-				<div className="content-wrapper">
-					<Outlet />
+		<LocalizationProvider dateAdapter={AdapterDayjs}>
+			<UserProvider>
+				<div className="main-wrapper">
+					<NavBar />
+					<div className="content-wrapper">
+						<Outlet />
+					</div>
+					<Footer />
 				</div>
-				<Footer />
-			</div>
-		</UserProvider>
+			</UserProvider>
+		</LocalizationProvider >
 	);
 }
 

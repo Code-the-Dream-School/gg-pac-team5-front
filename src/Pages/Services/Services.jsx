@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
-const Services = ({ title, image, details, Newroute }) => {
+const Services = ({ name, image, street, city, zip, country, Newroute }) => {
 
     const navigate = useNavigate();
     const handleServices = () => {
@@ -19,14 +19,17 @@ const Services = ({ title, image, details, Newroute }) => {
                 <CardMedia
                     sx={{ height: 240, border: 1 }}
                     image={image}
-                    title={title}
+                    name={name}
                 />
                 <CardContent >
                     <Typography gutterBottom variant="h5" component="div">
-                        {title}
+                        {name}
                     </Typography>
                     <Typography variant="h6" color="text.secondary">
-                        {details}
+                        {street}, {city},{zip}
+                    </Typography>
+                    <Typography variant="h6" color="text.secondary">
+                        {country}
                     </Typography>
                 </CardContent>
                 <CardActions >
