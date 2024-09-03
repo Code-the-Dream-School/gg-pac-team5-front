@@ -22,7 +22,7 @@
 	position: absolute;
 	overflow: hidden;
 	inset: 0;
-	z-index: 10;
+	z-index: 40;
 	height: 100%;
 	width: 100%;
 	background: grey;

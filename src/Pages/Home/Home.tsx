@@ -1,17 +1,11 @@
-import {
-	defer,
-	useLoaderData,
-	useLocation,
-	useNavigate,
-} from "react-router-dom";
-import { Container, Grid } from "@mui/material";
+import { defer, useLoaderData } from "react-router-dom";
+import { Container, useTheme } from "@mui/material";
 import { Carousel } from "./Carousel/Carousel";
 import { Greeter_Customer } from "./Greeter_Customer/Greeter_Customer";
 import { Parallax } from "./Divider/Parallax";
 import { Feedback } from "./Feedback/Feedback";
 import { SuspendedWrapperWithPromise } from "../../Reusable_Components/SuspendedWrapperWithPromise";
 import { Greeter_Provider } from "./Greeter_Provider/Greeter_Provider";
-import { useEffect, useRef } from "react";
 
 type Card = number;
 type List = Card[];
@@ -31,31 +25,31 @@ const loader = async () => {
 const Home = () => {
 	const data = useLoaderData() as { provSummary: Promise<List> };
 	const { provSummary } = data;
+	const theme = useTheme();
 
 	return (
 		<>
-			<Container variant="containerNavbarTrimmed">
+			<Container variant="greeter">
 				<Greeter_Customer />
 			</Container>
 			<Container
 				variant="fullScreen"
-				sx={{ display: "flex", flexFlow: "column" }}
+				sx={{
+					background: theme.palette.primary.gradientBackground,
+					overflow: "hidden",
+				}}
 			>
-				<Container sx={{ flexGrow: 1, zIndex: "tooltip" }}>
-					<SuspendedWrapperWithPromise promise={provSummary}>
-						<Carousel />
-					</SuspendedWrapperWithPromise>
-				</Container>
-				<Container sx={{ flexGrow: 3 }}>
-					<Parallax />
-				</Container>
+				<SuspendedWrapperWithPromise promise={provSummary}>
+					<Carousel />
+				</SuspendedWrapperWithPromise>
+				<Parallax />
 			</Container>
 			<Container sx={{ display: "flex", flexDirection: "column" }}>
 				<Container
 					sx={{
 						display: "flex",
-						minHeight: "50vh",
-						height: "50vh",
+						minHeight: "100vh",
+						height: "100vh",
 						flexDirection: "column",
 					}}
 				>
@@ -68,7 +62,8 @@ const Home = () => {
 					flexDirection: "column",
 					gap: "2rem",
 					height: "auto",
-					margin: "5rem 0",
+					padding: "5rem 0",
+					background: theme.palette.primary.gradientBackgroundBack,
 				}}
 			>
 				<Feedback />

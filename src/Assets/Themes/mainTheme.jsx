@@ -11,7 +11,7 @@
   const theme = createTheme(deepmerge(options1, options2));
 */
 
-import { orange, brown, purple } from "@mui/material/colors";
+import { orange, brown, blue } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 import { GlobalStyles } from "@mui/material";
 
@@ -23,6 +23,8 @@ const mainTheme = createTheme({
 		primary: {
 			main: orange[100],
 			darker: orange[200],
+			gradientBackground: `linear-gradient(to bottom, white, ${orange[100]}, ${blue[100]})`,
+			gradientBackgroundBack: `linear-gradient(180deg, ${blue[100]}, ${orange[100]})`,
 		},
 		secondary: {
 			main: brown["A700"],
@@ -96,6 +98,25 @@ const mainTheme = createTheme({
 					props: { variant: "fullScreen" },
 					style: {
 						height: "100vh",
+					},
+				},
+				{
+					props: { variant: "greeter" },
+					style: {
+						minHeight: "50vh",
+						height: "50vh",
+						"@media (min-width:600px)": {
+							minHeight: "100vh",
+							height: "100vh",
+						},
+						"@media (min-width:960px)": {
+							minHeight: "100vh",
+							height: "100vh",
+						},
+						"@media (min-width:1280px)": {
+							minHeight: "120vh",
+							height: "100vh",
+						},
 					},
 				},
 			],

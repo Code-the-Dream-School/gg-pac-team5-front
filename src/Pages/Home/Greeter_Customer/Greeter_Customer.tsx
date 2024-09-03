@@ -28,17 +28,25 @@ const Greeter_Customer = () => {
 
 	return (
 		<Container
-			sx={{ display: "flex", flexFlow: "column", height: "100%", gap: "2rem" }}
+			sx={{
+				display: "flex",
+				flexFlow: "column",
+				height: "100%",
+				justifyContent: "space-between",
+			}}
 		>
 			<Box
 				sx={{
-					paddingTop: `${theme.customVariables.appBarMinHeight}vh`,
+					paddingTop: {
+						xs: 0,
+						md: `${theme.customVariables.appBarMinHeight}vh`,
+					},
 					display: "flex",
 					flexFlow: "column",
 					justifyContent: "center",
 					alignItems: "center",
-					flexGrow: 1,
 					backgroundColor: "primary.main",
+					minHeight: { xs: "20%", md: "30%" },
 				}}
 				ref={appName}
 			>
@@ -50,7 +58,8 @@ const Greeter_Customer = () => {
 					display: "grid",
 					gridTemplateColumns: "repeat(12, 1fr)",
 					gridTemplateRows: "repeat(12, 1fr)",
-					height: "60%",
+					mt: { xs: "20%", md: "0" },
+					mb: { xs: "20%", md: "0" },
 				}}
 			>
 				<Typography
@@ -65,8 +74,8 @@ const Greeter_Customer = () => {
 				</Typography>
 				<Box
 					sx={{
-						gridColumn: "1 / 5",
-						gridRow: "3 / -1",
+						gridColumn: { xs: "1 / 8", md: "1 / 5" },
+						gridRow: { xs: "2 / -1", md: "3 / -1" },
 						overflow: "hidden",
 					}}
 				>
@@ -81,11 +90,19 @@ const Greeter_Customer = () => {
 					/>
 				</Box>
 				<Typography
-					variant="h2"
 					sx={{
-						gridColumn: "5 / -2",
-						gridRow: "6 / 9",
+						gridColumn: { xs: "6 / -1", md: "5 / -2" },
+						gridRow: { xs: "7 / -2", md: "6 / -2" },
 						textAlign: "end",
+						fontSize: {
+							xs: "14px",
+							sm: "16px",
+							md: "25px",
+							lg: "30px",
+						},
+						whiteSpace: { md: "nowrap" },
+						overflow: "hidden",
+						textOverflow: "ellipsis",
 					}}
 				>
 					Find the best, book fast, pay safe

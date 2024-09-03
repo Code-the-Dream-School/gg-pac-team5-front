@@ -79,12 +79,15 @@ const NavBar = () => {
 
 	return (
 		<AppBar
-			position="fixed"
 			sx={{
+				position: { xs: "static", md: "fixed" },
 				transition: "background-color 0.3s ease-in-out",
 				backgroundColor: isAppBarTransparent
 					? "rgba(255, 255, 255)"
 					: "primary.main",
+				maxWidth: 1200,
+				left: { xs: "0", md: "50%" },
+				transform: { xs: "none", md: "translateX(-50%)" },
 			}}
 			variant="mainNavBar"
 			ref={appBarElement}

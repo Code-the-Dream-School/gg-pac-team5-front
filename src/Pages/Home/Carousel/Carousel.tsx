@@ -72,17 +72,20 @@ const Carousel: FC<CarouselProps> = ({ resolvedPromise }) => {
 	return (
 		<section aria-labelledby="carousel-heading" className="carousel-wrapper">
 			<Typography
-				variant="h5"
-				component="h2"
+				variant="h3"
 				id="carousel-heading"
 				className="carousel-heading"
+				sx={{
+					textAlign: "center",
+					margin: "2rem 0",
+				}}
 			>
-				SAY HI TO YOUR BEAUTICIANS
+				Say hi to your local beauticians
 			</Typography>
 			{/* ref={ref} - to measure the element  */}
 			<motion.div
 				className="carousel-container"
-				style={{ x: xTranslation, overflowX: "hidden" }}
+				style={{ x: xTranslation, overflowX: "hidden", zIndex: 40 }}
 				ref={ref}
 				onHoverStart={() => {
 					setMustFinish(true);
