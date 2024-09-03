@@ -1,12 +1,17 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+
 import Services from './Services';
 import { FaSearch } from "react-icons/fa";
+import useTheme from "@mui/material/styles/useTheme";
 import "./Services.css";
 import Box from '@mui/material/Box';
 
 const Cards = () => {
+    const theme = useTheme();
     const [servicesSample, setServicesSample] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -46,24 +51,78 @@ const Cards = () => {
             console.error("Failed to fetch data:", err);
         }
     };
-
     return (
-        <div>
-            <h1>Give yourself a little pampering</h1><br />
-            <h3>Relax, sit back... We promise your best look!!</h3><br />
-
-            <h1>Explore our beauty services...</h1><br />
-            <div className="searchbar-input-wrapper">
+        <Container
+            maxWidth={false}
+            disableGutters
+            sx={{
+                display: "flex",
+                minHeight: '100vh',
+                flexFlow: "column",
+                height: "100vh",
+                width: "100vw",
+                padding: 0,
+                justifyContent: "space-between",
+                background: theme.palette.primary.gradientBackgroundBack,
+            }}>
+            <Box
+                sx={{
+                    paddingTop: {
+                        xs: 0,
+                        md: `${theme.customVariables.appBarMinHeight}vh`,
+                    },
+                    display: "flex",
+                    flexFlow: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "primary.main",
+                    minHeight: { xs: "20%", md: "30%" },
+                }}
+            >
+                <Typography variant="h2">Pychee</Typography>
+                <Typography variant="h2">Leachy</Typography>
+            </Box>
+            <br />
+            <Box
+                sx={{
+                    textAlign: "center",
+                    width: '100%'
+                }}>
+                <Typography >Give yourself a little pampering</Typography><br />
+                <Typography >Relax, sit back... We promise your best look!!</Typography><br />
+                <Typography >Explore our beauty services...</Typography><br />
+            </Box>
+            <Box
+                sx={{
+                    width: "50%",
+                    margin: '0 auto',
+                    height: '2.5rem',
+                    border: 'none',
+                    borderRadius: '10px',
+                    padding: '0 0 0 25px',
+                    boxShadow: '0px 0px 8px ',
+                    backgroundColor: 'white',
+                    display: 'flex',
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}>
                 <FaSearch id="search-icon" />
                 <input
-                    placeholder="Type to search..."
+
+                    placeholder="Search Services..."
                     onChange={handleSearchInputChange}
                 />
                 <Button variant="contained" size="medium" onClick={handleSearchClick}>
                     Search
                 </Button>
-            </div>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 2 }}>
+            </Box>
+            <Box
+                sx={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    gap: 2
+                }}>
                 {servicesSample.map((service, index) => (
                     <Box key={index} sx={{ width: { xs: '100%', sm: 'calc(50% - 16px)', md: 'calc(25% - 16px)' }, m: 1 }}>
                         <Services
@@ -80,10 +139,10 @@ const Cards = () => {
                 ))}
             </Box>
             <br />
-            <Button component={Link} to="/" variant="contained" color="primary" className="button wide tall luxury">
+            {/* <Button component={Link} to="/" variant="contained" color="primary" className="button tall luxury">
                 Return to home page
-            </Button>
-        </div>
+            </Button> */}
+        </Container >
     );
 };
 
