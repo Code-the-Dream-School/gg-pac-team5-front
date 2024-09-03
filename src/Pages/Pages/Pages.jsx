@@ -27,10 +27,10 @@ export const loader = async ({ params }) => {
 
 export const Pages = () => {
   const page = useLoaderData();
-
+  const vendorId = page.id;
   return (
     <>
-      <Outlet></Outlet>
+      <Outlet context={vendorId}></Outlet>
       <Card>
         <CardMedia image={import.meta.env.VITE_REACT_MSW ? page.backgroundImage : "http://not-yet-implemented.invalid/backgroundImage.png"}>
           <Avatar alt={page.name} src={import.meta.env.VITE_REACT_MSW ? page.profileImage : "http://not-yet-implemented.invalid/profileImage.png"} />

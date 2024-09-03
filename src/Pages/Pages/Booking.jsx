@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -14,9 +15,32 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
+import { MOCK_API } from "../../config";
+import { useOutletContext } from "react-router-dom";
 import "./Booking.css";
 
 export function Booking() {
+    const vendorId = useOutletContext();
+    const [services, setServices] = useState();
+    useEffect(() => async () => {
+        console.log(vendorId)
+        if (vendorId === null) {
+            return null;
+        }
+
+        if (import.meta.env.VITE_REACT_MSW) {
+            const res = await fetch(
+                `${MOCK_API}/services/vendorId/${vendorId}`
+            );
+            if (res.status === 404) {
+                throw new Response("Not Found", { status: 404 });
+            }
+            setServices(await res.json());
+        }
+
+        console.error("Not yet implemented");
+    }, [vendorId])
+
     const [open, setOpen] = React.useState(true);
     const navigate = useNavigate();
 
@@ -52,7 +76,7 @@ export function Booking() {
                         To make an appointment...
                     </DialogContentText>
                     <DateTimePicker label="Time" />
-                    <ServiceList />
+                    <ServiceList services={services} />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
@@ -63,15 +87,15 @@ export function Booking() {
     );
 }
 
-function ServiceList() {
+function ServiceList({ services }) {
     const [checked, setChecked] = React.useState([1]);
 
-    const handleToggle = (value) => () => {
-        const currentIndex = checked.indexOf(value);
+    const handleToggle = (service) => () => {
+        const currentIndex = checked.indexOf(service);
         const newChecked = [...checked];
 
         if (currentIndex === -1) {
-            newChecked.push(value);
+            newChecked.push(service);
         } else {
             newChecked.splice(currentIndex, 1);
         }
@@ -81,16 +105,16 @@ function ServiceList() {
 
     return (
         <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-            {[0, 1, 2, 3].map((value) => {
-                const labelId = `checkbox-list-secondary-label-${value}`;
+            {services?.map((service) => {
+                const labelId = `checkbox-list-secondary-label-${service.name}`;
                 return (
                     <ListItem
-                        key={value}
+                        key={service.id}
                         secondaryAction={
                             <Checkbox
                                 edge="end"
-                                onChange={handleToggle(value)}
-                                checked={checked.indexOf(value) !== -1}
+                                onChange={handleToggle(service)}
+                                checked={checked.indexOf(service) !== -1}
                                 inputProps={{ 'aria-labelledby': labelId }}
                             />
                         }
@@ -99,11 +123,11 @@ function ServiceList() {
                         <ListItemButton>
                             <ListItemAvatar>
                                 <Avatar
-                                    alt={`Avatar n°${value + 1}`}
-                                    src={`/static/images/avatar/${value + 1}.jpg`}
+                                    alt={`Avatar n°`}
+                                    src={`/static/images/avatar/$.jpg`}
                                 />
                             </ListItemAvatar>
-                            <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+                            <ListItemText id={labelId} primary={`${service.name}`} />
                         </ListItemButton>
                     </ListItem>
                 );

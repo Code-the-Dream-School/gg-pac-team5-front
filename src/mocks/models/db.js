@@ -59,6 +59,26 @@ handlers.push(
 // Add auto-generated CRUD api for /services
 handlers.push(...db.service.toHandlers("rest", MOCK_API));
 
+// Get services by vendorId
+handlers.push(
+  http.get(`${MOCK_API}/services/vendorId/:vendorId`, ({ params }) => {
+    const { vendorId } = params;
+    const response = db.service.findMany({
+      where: {
+        vendorId: {
+          equals: vendorId,
+        }
+      }
+    })
+
+    if (response.length === 0) {
+      return HttpResponse.json({ error: "Not Found" }, { status: 404 });
+    }
+
+    return HttpResponse.json(response);
+  })
+)
+
 // Seed vendor database
 for (let i = 0; i < 10; i++) {
   db.vendor.create();
