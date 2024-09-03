@@ -36,6 +36,7 @@ export function Booking() {
                 throw new Response("Not Found", { status: 404 });
             }
             setServices(await res.json());
+            return;
         }
 
         console.error("Not yet implemented");
