@@ -27,7 +27,7 @@ const db = factory({
   },
   appointment: {
     id: primaryKey(faker.string.uuid),
-    serviceId: String, // Simulate foreign key from service model
+    serviceIds: Array, // Simulate foreign key from service model
     userId: null, // Implement user model
     startTime: Date
   }
@@ -78,6 +78,9 @@ handlers.push(
     return HttpResponse.json(response);
   })
 )
+
+// Add auto-generated CRUD api for /appointments
+handlers.push(...db.appointment.toHandlers("rest", MOCK_API));
 
 // Seed vendor database
 for (let i = 0; i < 10; i++) {

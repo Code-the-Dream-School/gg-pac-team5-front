@@ -22,6 +22,7 @@ import "./Booking.css";
 export function Booking() {
     const vendorId = useOutletContext();
     const [services, setServices] = useState();
+    const [servicesCart, setServicesCart] = useState();
     useEffect(() => async () => {
         console.log(vendorId)
         if (vendorId === null) {
@@ -63,11 +64,8 @@ export function Booking() {
                     component: 'form',
                     onSubmit: (event) => {
                         event.preventDefault();
-                        const formData = new FormData(event.currentTarget);
-                        const formJson = Object.fromEntries(formData.entries());
-                        const email = formJson.email;
-                        console.log(email);
-                        handleClose();
+                        console.log(servicesCart);
+                        //handleClose();
                     },
                 }}
             >
@@ -77,7 +75,7 @@ export function Booking() {
                         To make an appointment...
                     </DialogContentText>
                     <DateTimePicker label="Time" />
-                    <ServiceList services={services} />
+                    <ServiceList services={services} setServicesCart={setServicesCart} />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
@@ -88,8 +86,8 @@ export function Booking() {
     );
 }
 
-function ServiceList({ services }) {
-    const [checked, setChecked] = React.useState([1]);
+function ServiceList({ services, setServicesCart }) {
+    const [checked, setChecked] = React.useState([]);
 
     const handleToggle = (service) => () => {
         const currentIndex = checked.indexOf(service);
@@ -102,12 +100,13 @@ function ServiceList({ services }) {
         }
 
         setChecked(newChecked);
+        setServicesCart(newChecked);
     };
 
     return (
         <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
             {services?.map((service) => {
-                const labelId = `checkbox-list-secondary-label-${service.name}`;
+                const labelId = `checkbox-list-secondary-label-${service.id}`;
                 return (
                     <ListItem
                         key={service.id}
@@ -133,6 +132,7 @@ function ServiceList({ services }) {
                     </ListItem>
                 );
             })}
+            <ListItemText id="price" primary="Total" secondary={`$${checked?.map((service) => service.price).reduce((price, total) => price + total, 0,)}`} />
         </List>
     );
 }
