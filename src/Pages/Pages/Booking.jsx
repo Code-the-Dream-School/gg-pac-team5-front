@@ -65,7 +65,26 @@ export function Booking() {
                     onSubmit: (event) => {
                         event.preventDefault();
                         console.log(servicesCart);
-                        //handleClose();
+                        if (import.meta.env.VITE_REACT_MSW) {
+                            const postAppointment = async () => {
+                                let response;
+                                try {
+                                    response = await fetch("http://localhost:8000/api/v0/appointments", {
+                                        headers: {
+                                            'Accept': 'application/json',
+                                            'Content-Type': 'application/json'
+                                        }, method: 'POST', body: JSON.stringify({ serviceIds: servicesCart.map((service) => service.id) })
+                                    })
+                                    let data = await response.json()
+
+                                    console.log(data)
+                                } catch (error) {
+                                    console.log(error)
+                                }
+                            }
+                            postAppointment();
+                        }
+                        handleClose();
                     },
                 }}
             >
