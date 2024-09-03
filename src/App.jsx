@@ -21,7 +21,6 @@ function App() {
 						margin: "auto",
 						minHeight: "100vh",
 					}}
-					className="outlined purple"
 				>
 					<NavBar />
 					<Container sx={{ flexGrow: 1 }}>

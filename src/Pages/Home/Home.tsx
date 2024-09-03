@@ -1,4 +1,9 @@
-import { defer, useLoaderData } from "react-router-dom";
+import {
+	defer,
+	useLoaderData,
+	useLocation,
+	useNavigate,
+} from "react-router-dom";
 import { Container, Grid } from "@mui/material";
 import { Carousel } from "./Carousel/Carousel";
 import { Greeter_Customer } from "./Greeter_Customer/Greeter_Customer";
@@ -6,6 +11,7 @@ import { Parallax } from "./Divider/Parallax";
 import { Feedback } from "./Feedback/Feedback";
 import { SuspendedWrapperWithPromise } from "../../Reusable_Components/SuspendedWrapperWithPromise";
 import { Greeter_Provider } from "./Greeter_Provider/Greeter_Provider";
+import { useEffect, useRef } from "react";
 
 type Card = number;
 type List = Card[];
@@ -44,10 +50,7 @@ const Home = () => {
 					<Parallax />
 				</Container>
 			</Container>
-			<Container
-				className="outlined red"
-				sx={{ display: "flex", flexDirection: "column" }}
-			>
+			<Container sx={{ display: "flex", flexDirection: "column" }}>
 				<Container
 					sx={{
 						display: "flex",
@@ -58,17 +61,17 @@ const Home = () => {
 				>
 					<Greeter_Provider></Greeter_Provider>
 				</Container>
-				<Container
-					className="outlined purple"
-					sx={{
-						display: "flex",
-						flexDirection: "column",
-						gap: "1rem",
-						height: "auto",
-					}}
-				>
-					<Feedback />
-				</Container>
+			</Container>
+			<Container
+				sx={{
+					display: "flex",
+					flexDirection: "column",
+					gap: "2rem",
+					height: "auto",
+					margin: "5rem 0",
+				}}
+			>
+				<Feedback />
 			</Container>
 		</>
 	);

@@ -1,9 +1,8 @@
-import { CSSProperties, useState, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { CSSProperties, useState, useContext, useRef, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import "../../../Assets/Layouts/NavBar.css";
 import { Button } from "@mui/material";
 import UserContext from "../../../hooks/UserContext";
-
 import { LogoComponent } from "../../../Reusable_Components/LogoComponent";
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
@@ -18,10 +17,43 @@ import MenuItem from "@mui/material/MenuItem";
 import { useTheme } from "@mui/material/styles";
 
 const NavBar = () => {
+	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+	const [isAppBarTransparent, setIsAppBarTransparent] =
+		useState<Boolean>(false);
 	const { user, logout } = useContext(UserContext);
-	const users = true;
-
+	const location = useLocation();
+	const appBarElement = useRef<HTMLDivElement>(null);
+	const appNameContainerBottom = location.state?.appNameBox?.bottom || 0;
 	const theme = useTheme();
+
+	useEffect(() => {
+		const handleScroll = () => {
+			if (appBarElement.current) {
+				const appBarRect = appBarElement.current.getBoundingClientRect();
+				const appBarBottomOnPage = window.scrollY + appBarRect.bottom;
+
+				// Check if the bottom of the AppBar has reached or passed appNameContainerBottom
+				if (appBarBottomOnPage >= appNameContainerBottom) {
+					// AppBar has reached the bottom of appNameContainer
+					setIsAppBarTransparent(true);
+				} else {
+					// AppBar has not reached the bottom of appNameContainer
+					setIsAppBarTransparent(false);
+				}
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll);
+
+		// Initial call to set state based on the current scroll position
+		handleScroll();
+
+		// Clean up event listener on component unmount
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, [appNameContainerBottom]);
+
 	const activeStyles: CSSProperties =
 		theme.components?.MuiLink?.styleOverrides?.root["&.active"] || {};
 
@@ -35,9 +67,8 @@ const NavBar = () => {
 			linksTo: "pages",
 		},
 	];
-	const [anchorElNav, setAnchorElNav] = useState(null);
 
-	const handleOpenNavMenu = (event) => {
+	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorElNav(event.currentTarget);
 	};
 
@@ -47,7 +78,17 @@ const NavBar = () => {
 	};
 
 	return (
-		<AppBar position="static" variant="mainNavBar">
+		<AppBar
+			position="fixed"
+			sx={{
+				transition: "background-color 0.3s ease-in-out",
+				backgroundColor: isAppBarTransparent
+					? "rgba(255, 255, 255)"
+					: "primary.main",
+			}}
+			variant="mainNavBar"
+			ref={appBarElement}
+		>
 			<Container maxWidth="xl" sx={{ height: "100%" }}>
 				<Toolbar sx={{ height: "100%" }}>
 					<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -99,27 +140,23 @@ const NavBar = () => {
 						<LogoComponent />
 					</Box>
 					<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-						{pages.map(({ displayedName, linksTo }) => {
-							return (
-								<Button
-									key={`${displayedName} ${linksTo}`}
-									onClick={handleCloseNavMenu}
-									sx={{
-										my: 2,
-										display: "block",
-										color: "text.primary",
-									}}
-									component={NavLink}
-									to={linksTo}
-									end
-									style={({ isActive }) =>
-										isActive ? activeStyles : undefined
-									}
-								>
-									{displayedName}
-								</Button>
-							);
-						})}
+						{pages.map(({ displayedName, linksTo }) => (
+							<Button
+								key={`${displayedName} ${linksTo}`}
+								onClick={handleCloseNavMenu}
+								sx={{
+									my: 2,
+									display: "block",
+									color: "text.primary",
+								}}
+								component={NavLink}
+								to={linksTo}
+								end
+								style={({ isActive }) => (isActive ? activeStyles : undefined)}
+							>
+								{displayedName}
+							</Button>
+						))}
 					</Box>
 					<Box
 						sx={{

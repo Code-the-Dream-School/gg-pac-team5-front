@@ -8,7 +8,6 @@ const Greeter_Provider = () => {
 	return (
 		<>
 			<Container
-				className="outlined blue"
 				sx={{
 					display: "flex",
 					flexBasis: "70%",
@@ -20,19 +19,18 @@ const Greeter_Provider = () => {
 				}}
 			>
 				<Typography
-					className="outlined purple"
 					variant="h5"
 					sx={{
 						flexBasis: "50%",
 						flexGrow: 0,
 						flexShrink: 0,
 						textAlign: "center",
+						marginTop: "10%",
 					}}
 				>
 					ARE YOU A BEAUTICIAN?
 				</Typography>
 				<Box
-					className="outlined"
 					sx={{
 						flexBasis: "50%",
 						flexGrow: 0,
@@ -47,7 +45,6 @@ const Greeter_Provider = () => {
 				>
 					<Box
 						component="img"
-						className="outlined"
 						sx={{
 							maxWidth: "100%",
 							maxHeight: "100%",
@@ -63,13 +60,32 @@ const Greeter_Provider = () => {
 				</Box>
 			</Container>
 			<Container
-				sx={{ flexBasis: "30%", flexGrow: 0, flexShrink: 0 }}
-				className="outlined"
+				sx={{
+					flexBasis: "30%",
+					flexGrow: 0,
+					flexShrink: 0,
+					display: "flex",
+					justifyContent: "space-around",
+					alignItems: "center",
+				}}
 			>
-				<Typography variant="h5">
+				<Typography
+					variant="h5"
+					sx={{
+						maxWidth: "70%",
+					}}
+				>
 					word one, word two, word thirty three
 				</Typography>
-				<Button variant="outlined" color="secondary" component={Link} to="auth">
+				<Button
+					variant="outlined"
+					sx={{
+						padding: { sx: "1rem", md: "1rem 5rem" },
+					}}
+					color="secondary"
+					component={Link}
+					to="auth"
+				>
 					Join us
 				</Button>
 			</Container>

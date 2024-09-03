@@ -38,6 +38,16 @@ const mainTheme = createTheme({
 			styleOverrides: {
 				root: ({ theme }) => ({
 					color: theme.palette.text.highlightedText,
+					fontSize: "16px",
+					[theme.breakpoints.up("sm")]: {
+						fontSize: "32px",
+					},
+					[theme.breakpoints.up("md")]: {
+						fontSize: "40px",
+					},
+					[theme.breakpoints.up("lg")]: {
+						fontSize: "30px",
+					},
 				}),
 			},
 		},
