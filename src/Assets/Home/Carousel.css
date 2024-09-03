@@ -14,8 +14,15 @@
 	border: 2px dotted red;
 	background-color: grey;
 	position: relative;
-	min-height: 25vw;
-	min-width: 25vw;
+	min-height: 35vw;
+	min-width: 35vw;
+}
+
+@media (max-width: 600px) {
+	.card-wrapper {
+		min-height: 55vw;
+		min-width: 55vw;
+	}
 }
 
 .card-overlay-wrapper {

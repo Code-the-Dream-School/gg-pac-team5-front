@@ -44,17 +44,16 @@ const Home = () => {
 				</SuspendedWrapperWithPromise>
 				<Parallax />
 			</Container>
-			<Container sx={{ display: "flex", flexDirection: "column" }}>
-				<Container
-					sx={{
-						display: "flex",
-						minHeight: "100vh",
-						height: "100vh",
-						flexDirection: "column",
-					}}
-				>
-					<Greeter_Provider></Greeter_Provider>
-				</Container>
+			<Container
+				variant="greeter"
+				sx={{
+					display: "flex",
+					flexDirection: "column",
+					pl: { xs: "2rem", md: "0" },
+					pr: { xs: "2rem", md: "0" },
+				}}
+			>
+				<Greeter_Provider />
 			</Container>
 			<Container
 				sx={{

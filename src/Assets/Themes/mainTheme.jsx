@@ -42,13 +42,25 @@ const mainTheme = createTheme({
 					color: theme.palette.text.highlightedText,
 					fontSize: "16px",
 					[theme.breakpoints.up("sm")]: {
-						fontSize: "32px",
+						fontSize: "20px",
 					},
 					[theme.breakpoints.up("md")]: {
-						fontSize: "40px",
+						fontSize: "32px",
 					},
 					[theme.breakpoints.up("lg")]: {
-						fontSize: "30px",
+						fontSize: "50px",
+					},
+				}),
+				body1: ({ theme }) => ({
+					fontSize: "16px",
+
+					color: theme.palette.text.primary,
+
+					[theme.breakpoints.up("sm")]: {
+						fontSize: "16px",
+					},
+					[theme.breakpoints.up("md")]: {
+						fontSize: "22px",
 					},
 				}),
 			},

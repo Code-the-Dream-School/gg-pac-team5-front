@@ -77,7 +77,7 @@ const Carousel: FC<CarouselProps> = ({ resolvedPromise }) => {
 				className="carousel-heading"
 				sx={{
 					textAlign: "center",
-					margin: "2rem 0",
+					margin: "5rem 0",
 				}}
 			>
 				Say hi to your local beauticians

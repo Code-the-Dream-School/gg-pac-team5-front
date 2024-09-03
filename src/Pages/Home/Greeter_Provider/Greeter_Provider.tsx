@@ -25,7 +25,7 @@ const Greeter_Provider = () => {
 						flexGrow: 0,
 						flexShrink: 0,
 						textAlign: "center",
-						marginTop: "10%",
+						mt: "10%",
 					}}
 				>
 					ARE YOU A BEAUTICIAN?

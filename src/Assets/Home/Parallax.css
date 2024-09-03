@@ -38,3 +38,9 @@
 	background-image: url("./public/Home/middle.png");
 	z-index: 15;
 }
+
+@media (max-width: 600px) {
+	.parallax.title {
+		display: none;
+	}
+}

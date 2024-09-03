@@ -63,7 +63,7 @@ const Greeter_Customer = () => {
 				}}
 			>
 				<Typography
-					variant="h3"
+					variant="h6"
 					sx={{
 						gridColumn: { xs: "1 / -1", md: "4 / -4" },
 						gridRow: "1 / 4",
@@ -91,8 +91,8 @@ const Greeter_Customer = () => {
 				</Box>
 				<Typography
 					sx={{
-						gridColumn: { xs: "6 / -1", md: "5 / -2" },
-						gridRow: { xs: "7 / -2", md: "6 / -2" },
+						gridColumn: { xs: "7 / -2", md: "5 / -2" },
+						gridRow: { xs: "5 / -2", md: "6 / -2" },
 						textAlign: "end",
 						fontSize: {
 							xs: "14px",
@@ -111,7 +111,7 @@ const Greeter_Customer = () => {
 					variant="outlined"
 					color="secondary"
 					sx={{
-						gridColumn: "-5 / -2",
+						gridColumn: { xs: "8 / -2", md: "5 / -2" },
 						gridRow: "-4 / -2",
 					}}
 					component={Link}
