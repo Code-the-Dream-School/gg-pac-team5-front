@@ -151,7 +151,7 @@ function ServiceList({ services, setServicesCart }) {
                     </ListItem>
                 );
             })}
-            <ListItemText id="price" primary="Total" secondary={`$${checked?.map((service) => service.price).reduce((price, total) => price + total, 0,)}`} />
+            <ListItemText id="price" primary="Total" secondary={`$${checked?.map((service) => service.price).reduce((price, total) => Number.parseInt(price) + Number.parseInt(total), 0)}`} />
         </List>
     );
 }
