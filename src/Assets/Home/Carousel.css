@@ -1,27 +1,35 @@
 .carousel-wrapper {
-	overflow: scroll;
+	overflow-x: hidden;
 	flex: 1;
 	min-width: max-content;
 }
+
 .carousel-container {
 	position: absolute;
 	display: flex;
 	gap: 1rem;
-	overflow: hidden;
 }
 
 .card-wrapper {
 	border: 2px dotted red;
+	background-color: grey;
 	position: relative;
-	min-height: 25vw;
-	min-width: 25vw;
+	min-height: 35vw;
+	min-width: 35vw;
+}
+
+@media (max-width: 600px) {
+	.card-wrapper {
+		min-height: 55vw;
+		min-width: 55vw;
+	}
 }
 
 .card-overlay-wrapper {
 	position: absolute;
 	overflow: hidden;
 	inset: 0;
-	z-index: 10;
+	z-index: 40;
 	height: 100%;
 	width: 100%;
 	background: grey;

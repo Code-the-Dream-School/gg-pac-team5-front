@@ -107,7 +107,7 @@ const ReviewCard = ({ message }) => {
 				}}
 				variant="outlined"
 			>
-				<Typography variant="body2" sx={{ textAlign: "center" }}>
+				<Typography variant="body1" sx={{ textAlign: "center" }}>
 					{message}
 				</Typography>
 			</Paper>
