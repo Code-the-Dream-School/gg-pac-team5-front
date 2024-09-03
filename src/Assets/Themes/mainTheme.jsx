@@ -53,9 +53,7 @@ const mainTheme = createTheme({
 				}),
 				body1: ({ theme }) => ({
 					fontSize: "16px",
-
 					color: theme.palette.text.primary,
-
 					[theme.breakpoints.up("sm")]: {
 						fontSize: "16px",
 					},
