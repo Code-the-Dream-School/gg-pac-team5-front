@@ -6,10 +6,12 @@ import { Parallax } from "./Divider/Parallax";
 import { Feedback } from "./Feedback/Feedback";
 import { SuspendedWrapperWithPromise } from "../../Reusable_Components/SuspendedWrapperWithPromise";
 import { Greeter_Provider } from "./Greeter_Provider/Greeter_Provider";
-
+import { API } from "../../config.js";
+import { getData } from "../../util";
 type Card = number;
 type List = Card[];
 
+/*
 const loader = async () => {
 	// Simulated API call to get data to display for the carousel
 	const axiosPromise = new Promise<List>((resolve) => {
@@ -19,12 +21,16 @@ const loader = async () => {
 		}, 1300);
 	});
 
-	return defer({ provSummary: axiosPromise });
+	return defer({ vendors: axiosPromise });
+};
+*/
+const loader = async () => {
+	return defer({ vendors: getData(`${API}/vendors`) });
 };
 
 const Home = () => {
-	const data = useLoaderData() as { provSummary: Promise<List> };
-	const { provSummary } = data;
+	const data = useLoaderData() as { vendors: Promise<List> };
+	const { vendors } = data;
 	const theme = useTheme();
 
 	return (
@@ -39,7 +45,7 @@ const Home = () => {
 					overflow: "hidden",
 				}}
 			>
-				<SuspendedWrapperWithPromise promise={provSummary}>
+				<SuspendedWrapperWithPromise promise={vendors}>
 					<Carousel />
 				</SuspendedWrapperWithPromise>
 				<Parallax />

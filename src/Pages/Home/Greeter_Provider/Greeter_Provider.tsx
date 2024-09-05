@@ -55,7 +55,7 @@ const Greeter_Provider = () => {
 							objectPosition: "50% 0",
 						}}
 						alt="Beautician smiling"
-						src="/public/Home/front_2.png"
+						src="/Home/front_2.png"
 					/>
 				</Box>
 			</Container>
