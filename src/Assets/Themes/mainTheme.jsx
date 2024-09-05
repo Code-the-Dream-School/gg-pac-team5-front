@@ -22,6 +22,7 @@ const mainTheme = createTheme({
 	palette: {
 		primary: {
 			main: orange[100],
+			light: orange[50],
 			darker: orange[200],
 			gradientBackground: `linear-gradient(to bottom, white, ${orange[100]}, ${blue[100]})`,
 			gradientBackgroundBack: `linear-gradient(180deg, ${blue[100]}, ${orange[100]})`,
@@ -52,16 +53,46 @@ const mainTheme = createTheme({
 					},
 				}),
 				body1: ({ theme }) => ({
-					fontSize: "16px",
+					fontSize: "10px",
 					color: theme.palette.text.primary,
 					[theme.breakpoints.up("sm")]: {
-						fontSize: "16px",
+						fontSize: "10px",
 					},
 					[theme.breakpoints.up("md")]: {
-						fontSize: "22px",
+						fontSize: "16px",
+					},
+				}),
+
+				h5: ({ theme }) => ({
+					fontSize: "14px",
+					color: theme.palette.text.primary,
+					[theme.breakpoints.up("sm")]: {
+						fontSize: "14px",
+					},
+					[theme.breakpoints.up("md")]: {
+						fontSize: "24px",
 					},
 				}),
 			},
+			variants: [
+				{
+					props: { variant: "collapsed" },
+					style: {
+						textAlign: "center",
+						overflow: "hidden",
+						textOverflow: "ellipsis",
+						display: "-webkit-box",
+						WebkitBoxOrient: "vertical",
+						WebkitLineClamp: 5,
+					},
+				},
+				{
+					props: { variant: "expanded" },
+					style: {
+						textAlign: "center",
+					},
+				},
+			],
 		},
 		MuiAppBar: {
 			variants: [

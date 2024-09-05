@@ -1,27 +1,16 @@
 import { Avatar, Box, Paper, Rating, Typography } from "@mui/material";
 import { ReviewCardBox } from "../../../Layouts/Review_Card/ReviewCardBox";
-
-// 35 characters per line estimately
-const calcBoxHeight = (string) => {
-	const maximumNumberOfChars = 170;
-	const charsPerLine = 35;
-	const baseGridRows = 12; // Minimum grid rows to display
-
-	return string.length < maximumNumberOfChars
-		? `repeat(${baseGridRows}, minmax(min-content, auto))`
-		: `repeat(${
-				Math.ceil(string.length / charsPerLine) + baseGridRows
-		  }, minmax(min-content, auto))`;
-};
+import { useEffect, useState } from "react";
 
 const ReviewCard = ({ message }) => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	const handleExpandReviewBox = () => {
+		setIsOpen(!isOpen);
+	};
+
 	return (
-		<ReviewCardBox
-			sx={{
-				gridTemplateRows: calcBoxHeight(message),
-				minHeight: "fit-content",
-			}}
-		>
+		<ReviewCardBox onClick={handleExpandReviewBox}>
 			{/* 
 
     AVATAR
@@ -102,12 +91,11 @@ const ReviewCard = ({ message }) => {
 					padding: "1rem",
 					marginRight: "1rem",
 					flex: 1,
-					height: "auto",
-					overflow: "visible",
+					height: isOpen ? "auto" : "12rem",
 				}}
 				variant="outlined"
 			>
-				<Typography variant="body1" sx={{ textAlign: "center" }}>
+				<Typography variant={isOpen ? "expanded" : "collapsed"}>
 					{message}
 				</Typography>
 			</Paper>

@@ -31,6 +31,7 @@ const Greeter_Customer = () => {
 			sx={{
 				display: "flex",
 				flexFlow: "column",
+				minHeight: "400px",
 				height: "100%",
 				justifyContent: "space-between",
 			}}
@@ -80,7 +81,7 @@ const Greeter_Customer = () => {
 					}}
 				>
 					<img
-						src="/public/Home/front_1.png"
+						src="/Home/front_1.png"
 						alt="model person"
 						style={{
 							maxWidth: "100%",

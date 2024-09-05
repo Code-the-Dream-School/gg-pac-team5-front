@@ -8,20 +8,31 @@
 	position: absolute;
 	display: flex;
 	gap: 1rem;
+	overflow-x: hidden;
+	z-index: 40;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 .card-wrapper {
-	border: 2px dotted red;
-	background-color: grey;
+	background-color: white;
 	position: relative;
 	min-height: 35vw;
 	min-width: 35vw;
+	max-height: 35vw;
+	max-width: 35vw;
+	overflow: hidden;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	border-radius: 5px;
 }
 
 @media (max-width: 600px) {
 	.card-wrapper {
 		min-height: 55vw;
 		min-width: 55vw;
+		max-height: 55vw;
+		max-width: 55vw;
 	}
 }
 
@@ -32,7 +43,7 @@
 	z-index: 40;
 	height: 100%;
 	width: 100%;
-	background: grey;
+	background: rgba(128, 128, 128, 0.5);
 }
 
 .card-overlay-container {

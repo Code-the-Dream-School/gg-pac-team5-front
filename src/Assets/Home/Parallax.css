@@ -25,17 +25,17 @@
 }
 
 .parallax.left {
-	background-image: url("/public/Home/left.png");
+	background-image: url("/Home/left.png");
 	z-index: 5;
 }
 
 .parallax.right {
-	background-image: url("/public/Home/right.png");
+	background-image: url("/Home/right.png");
 	z-index: 10;
 }
 
 .parallax.middle {
-	background-image: url("./public/Home/middle.png");
+	background-image: url("/Home/middle.png");
 	z-index: 15;
 }
 
