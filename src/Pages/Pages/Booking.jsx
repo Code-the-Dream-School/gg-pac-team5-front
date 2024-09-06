@@ -17,7 +17,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
 import { MOCK_API } from "../../config";
 import { useOutletContext } from "react-router-dom";
-import "./Booking.css";
+import styles from "./Booking.module.css";
 
 export function Booking() {
     const vendorId = useOutletContext();
@@ -58,6 +58,7 @@ export function Booking() {
     return (
         <React.Fragment>
             <Dialog
+                className={styles.revertOverflowX}
                 open={open}
                 onClose={handleClose}
                 PaperProps={{
