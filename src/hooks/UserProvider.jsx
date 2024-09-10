@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import UserContext from './UserContext'
 import { useNavigate } from 'react-router'
+import { API } from '../config'
 
 const UserProvider = ({ children }) => {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ const UserProvider = ({ children }) => {
         async function postLogin() {
             let response;
             try {
-                response = await fetch("http://localhost:8000/api/v1/auth/client-login", {
+                response = await fetch(`${API}/auth/client-login`, {
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
