@@ -3,3 +3,4 @@
 .gitignore
 *.env
 *.env.local
+/dist
