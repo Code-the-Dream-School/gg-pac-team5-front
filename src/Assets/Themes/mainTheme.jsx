@@ -25,7 +25,7 @@ const mainTheme = createTheme({
 			light: orange[50],
 			darker: orange[200],
 			gradientBackground: `linear-gradient(to bottom, white, ${orange[100]}, ${blue[100]})`,
-			gradientBackgroundBack: `linear-gradient(180deg, ${blue[100]}, ${orange[100]})`,
+			gradientBackgroundBack: `linear-gradient(180deg, white, ${blue[100]}, ${orange[100]})`,
 		},
 		secondary: {
 			main: brown["A700"],
