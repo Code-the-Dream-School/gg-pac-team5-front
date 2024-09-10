@@ -15,7 +15,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
-import { MOCK_API } from "../../config";
+import { API } from "../../config";
 import { useOutletContext } from "react-router-dom";
 import styles from "./Booking.module.css";
 
@@ -24,23 +24,21 @@ export function Booking() {
     const [services, setServices] = useState();
     const [servicesCart, setServicesCart] = useState();
     useEffect(() => async () => {
-        console.log(vendorId)
         if (vendorId === null) {
             return null;
         }
 
-        if (import.meta.env.VITE_REACT_MSW) {
-            const res = await fetch(
-                `${MOCK_API}/services/vendorId/${vendorId}`
-            );
-            if (res.status === 404) {
-                throw new Response("Not Found", { status: 404 });
-            }
-            setServices(await res.json());
-            return;
-        }
 
-        console.error("Not yet implemented");
+        const res = await fetch(
+            `${API}/services/vendorId/${vendorId}`
+        );
+        if (res.status === 404) {
+            throw new Response("Not Found", { status: 404 });
+        }
+        setServices(await res.json());
+        return;
+
+
     }, [vendorId])
 
     const [open, setOpen] = React.useState(true);
@@ -65,7 +63,7 @@ export function Booking() {
                     component: 'form',
                     onSubmit: (event) => {
                         event.preventDefault();
-                        console.log(servicesCart);
+
                         if (import.meta.env.VITE_REACT_MSW) {
                             const postAppointment = async () => {
                                 let response;
@@ -78,9 +76,9 @@ export function Booking() {
                                     })
                                     let data = await response.json()
 
-                                    console.log(data)
+
                                 } catch (error) {
-                                    console.log(error)
+                                    console.error(error)
                                 }
                             }
                             postAppointment();
