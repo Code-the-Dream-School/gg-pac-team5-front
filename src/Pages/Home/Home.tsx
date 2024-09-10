@@ -25,7 +25,7 @@ const loader = async () => {
 };
 */
 const loader = async () => {
-	return defer({ vendors: getData(`${API}/vendors`) });
+	return defer({ vendors: getData(`${import.meta.env.VITE_API_URL}/vendors`) });
 };
 
 const Home = () => {
