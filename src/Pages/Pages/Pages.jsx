@@ -4,20 +4,18 @@ import { Avatar, Button, Card, CardMedia, Typography, Tabs, Tab, Box, Container 
 import { API } from "../../config"
 
 export const loader = async ({ params }) => {
-  // Hack to get vendor name from backend api
   const res = await fetch(
-    `${API}/vendors`
+    `${API}/vendors/name/${params.pageName}`
   );
   if (res.status === 404) {
     throw new Response("Not Found", { status: 404 });
   }
-  const data = await res.json();
-  return data.vendors.find((vendor) => vendor.name === params.pageName);
+  return (await res.json()).vendor;
 }
 
 export const Pages = () => {
   const vendor = useLoaderData();
-  const vendorId = vendor.id;
+  const vendorId = vendor._id;
   return (
     <>
       <Container
