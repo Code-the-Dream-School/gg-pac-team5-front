@@ -1,9 +1,10 @@
-import React from 'react';
+// Auth_Layout.jsx
+import React, { useState } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 import Login from './Login';
-// import NavBar  from '../../Layouts/Header/NavBar/NavBar.tsx';
 
-export const Auth_Layout = ({ isAuthenticated, setIsAuthenticated }) => {
+export const Auth_Layout = () => {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const navigate = useNavigate();
 
     const handleLogin = (email, password) => {
@@ -17,7 +18,6 @@ export const Auth_Layout = ({ isAuthenticated, setIsAuthenticated }) => {
 
     return (
         <>
-            {/* <NavBar isAuthenticated={isAuthenticated} /> NavBar displaying twice, commented this line out to prevent duplicate */}
             {isAuthenticated ? (
                 <Outlet />
             ) : (
@@ -26,5 +26,3 @@ export const Auth_Layout = ({ isAuthenticated, setIsAuthenticated }) => {
         </>
     );
 };
-
-export default Auth_Layout;
