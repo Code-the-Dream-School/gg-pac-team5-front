@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 import Login from './Login';
-// import { NavBar } from '../../Layouts/Header/NavBar/NavBar.tsx';
+// import NavBar  from '../../Layouts/Header/NavBar/NavBar.tsx';
 
-const Auth_Layout = ({ isAuthenticated, setIsAuthenticated }) => {
+export const Auth_Layout = ({ isAuthenticated, setIsAuthenticated }) => {
     const navigate = useNavigate();
 
     const handleLogin = (email, password) => {
@@ -17,7 +17,7 @@ const Auth_Layout = ({ isAuthenticated, setIsAuthenticated }) => {
 
     return (
         <>
-            {/* <NavBar isAuthenticated={isAuthenticated} /> NavBar displaying twice, commented this line out to prevent duplicate*/}
+            {/* <NavBar isAuthenticated={isAuthenticated} /> NavBar displaying twice, commented this line out to prevent duplicate */}
             {isAuthenticated ? (
                 <Outlet />
             ) : (
@@ -25,5 +25,6 @@ const Auth_Layout = ({ isAuthenticated, setIsAuthenticated }) => {
             )}
         </>
     );
+};
 
-export { Auth_Layout };
+export default Auth_Layout;
