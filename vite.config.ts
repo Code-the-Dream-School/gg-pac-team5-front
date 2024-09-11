@@ -24,7 +24,7 @@ export default defineConfig(({ command, mode }) => {
 
 		// Define custom environment variables
 		define: {
-			"import.meta.env.VITE_API_URL": JSON.stringify(process.env.API_URL),
+			VITE_API_URL: JSON.stringify(process.env.API_URL),
 		},
 	};
 });
