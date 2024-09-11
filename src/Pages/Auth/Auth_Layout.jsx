@@ -1,4 +1,3 @@
-// Auth_Layout.jsx
 import React, { useState } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 import Login from './Login';
