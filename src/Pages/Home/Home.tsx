@@ -25,6 +25,8 @@ const loader = async () => {
 };
 */
 const loader = async () => {
+	console.log("API URL IS:");
+	console.log(import.meta.env.VITE_API_URL);
 	return defer({ vendors: getData(`${import.meta.env.VITE_API_URL}/vendors`) });
 };
 
