@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -14,8 +15,8 @@ import IconButton from '@mui/material/IconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import styles from "../../Assets/Profile/Profile.module.css";
 
-const ExpandMore = styled(({ ...other }) => (
-  <IconButton {...other} />
+const ExpandMore = styled(({ expand, ...props }) => (
+  <IconButton {...props} />
 ))(({ theme, expand }) => ({
   transform: expand ? 'rotate(0deg)' : 'rotate(180deg)',
   marginLeft: 'auto',
@@ -23,6 +24,7 @@ const ExpandMore = styled(({ ...other }) => (
     duration: theme.transitions.duration.shortest,
   }),
 }));
+
 
 export default function BasicCard() {
   const date = new Date();
@@ -32,7 +34,6 @@ export default function BasicCard() {
     month: 'long',
     day: 'numeric',
   });
-
 
   const [expanded, setExpanded] = React.useState(false);
   const [editMode, setEditMode] = useState(false);
@@ -55,8 +56,7 @@ export default function BasicCard() {
     setEditMode(false);
   };
 
-// Share via email 
-  const emailTo = 'aaa@aaa.aaa';
+  const emailTo = 'Enter email here';
   const emailSubject = 'Check out our beauty services!';
   const emailBody = `Hi there,
  
@@ -84,7 +84,9 @@ export default function BasicCard() {
         </CardContent>
         <CardActions>
           <Link to="/">
-            <Button size="medium">Return to the home page</Button>
+            <Button size="small" variant="contained" color="primary"
+            >Return to the home page
+            </Button>
           </Link>
         </CardActions>
       </Card>
@@ -98,12 +100,13 @@ export default function BasicCard() {
           <Typography variant="body1" sx={{ mt: 3 }}>
             Your last beauty appointment was on: July 22, 2024.
             <br />
-            Your upcoming beauty appointment is scheduled on: September 13, 2024.
+            Your upcoming beauty appointment is scheduled on: September 16, 2024.
           </Typography>
         </CardContent>
         <CardActions>
           <Link to="/pages">
-            <Button size="medium">Book your next appointment</Button>
+          <Button size="small" variant="contained" color="primary"
+            >Book your next appointment</Button>
           </Link>
         </CardActions>
       </Card>
@@ -124,9 +127,10 @@ export default function BasicCard() {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="medium" component="a" href={`mailto:${emailTo}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`}>
-  Share via Email
-</Button>
+          <Button component="a" size="small" variant="contained" color="primary"
+          href={`mailto:${emailTo}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`}
+            >Share via Email
+          </Button>
         </CardActions>
       </Card>
 
