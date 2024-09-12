@@ -12,6 +12,8 @@ import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 // import image1 from '../../Assets/Services/salon-service-1.jpg'
+import { API } from "../../config";
+
 
 const Cards = () => {
     const theme = useTheme();
@@ -35,7 +37,8 @@ const Cards = () => {
     }, []);
 
     const fetchInitialData = async () => {
-        const API_URL = "https://gg-pac-team5-back-1.onrender.com/api/v1/vendors"
+        const API_URL = `${API}/vendors`
+        // const API_URL = "https://gg-pac-team5-back-1.onrender.com/api/v1/vendors"
         // const API_URL = "http://localhost:8000/api/v1/vendors";
         try {
             const resp = await fetch(API_URL);
@@ -69,7 +72,8 @@ const Cards = () => {
     };
 
     const fetchData = async (query = '', city = '') => {
-        const API_URL = "https://gg-pac-team5-back-1.onrender.com/api/v1/vendors"
+        const API_URL = `${API}/vendors`
+        // const API_URL = "https://gg-pac-team5-back-1.onrender.com/api/v1/vendors"
         // const API_URL = "http://localhost:8000/api/v1/vendors";
         try {
             const resp = await fetch(API_URL);
@@ -228,8 +232,7 @@ const Cards = () => {
                         <Button
                             size="small"
                             onClick={handleReturnClick}
-                            // component={Link}
-                            // to="/pages"
+
                             variant="outlined"
                             color="secondary" >Return to Services</Button>
                     </CardActions>

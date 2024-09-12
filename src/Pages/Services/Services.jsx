@@ -9,17 +9,6 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
 const Services = ({ name, image, street, city, zip, country }) => {
-
-    // const navigate = useNavigate();
-    // const handleServices = () => {
-    //     // navigate(Newroute);
-    //     if (Newroute) {
-    //         // alert(Newroute)
-    //         navigate(Newroute);
-    //     } else {
-    //         alert("No route provided for navigation.");
-    //     }
-    // };
     return (
         <div>
             <Card sx={{ m: 1, p: 1, border: 1, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} >
@@ -40,14 +29,12 @@ const Services = ({ name, image, street, city, zip, country }) => {
                     </Typography>
                 </CardContent>
                 <CardActions >
-                    <Link to={`${encodeURIComponent(name)}`}>
+                    <Link to={`${name}`}>
                         <Button size="large" variant="contained">Learn More</Button>
                     </Link>
-                    {/* <Link to={`pages/${name}`}> <Button size="large" variant="contained" >Learn More</Button></Link> */}
-                    {/* <Button size="large" onClick={handleServices} variant="contained" >Learn More</Button> */}
                 </CardActions>
             </Card >
-        </div>
+        </div >
     );
 }
 export default Services;

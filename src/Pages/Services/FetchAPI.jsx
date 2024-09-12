@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-
+import { API } from "../../config";
 const FetchAPI = ({ setServicesSample, searchQuery }) => {
 
-    const API_URL = "https://gg-pac-team5-back-1.onrender.com/api/v1/vendors"
-
+    // const API_URL = "https://gg-pac-team5-back-1.onrender.com/api/v1/vendors"
+    const API_URL = `${API}/vendors`
     const getData = async () => {
+
 
         try {
             const resp = await fetch(API_URL);
@@ -22,7 +23,7 @@ const FetchAPI = ({ setServicesSample, searchQuery }) => {
                 state: item.state,
                 zip: item.zip,
                 country: item.country,
-                image: item.imgs[Math.floor(Math.random() * 5) + 1],
+                image: item.images[Math.floor(Math.random() * 5) + 1],
                 // image: item.image || 'https://via.placeholder.com/140', // Placeholder image
                 // Newroute: `/pages/${item.name}`
             }));
@@ -38,6 +39,5 @@ const FetchAPI = ({ setServicesSample, searchQuery }) => {
             getData();
         }
     }, [searchQuery, setServicesSample]);
-
 }
 export default FetchAPI;

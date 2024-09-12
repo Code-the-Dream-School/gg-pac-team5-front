@@ -33,11 +33,11 @@ export const Pages = () => {
         <Outlet context={vendorId}></Outlet>
         <Box sx={{ display: 'flex', gap: '2em', flexWrap: 'wrap', padding: '2em', alignItems: 'center' }}>
           <Card>
-            <CardMedia image={vendor.profile.backgroundImage}>
+            {/* <CardMedia image={vendor.profile.backgroundImage}>
               <Avatar alt={vendor.name} src={vendor.profile.profileImage} />
-            </CardMedia>
+            </CardMedia> */}
             <Typography gutterBottom variant="h4" component="div">{vendor.name}</Typography>
-            <Typography gutterBottom variant="h6" component="div">{vendor.profile.summary}</Typography>
+            {/* <Typography gutterBottom variant="h6" component="div">{vendor.profile.summary}</Typography> */}
             <Link to="book">
               <Button variant="contained">Make an appointment</Button>
             </Link>
@@ -49,7 +49,7 @@ export const Pages = () => {
               <Tab label="Services">
               </Tab>
             </Tabs>
-            <Typography gutterBottom variant="body1" component="div">{vendor.profile.description}</Typography>
+            {/* <Typography gutterBottom variant="body1" component="div">{vendor.profile.description}</Typography> */}
           </Card>
           <br />
           <Link to="/pages">
