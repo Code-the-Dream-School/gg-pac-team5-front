@@ -1,5 +1,5 @@
 import CardActions from '@mui/material/CardActions';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import Container from "@mui/material/Container";
@@ -11,7 +11,7 @@ import "./Services.css";
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import image1 from '../../Assets/Services/salon-service-1.jpg'
+// import image1 from '../../Assets/Services/salon-service-1.jpg'
 
 const Cards = () => {
     const theme = useTheme();
@@ -22,12 +22,21 @@ const Cards = () => {
     const [cityFilter, setCityFilter] = useState('');
     const [cityOptions, setCityOptions] = useState([]);
 
+    const images = {
+        1: "/Home/carousel_backup_1.jpg",
+        2: "/Home/carousel_backup_2.jpg",
+        3: "/Home/carousel_backup_3.jpg",
+        4: "/Home/carousel_backup_4.jpg",
+        5: "/Home/carousel_backup_5.jpg",
+    };
+
     useEffect(() => {
         fetchInitialData();
     }, []);
 
     const fetchInitialData = async () => {
-        const API_URL = "http://localhost:8000/api/v1/vendors";
+        const API_URL = "https://gg-pac-team5-back-1.onrender.com/api/v1/vendors"
+        // const API_URL = "http://localhost:8000/api/v1/vendors";
         try {
             const resp = await fetch(API_URL);
             const json = await resp.json();
@@ -60,7 +69,8 @@ const Cards = () => {
     };
 
     const fetchData = async (query = '', city = '') => {
-        const API_URL = "http://localhost:8000/api/v1/vendors";
+        const API_URL = "https://gg-pac-team5-back-1.onrender.com/api/v1/vendors"
+        // const API_URL = "http://localhost:8000/api/v1/vendors";
         try {
             const resp = await fetch(API_URL);
             const json = await resp.json();
@@ -78,9 +88,9 @@ const Cards = () => {
                 state: item.state,
                 zip: item.zip,
                 country: item.country,
-                // image: images[index % images.length],
-                image: item.image || image1,//'https://via.placeholder.com/140'
-                Newroute: `/pages/${item.name}`
+                image: item.img ? item.img : images[Math.floor(Math.random() * 5) + 1],
+                // image: item.image || image1,//'https://via.placeholder.com/140'
+                // Newroute: `/pages/${encodeURIComponent(item.name)}`
             }));
 
             setServicesSample(formattedData);
@@ -203,7 +213,7 @@ const Cards = () => {
                                     state={service.state}
                                     zip={service.zip}
                                     country={service.country}
-                                    Newroute={service.Newroute}
+                                // Newroute={service.Newroute}
                                 />
                             </Box>
                         ))}

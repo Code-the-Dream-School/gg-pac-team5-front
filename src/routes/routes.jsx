@@ -30,7 +30,11 @@ const routes = [
 				],
 			},
 			{
-				path: "pages/:pageName",
+				path: "pages",
+				element: <Cards />,
+			},
+			{
+				path: "/pages/:pageName",
 				element: <Pages />,
 				loader: pagesLoader,
 				children: [
@@ -44,10 +48,7 @@ const routes = [
 				path: "profile",
 				element: <Profile />,
 			},
-			{
-				path: "pages",
-				element: <Cards />,
-			},
+
 			{
 				path: "test",
 				element: <Test />,
