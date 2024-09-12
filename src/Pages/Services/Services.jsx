@@ -22,13 +22,13 @@ const Services = ({ name, image, street, city, zip, country, Newroute }) => {
                     name={name}
                 />
                 <CardContent >
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography gutterBottom component="div">
                         {name}
                     </Typography>
-                    <Typography variant="h6" color="text.secondary">
+                    <Typography color="text.secondary">
                         {street}, {city},{zip}
                     </Typography>
-                    <Typography variant="h6" color="text.secondary">
+                    <Typography color="text.secondary">
                         {country}
                     </Typography>
                 </CardContent>

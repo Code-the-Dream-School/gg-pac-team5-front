@@ -1,15 +1,17 @@
 import { defer, useLoaderData } from "react-router-dom";
-import { Container, Grid } from "@mui/material";
+import { Container, useTheme } from "@mui/material";
 import { Carousel } from "./Carousel/Carousel";
 import { Greeter_Customer } from "./Greeter_Customer/Greeter_Customer";
-import "../../Assets/Home/Home.css";
 import { Parallax } from "./Divider/Parallax";
 import { Feedback } from "./Feedback/Feedback";
 import { SuspendedWrapperWithPromise } from "../../Reusable_Components/SuspendedWrapperWithPromise";
-
+import { Greeter_Provider } from "./Greeter_Provider/Greeter_Provider";
+import { API } from "../../config.js";
+import { getData } from "../../util";
 type Card = number;
 type List = Card[];
 
+/*
 const loader = async () => {
 	// Simulated API call to get data to display for the carousel
 	const axiosPromise = new Promise<List>((resolve) => {
@@ -19,59 +21,61 @@ const loader = async () => {
 		}, 1300);
 	});
 
-	return defer({ provSummary: axiosPromise });
+	return defer({ vendors: axiosPromise });
+};
+*/
+const loader = async () => {
+	console.log("API URL IS:");
+	console.log(import.meta.env.VITE_API_URL);
+	return defer({ vendors: getData(`${import.meta.env.VITE_API_URL}/vendors`) });
 };
 
 const Home = () => {
-	const data = useLoaderData() as { provSummary: Promise<List> };
-	const { provSummary } = data;
+	const data = useLoaderData() as { vendors: Promise<List> };
+	const { vendors } = data;
+	const theme = useTheme();
 
 	return (
-		<Container sx={{ overflowY: "hidden" }}>
-			<Container variant="containerNavbarTrimmed">
-				<Grid
-					container
-					className="outlined"
-					sx={{
-						padding: 0,
-						width: "100vw",
-						maxWidth: "100vw",
-						justifyContent: "space-between",
-						flexFlow: "column",
-					}}
-				>
-					<Grid>
-						<Greeter_Customer />
-					</Grid>
-					<Grid
-						sx={{
-							minHeight: "fit-content",
-						}}
-					>
-						<SuspendedWrapperWithPromise promise={provSummary}>
-							<Carousel />
-						</SuspendedWrapperWithPromise>
-					</Grid>
-				</Grid>
-			</Container>
-			<Container variant="fullScreen">
-				<Parallax />
-			</Container>
-			<Container variant="fullScreen" className="outlined red">
-				<div>Greeter_Provider</div>
+		<>
+			<Container variant="greeter">
+				<Greeter_Customer />
 			</Container>
 			<Container
-				className="outlined purple"
+				variant="fullScreen"
+				sx={{
+					background: theme.palette.primary.gradientBackground,
+					overflow: "hidden",
+				}}
+			>
+				<SuspendedWrapperWithPromise promise={vendors}>
+					<Carousel />
+				</SuspendedWrapperWithPromise>
+				<Parallax />
+			</Container>
+			<Container
+				variant="greeter"
 				sx={{
 					display: "flex",
 					flexDirection: "column",
-					gap: "1rem",
+					pl: { xs: "2rem", md: "0" },
+					pr: { xs: "2rem", md: "0" },
+				}}
+			>
+				<Greeter_Provider />
+			</Container>
+			<Container
+				sx={{
+					display: "flex",
+					flexDirection: "column",
+					gap: "2rem",
 					height: "auto",
+					padding: "5rem 0",
+					background: theme.palette.primary.gradientBackgroundBack,
 				}}
 			>
 				<Feedback />
 			</Container>
-		</Container>
+		</>
 	);
 };
 

@@ -2,8 +2,7 @@
 	position: relative;
 	height: 100%;
 	width: 100%;
-	border: 2px dotted blue;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 .parallax {
@@ -16,6 +15,7 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
+	overflow-x: hidden;
 }
 
 .parallax.title {
@@ -25,16 +25,22 @@
 }
 
 .parallax.left {
-	background-image: url("./media/left.png");
+	background-image: url("/Home/left.png");
 	z-index: 5;
 }
 
 .parallax.right {
-	background-image: url("./media/right.png");
+	background-image: url("/Home/right.png");
 	z-index: 10;
 }
 
 .parallax.middle {
-	background-image: url("./media/middle.png");
+	background-image: url("/Home/middle.png");
 	z-index: 15;
+}
+
+@media (max-width: 600px) {
+	.parallax.title {
+		display: none;
+	}
 }

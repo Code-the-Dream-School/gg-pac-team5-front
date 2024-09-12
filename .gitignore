@@ -2,3 +2,5 @@
 .DS_STORE
 .gitignore
 *.env
+*.env.local
+/dist

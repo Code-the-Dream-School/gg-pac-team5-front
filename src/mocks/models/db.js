@@ -27,7 +27,7 @@ const db = factory({
   },
   appointment: {
     id: primaryKey(faker.string.uuid),
-    serviceId: String, // Simulate foreign key from service model
+    serviceIds: Array, // Simulate foreign key from service model
     userId: null, // Implement user model
     startTime: Date
   }
@@ -58,6 +58,29 @@ handlers.push(
 
 // Add auto-generated CRUD api for /services
 handlers.push(...db.service.toHandlers("rest", MOCK_API));
+
+// Get services by vendorId
+handlers.push(
+  http.get(`${MOCK_API}/services/vendorId/:vendorId`, ({ params }) => {
+    const { vendorId } = params;
+    const response = db.service.findMany({
+      where: {
+        vendorId: {
+          equals: vendorId,
+        }
+      }
+    })
+
+    if (response.length === 0) {
+      return HttpResponse.json({ error: "Not Found" }, { status: 404 });
+    }
+
+    return HttpResponse.json(response);
+  })
+)
+
+// Add auto-generated CRUD api for /appointments
+handlers.push(...db.appointment.toHandlers("rest", MOCK_API));
 
 // Seed vendor database
 for (let i = 0; i < 10; i++) {
