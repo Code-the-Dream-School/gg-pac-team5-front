@@ -24,10 +24,12 @@ const loader = async () => {
 	return defer({ vendors: axiosPromise });
 };
 */
+
 const loader = async () => {
 	console.log("API URL IS:");
-	console.log(import.meta.env.VITE_API_URL);
-	return defer({ vendors: getData(`${import.meta.env.VITE_API_URL}/vendors`) });
+	console.log(API);
+
+	return defer({ vendors: getData(`${API}/vendors`) });
 };
 
 const Home = () => {
