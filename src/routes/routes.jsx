@@ -30,6 +30,13 @@ const routes = [
 				],
 			},
 			{
+				path: "profile",
+				element: <Auth_Layout />,
+				children: [
+					{ index: true, element: <Profile /> },
+				],
+			},
+			{
 				path: "pages/:pageName",
 				element: <Pages />,
 				loader: pagesLoader,
@@ -39,10 +46,6 @@ const routes = [
 						element: <Booking />
 					}
 				]
-			},
-			{
-				path: "profile",
-				element: <Profile />,
 			},
 			{
 				path: "pages",

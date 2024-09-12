@@ -84,7 +84,9 @@ export default function BasicCard() {
         </CardContent>
         <CardActions>
           <Link to="/">
-            <Button size="medium">Return to the home page</Button>
+            <Button size="small" variant="contained" color="primary"
+            >Return to the home page
+            </Button>
           </Link>
         </CardActions>
       </Card>
@@ -98,12 +100,13 @@ export default function BasicCard() {
           <Typography variant="body1" sx={{ mt: 3 }}>
             Your last beauty appointment was on: July 22, 2024.
             <br />
-            Your upcoming beauty appointment is scheduled on: September 13, 2024.
+            Your upcoming beauty appointment is scheduled on: September 16, 2024.
           </Typography>
         </CardContent>
         <CardActions>
           <Link to="/pages">
-            <Button size="medium">Book your next appointment</Button>
+          <Button size="small" variant="contained" color="primary"
+            >Book your next appointment</Button>
           </Link>
         </CardActions>
       </Card>
@@ -124,9 +127,10 @@ export default function BasicCard() {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="medium" component="a" href={`mailto:${emailTo}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`}>
-  Share via Email
-</Button>
+          <Button component="a" size="small" variant="contained" color="primary"
+          href={`mailto:${emailTo}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`}
+            >Share via Email
+          </Button>
         </CardActions>
       </Card>
 
