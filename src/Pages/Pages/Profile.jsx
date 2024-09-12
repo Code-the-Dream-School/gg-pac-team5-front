@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -14,8 +15,8 @@ import IconButton from '@mui/material/IconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import styles from "../../Assets/Profile/Profile.module.css";
 
-const ExpandMore = styled(({ ...other }) => (
-  <IconButton {...other} />
+const ExpandMore = styled(({ expand, ...props }) => (
+  <IconButton {...props} />
 ))(({ theme, expand }) => ({
   transform: expand ? 'rotate(0deg)' : 'rotate(180deg)',
   marginLeft: 'auto',
@@ -23,6 +24,7 @@ const ExpandMore = styled(({ ...other }) => (
     duration: theme.transitions.duration.shortest,
   }),
 }));
+
 
 export default function BasicCard() {
   const date = new Date();
@@ -32,7 +34,6 @@ export default function BasicCard() {
     month: 'long',
     day: 'numeric',
   });
-
 
   const [expanded, setExpanded] = React.useState(false);
   const [editMode, setEditMode] = useState(false);
@@ -55,8 +56,7 @@ export default function BasicCard() {
     setEditMode(false);
   };
 
-// Share via email 
-  const emailTo = 'aaa@aaa.aaa';
+  const emailTo = 'Enter email here';
   const emailSubject = 'Check out our beauty services!';
   const emailBody = `Hi there,
  

@@ -7,11 +7,14 @@ export const Auth_Layout = () => {
     const navigate = useNavigate();
 
     const handleLogin = (email, password) => {
+        console.log('Login attempt with email:', email, 'and password:', password); 
         if (email === 'aaa@aaa.aaa' && password === 'A!1aaaaa') {
             setIsAuthenticated(true);
             navigate('/profile');
+            return true;
+        
         } else {
-            alert('Invalid email or password. Please try again.');
+            return false;
         }
     };
 
@@ -19,9 +22,11 @@ export const Auth_Layout = () => {
         <>
             {isAuthenticated ? (
                 <Outlet />
-            ) : (
-                <Login onLogin={handleLogin} />
+            )  :  (
+                <Login onLogin={handleLogin} />  
             )}
         </>
     );
 };
+
+export default Auth_Layout;

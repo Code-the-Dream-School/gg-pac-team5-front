@@ -1,6 +1,6 @@
 import App from "../App.jsx";
 import { Home, loader as homeLoader } from "../Pages/Home/Home";
-import { Auth_Layout } from "../Pages/Auth/Auth_Layout";
+import  Auth_Layout from "../Pages/Auth/Auth_Layout";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import { Error } from "../Pages/Error/Error";

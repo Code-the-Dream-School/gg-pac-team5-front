@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, TextField, Typography, Container, Box } from '@mui/material';
-import PropTypes from 'prop-types';
 
 const Login = ({ onLogin }) => {
     const [email, setEmail] = useState('');
@@ -17,6 +16,7 @@ const Login = ({ onLogin }) => {
                 setError('Invalid email or password. Please try again.');
             }
         } catch (err) {
+            console.error('Error during login:', err);
             setError('An error occurred. Please try again.');
         }
     };
@@ -48,10 +48,6 @@ const Login = ({ onLogin }) => {
             </Box>
         </Container>
     );
-};
-
-Login.propTypes = {
-    onLogin: PropTypes.func.isRequired
 };
 
 export default Login;
