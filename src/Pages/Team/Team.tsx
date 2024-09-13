@@ -1,61 +1,64 @@
-import Container from "@mui/material/Container"
-import { AvatarItem } from "./AvatarItem"
-import { Typography } from "@mui/material"
+import Container from "@mui/material/Container";
+import { AvatarItem } from "./AvatarItem";
+import { Typography } from "@mui/material";
 
 const Team = () => {
-  return (
-    <>
-      <Typography variant="h3" sx={{ m: "5rem auto", textAlign: "center" }}>
-        Mighty Heap
-      </Typography>
-      <Container
-        sx={{
-          display: "flex",
-          margin: "0 5rem",
-          gap: "3rem",
-          flexWrap: "wrap",
-          maxWidth: "100vw",
-        }}
-      >
-        <AvatarItem
-          teamMemberInfo={{
-            teamMemberName: "Volodymyr Pisotskyi",
-            position: "Full-Stack",
-            avatarUrl: "/team/vlad.jpg",
-            link: "/",
-            linkedIn: "https://www.linkedin.com/in/vpisotski/",
-          }}
-        />
-        <AvatarItem
-          teamMemberInfo={{
-            teamMemberName: "Anuja Bujurge",
-            position: "Full-Stack",
-            avatarUrl: "/team/Anuja.jpg",
-            link: "/",
-            linkedIn: "https://www.linkedin.com/in/anuja-bujurge/",
-          }}
-        />{" "}
-        <AvatarItem
-          teamMemberInfo={{
-            teamMemberName: "Jeffrey Cheung",
-            position: "Full-Stack",
-            avatarUrl: "/team/jeff.jpg",
-            link: "/",
-            linkedIn: "https://www.linkedin.com/in/cheung-k-jeffrey/",
-          }}
-        />{" "}
-        <AvatarItem
-          teamMemberInfo={{
-            teamMemberName: "Tianna Spears",
-            position: "Front-End",
-            avatarUrl: "/team/tianna.jpg",
-            link: "/",
-            linkedIn: "https://www.linkedin.com/in/tiannasp/",
-          }}
-        />
-      </Container>
-    </>
-  )
-}
+	return (
+		<>
+			<Typography
+				variant="h3"
+				sx={{ m: { sm: "5rem auto", md: "10rem auto" }, textAlign: "center" }}
+			>
+				Mighty Heap
+			</Typography>
+			<Container
+				sx={{
+					display: "flex",
+					margin: "0 5rem",
+					gap: "3rem",
+					flexWrap: "wrap",
+					maxWidth: "100vw",
+				}}
+			>
+				<AvatarItem
+					teamMemberInfo={{
+						teamMemberName: "Volodymyr Pisotskyi",
+						position: "Full-Stack",
+						avatarUrl: "/team/vlad.jpg",
+						link: "/",
+						linkedIn: "https://www.linkedin.com/in/vpisotski/",
+					}}
+				/>
+				<AvatarItem
+					teamMemberInfo={{
+						teamMemberName: "Anuja Bujurge",
+						position: "Full-Stack",
+						avatarUrl: "/team/Anuja.jpg",
+						link: "/",
+						linkedIn: "https://www.linkedin.com/in/anuja-bujurge/",
+					}}
+				/>{" "}
+				<AvatarItem
+					teamMemberInfo={{
+						teamMemberName: "Jeffrey Cheung",
+						position: "Full-Stack",
+						avatarUrl: "/team/jeff.jpg",
+						link: "/",
+						linkedIn: "https://www.linkedin.com/in/cheung-k-jeffrey/",
+					}}
+				/>{" "}
+				<AvatarItem
+					teamMemberInfo={{
+						teamMemberName: "Tianna Spears",
+						position: "Front-End",
+						avatarUrl: "/team/tianna.jpg",
+						link: "/",
+						linkedIn: "https://www.linkedin.com/in/tiannasp/",
+					}}
+				/>
+			</Container>
+		</>
+	);
+};
 
-export { Team }
+export { Team };
