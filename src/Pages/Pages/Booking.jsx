@@ -39,7 +39,7 @@ export function Booking() {
         return;
 
 
-    }, [vendorId])
+    }, [])
 
     const [open, setOpen] = React.useState(true);
     const navigate = useNavigate();
