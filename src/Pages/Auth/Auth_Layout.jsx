@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Outlet, useLocation } from 'react-router-dom';
+import { useNavigate, Outlet } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Login from './Login';
 
 export const Auth_Layout = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const navigate = useNavigate();
-    const location = useLocation();
+    // const location = useLocation();
 
     useEffect(() => {
         const storedAuth = localStorage.getItem('isAuthenticated');
@@ -31,14 +31,14 @@ export const Auth_Layout = () => {
         navigate('/auth');
     };
 
-    const showLogoutButton = isAuthenticated && location.pathname === '/profile';
+    // const showLogoutButton = isAuthenticated && location.pathname === '/profile';
 
     return (
         <div style={{ paddingTop: '125px', display:'flex', justifyContent: 'center', alignItems: 'center' }}>
             {isAuthenticated ? (
                 <>
                     <Outlet />
-                    {showLogoutButton && (
+                    {/* {showLogoutButton && ( */}
                         <div style ={{ 
                             flex: 1,  
                             display: 'flex', 
@@ -53,7 +53,7 @@ export const Auth_Layout = () => {
                             Logout
                         </Button>
                         </div>
-                    )}
+    
                 </>
                 ) : (
                     <Login onLogin={handleLogin} />
