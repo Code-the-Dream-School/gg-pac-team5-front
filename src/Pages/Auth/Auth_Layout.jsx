@@ -31,7 +31,7 @@ export const Auth_Layout = () => {
     };
 
     return (
-        <>
+        <div style={{ paddingTop: '125px', display:'flex', justifyContent: 'center', alignItems: 'center' }}>
             {isAuthenticated ? (
                 <>
                     <Outlet />
@@ -45,7 +45,7 @@ export const Auth_Layout = () => {
                         variant="contained"
                         color="primary"
                         onClick={handleLogout}
-                    >
+                        sx={{ position: 'fixed', top: '100px', right: '100px', padding: 1 }}>
                         Logout
                     </Button>
                     </div>
@@ -53,7 +53,7 @@ export const Auth_Layout = () => {
                 ) : (
                     <Login onLogin={handleLogin} />
             )}
-        </>
+        </div>
     );
 };
 

@@ -22,8 +22,18 @@ const Login = ({ onLogin }) => {
     };
 
     return (
-        <Container component="main" maxWidth="xs">
-            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+        <Container component="main" maxWidth="xs" >
+            <Box component="form" onSubmit={handleSubmit} 
+                sx={{   
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    margin: 'auto',
+                    padding: '2em' 
+                }}>
+                <Typography> Please login below. </Typography>
+
                 <TextField
                     margin="normal"
                     required

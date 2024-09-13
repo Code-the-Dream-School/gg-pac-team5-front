@@ -13,12 +13,11 @@ import { styled } from '@mui/material/styles';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import styles from "../../Assets/Profile/Profile.module.css";
 
 const ExpandMore = styled(({ expand, ...props }) => (
   <IconButton {...props} />
 ))(({ theme, expand }) => ({
-  transform: expand ? 'rotate(0deg)' : 'rotate(180deg)',
+  transform: expand ? 'rotate(180deg)' : 'rotate(0deg)',
   marginLeft: 'auto',
   transition: theme.transitions.create('transform', {
     duration: theme.transitions.duration.shortest,
@@ -67,21 +66,23 @@ export default function BasicCard() {
  [Satisfied Client]`;
 
   return (
-    <Box sx={{ display: 'flex', gap: '2em', flexWrap: 'wrap', padding: '2em', alignItems: 'center' }}>
-      {/* Profile Overview Card */}
-      <Card className={styles.profile} variant="outlined" sx={{ padding: 3, maxHeight: '350px' }}>
+    <Box sx={{ display: 'flex', gap: '1em', flexWrap: 'wrap', padding: '1em', alignItems: 'center', mt: '1em' }}>
+      
+    {/* Overview Card */}
+      <Card variant="outlined" sx={{ padding: 5, maxHeight: '550px' }}>
         <CardContent>
           <img src="/images/pic1.jpg" alt="Default Profile Picture" style={{ width: '7em' }} />
           <Typography variant="h5" component="div">
             Overview
           </Typography>
-          <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
+          <Typography variant="body1" sx={{ mt: 3 }}>
             Hello! Welcome to your profile.
           </Typography>
-          <Typography sx={{ fontSize: 15 }} color="text.secondary" gutterBottom>
+          <Typography variant="body1" >
             Today is {currentDate}.
           </Typography>
         </CardContent>
+
         <CardActions>
           <Link to="/">
             <Button size="small" variant="contained" color="primary"
@@ -91,9 +92,9 @@ export default function BasicCard() {
         </CardActions>
       </Card>
 
-      {/* Appointment Reminders Card */}
-      <Card variant="outlined" sx={{ padding: 5, maxHeight: '350px' }}>
-        <CardContent>
+    {/* Appointment Reminders Card */}
+    <Card variant="outlined" sx={{ padding: 5, maxHeight: '350px' }}>
+      <CardContent>
           <Typography variant="h5" component="div">
             Appointment Reminders
           </Typography>
@@ -111,18 +112,19 @@ export default function BasicCard() {
         </CardActions>
       </Card>
 
-      {/* Services Overview Card */}
-      <Card sx={{ minWidth: 345, padding: 5 }}>
-        <CardMedia
-          sx={{ height: 140 }}
+    {/* Services Overview Card */}
+    <Card variant="outlined" sx={{ padding: 5, maxHeight: '550px' }}>
+    <CardMedia
+          component="img"
+          height="140"
           image="/images/pic4.jpg"
           title="Sample Salon Photo"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography variant="h5" component="div">
             Services Overview
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body1" sx={{ mt: 3 }}>
             Explore our wide range of beauty services
           </Typography>
         </CardContent>
@@ -134,9 +136,9 @@ export default function BasicCard() {
         </CardActions>
       </Card>
 
-      {/* Card Four for Account Details */}
-      <Card sx={{ maxHeight: 700, minWidth: 700 }}>
-        <CardMedia
+    {/* Card Four for Account Details */}
+    <Card variant="outlined" sx={{ padding: 5, maxHeight: '550px' }}>
+      <CardMedia
           component="img"
           height="140"
           image="/images/pic3.jpg"
@@ -145,7 +147,7 @@ export default function BasicCard() {
           <Typography gutterBottom variant="h5" component="div">
             Account Settings
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+          <Typography variant="body1" sx={{ mt: 3 }}>
             Click the arrow below to access your account settings.
           </Typography>
         </CardContent>
@@ -180,17 +182,24 @@ export default function BasicCard() {
                   onChange={(e) => setEmail(e.target.value)}
                   sx={{ mb: 2 }}
                 />
-                <Button variant="contained" color="primary" onClick={handleSave} sx={{ mr: 2 }}>
+                <Button 
+                variant="contained" 
+                color="primary" 
+                onClick={handleSave} 
+                sx={{ mr: 2 }}>
                   Save
                 </Button>
-                <Button variant="outlined" color="secondary" onClick={handleCancel}>
+                <Button 
+                variant="outlined" 
+                color="secondary" 
+                onClick={handleCancel}>
                   Cancel
                 </Button>
               </Box>
             ) : (
               <Box>
-                <Typography>Location: {location || ''}</Typography>
-                <Typography>Email Address: {email || ''}</Typography>
+                <Typography><em>Location:  {location || <em>Durham, NC </em>}</em></Typography>
+                <Typography><em>Email Address: {email || <em> aaa@aaa.aaa </em>}</em></Typography>
                 <Box sx={{ mt: 2 }}>
                   <Button variant="contained" color="primary" onClick={handleEdit}>
                     Edit
