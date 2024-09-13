@@ -45,12 +45,12 @@ const mainTheme = createTheme({
 					[theme.breakpoints.up("sm")]: {
 						fontSize: "20px",
 					},
-					[theme.breakpoints.up("md")]: {
-						fontSize: "32px",
-					},
-					[theme.breakpoints.up("lg")]: {
-						fontSize: "50px",
-					},
+					// [theme.breakpoints.up("md")]: {
+					// 	fontSize: "32px",
+					// },
+					// [theme.breakpoints.up("lg")]: {
+					// 	fontSize: "50px",
+					// },
 				}),
 				body1: ({ theme }) => ({
 					fontSize: "10px",
