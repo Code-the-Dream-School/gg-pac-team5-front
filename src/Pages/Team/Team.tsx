@@ -46,11 +46,11 @@ const Team = () => {
         />{" "}
         <AvatarItem
           teamMemberInfo={{
-            teamMemberName: "",
-            position: "",
-            avatarUrl: "",
+            teamMemberName: "Tianna Spears",
+            position: "Front-End",
+            avatarUrl: "/team/tianna.jpg",
             link: "/",
-            linkedIn: "",
+            linkedIn: "https://www.linkedin.com/in/tiannasp/",
           }}
         />
       </Container>
