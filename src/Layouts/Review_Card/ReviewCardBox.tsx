@@ -3,7 +3,8 @@ import { Box, styled } from "@mui/material";
 const ReviewCardBox = styled(Box)(({ theme }) => ({
 	display: "grid",
 	width: "30rem", // Default width
-	margin: "2rem auto",
+	margin: "1rem auto",
+	padding: "1rem 0",
 	gridTemplateColumns: "repeat(9, 1fr)",
 	gridTemplateRows: `repeat(12, minmax(min-content, auto))`,
 	[theme.breakpoints.down("sm")]: {
