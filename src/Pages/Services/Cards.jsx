@@ -1,22 +1,25 @@
-import CardActions from '@mui/material/CardActions';
-// import { Link } from 'react-router-dom';
+
 import React, { useState, useEffect } from 'react';
+import { FaSearch } from "react-icons/fa";
+// Material UI
+import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-import Services from './Services';
-import { FaSearch } from "react-icons/fa";
 import useTheme from "@mui/material/styles/useTheme";
-import "./Services.css";
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-// import image1 from '../../Assets/Services/salon-service-1.jpg'
+// Components
+import Services from './Services';
+// CSS
+import "./Services.css";
+// Backend API
 import { API } from "../../config";
 
-
 const Cards = () => {
-    const theme = useTheme();
+
+    const theme = useTheme(); //Theme Global
 
     const [servicesSample, setServicesSample] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
@@ -39,6 +42,8 @@ const Cards = () => {
     const fetchInitialData = async () => {
         const API_URL = `${API}/vendors`
         // const API_URL = "https://gg-pac-team5-back-1.onrender.com/api/v1/vendors"
+
+        // Local Host API
         // const API_URL = "http://localhost:8000/api/v1/vendors";
         try {
             const resp = await fetch(API_URL);
@@ -50,20 +55,23 @@ const Cards = () => {
             console.error("Failed to fetch data:", err);
         }
     };
-
+    // Search Input
     const handleSearchInputChange = (e) => {
         setSearchQuery(e.target.value);
     };
 
+    // Filter for Cities
     const handleCityFilterChange = (e) => {
         setCityFilter(e.target.value);
     };
 
+    // Filter and search Data
     const handleSearchClick = async () => {
         setIsSearchClicked(true);
         await fetchData(searchQuery, cityFilter);
     };
 
+    // Reset Search
     const handleReturnClick = () => {
         setIsSearchClicked(false); // Reset the search state
         setSearchQuery(''); // Clear the search query
@@ -74,17 +82,21 @@ const Cards = () => {
     const fetchData = async (query = '', city = '') => {
         const API_URL = `${API}/vendors`
         // const API_URL = "https://gg-pac-team5-back-1.onrender.com/api/v1/vendors"
+
+        // Local Host API
         // const API_URL = "http://localhost:8000/api/v1/vendors";
         try {
             const resp = await fetch(API_URL);
             const json = await resp.json();
 
+            // Data Filtering using City name and Search button
             const filteredData = json.vendors.filter((item) => {
                 const matchesQuery = item.name.toLowerCase().includes(query.toLowerCase());
                 const matchesCity = city ? item.city === city : true;
                 return matchesQuery && matchesCity;
             });
 
+            // Foramatted data with CITY Filter
             const formattedData = filteredData.map((item, index) => ({
                 name: item.name || `Service ${index + 1}`,
                 street: item.street,
@@ -92,9 +104,10 @@ const Cards = () => {
                 state: item.state,
                 zip: item.zip,
                 country: item.country,
+                description: item.profile.description,
+                email: item.email,
+                phone: item.phone,
                 image: item.img ? item.img : images[Math.floor(Math.random() * 5) + 1],
-                // image: item.image || image1,//'https://via.placeholder.com/140'
-                // Newroute: `/pages/${encodeURIComponent(item.name)}`
             }));
 
             setServicesSample(formattedData);
@@ -217,7 +230,9 @@ const Cards = () => {
                                     state={service.state}
                                     zip={service.zip}
                                     country={service.country}
-                                // Newroute={service.Newroute}
+                                    description={service.description}
+                                    email={service.email}
+                                    phone={service.phone}
                                 />
                             </Box>
                         ))}
@@ -232,9 +247,9 @@ const Cards = () => {
                         <Button
                             size="small"
                             onClick={handleReturnClick}
-
                             variant="outlined"
-                            color="secondary" >Return to Services</Button>
+                            color="secondary" >Return to Services
+                        </Button>
                     </CardActions>
                 </Container>
 
