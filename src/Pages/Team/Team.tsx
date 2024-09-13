@@ -37,11 +37,11 @@ const Team = () => {
         />{" "}
         <AvatarItem
           teamMemberInfo={{
-            teamMemberName: "",
+            teamMemberName: "Jeffrey Cheung",
             position: "Full-Stack",
-            avatarUrl: "",
+            avatarUrl: "/team/jeff.jpg",
             link: "/",
-            linkedIn: "",
+            linkedIn: "https://www.linkedin.com/in/cheung-k-jeffrey/",
           }}
         />{" "}
         <AvatarItem
