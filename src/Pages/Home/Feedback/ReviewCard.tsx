@@ -68,7 +68,7 @@ const ReviewCard = ({ message }) => {
 					gridColumn: "-4 / -2",
 					gridRow: "3 / 4",
 					display: "flex",
-					justifyContent: "end",
+					justifyContent: "end`",
 					paddingRight: "1rem",
 				}}
 			>

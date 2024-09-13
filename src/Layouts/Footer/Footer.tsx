@@ -43,6 +43,7 @@ const Footer = () => {
 			}}
 		>
 			<Link to="/">Home</Link>
+			<Link to="team">Team</Link>
 			{showScrollToTop && (
 				<IconButton
 					onClick={scrollToTop}

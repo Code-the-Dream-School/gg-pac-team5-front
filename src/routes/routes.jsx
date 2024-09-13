@@ -1,6 +1,6 @@
 import App from "../App.jsx";
 import { Home, loader as homeLoader } from "../Pages/Home/Home";
-import  Auth_Layout from "../Pages/Auth/Auth_Layout";
+import Auth_Layout from "../Pages/Auth/Auth_Layout";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import { Error } from "../Pages/Error/Error";
@@ -8,7 +8,8 @@ import { Pages, loader as pagesLoader } from "../Pages/Pages/Pages.jsx";
 import Test from "../Pages/Test/Test.jsx";
 import Cards from "../Pages/Services/Cards.jsx";
 import Profile from "../Pages/Pages/Profile.jsx";
-import { Booking } from "../Pages/Pages/Booking"
+import { Booking } from "../Pages/Pages/Booking";
+import { Team } from "../Pages/Team/Team.tsx";
 
 const routes = [
 	{
@@ -30,7 +31,6 @@ const routes = [
 				],
 			},
 
-			
 			{
 				path: "pages/:pageName",
 
@@ -39,9 +39,9 @@ const routes = [
 				children: [
 					{
 						path: "book",
-						element: <Booking />
-					}
-				]
+						element: <Booking />,
+					},
+				],
 			},
 			{
 				path: "pages",
@@ -55,6 +55,11 @@ const routes = [
 			{
 				path: "test",
 				element: <Test />,
+			},
+
+			{
+				path: "team",
+				element: <Team />,
 			},
 		],
 	},
