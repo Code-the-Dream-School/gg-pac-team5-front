@@ -1,3 +1,3 @@
-.revertOverflowX * {
+.revertCss * {
     overflow-x: revert !important;
 }
