@@ -5,14 +5,10 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const Services = ({ name, image, street, city, zip, country, Newroute }) => {
-
-    const navigate = useNavigate();
-    const handleServices = () => {
-        navigate(Newroute);
-    };
+const Services = ({ name, image, street, city, zip, country }) => {
     return (
         <div>
             <Card sx={{ m: 1, p: 1, border: 1, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} >
@@ -26,17 +22,19 @@ const Services = ({ name, image, street, city, zip, country, Newroute }) => {
                         {name}
                     </Typography>
                     <Typography color="text.secondary">
-                        {street}, {city},{zip}
+                        {street}, {city}, {zip}
                     </Typography>
                     <Typography color="text.secondary">
                         {country}
                     </Typography>
                 </CardContent>
                 <CardActions >
-                    <Button size="large" onClick={handleServices} variant="contained" >Learn More</Button>
+                    <Link to={`${name}`}>
+                        <Button size="large" variant="contained">Learn More</Button>
+                    </Link>
                 </CardActions>
             </Card >
-        </div>
+        </div >
     );
 }
 export default Services;

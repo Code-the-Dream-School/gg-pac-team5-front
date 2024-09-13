@@ -29,15 +29,11 @@ const routes = [
 					{ path: "register", element: <Register /> },
 				],
 			},
-			{
-				path: "profile",
-				element: <Auth_Layout />,
-				children: [
-					{ index: true, element: <Profile /> },
-				],
-			},
+
+			
 			{
 				path: "pages/:pageName",
+
 				element: <Pages />,
 				loader: pagesLoader,
 				children: [
@@ -51,6 +47,11 @@ const routes = [
 				path: "pages",
 				element: <Cards />,
 			},
+			{
+				path: "profile",
+				element: <Profile />,
+			},
+
 			{
 				path: "test",
 				element: <Test />,
