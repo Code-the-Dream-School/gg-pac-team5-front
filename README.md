@@ -16,11 +16,11 @@ This Application works with [`Backend API`](https://gg-pac-team5-back-1.onrender
 
 Page 1:
 
-![alt text](src\Assets\Readme\figma1.png)
+![alt text](src/Assets/Readme/figma1.png)
 
 Page 2:
 
-![alt text](src\Assets\Readme\figma2.png)
+![alt text](src/Assets/Readme/figma2.png)
 
 ## Authors:
 
