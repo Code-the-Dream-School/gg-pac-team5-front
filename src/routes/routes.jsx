@@ -29,10 +29,7 @@ const routes = [
 					{ path: "register", element: <Register /> },
 				],
 			},
-			{
-				path: "pages",
-				element: <Cards />,
-			},
+
 			{
 				path: "/pages/:pageName",
 				element: <Pages />,
@@ -43,6 +40,10 @@ const routes = [
 						element: <Booking />
 					}
 				]
+			},
+			{
+				path: "pages",
+				element: <Cards />,
 			},
 			{
 				path: "profile",
